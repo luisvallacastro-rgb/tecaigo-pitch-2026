@@ -104,7 +104,7 @@ export const slides: PitchSlide[] = [
     evaluation: "Producto",
     notes: {
       message: "Mostrar que TeCaiGO es el resultado de conectar a toda la cadena de valor.",
-      script: "Comercios turísticos, tour operadores, transportistas, turistas, gobierno, banca y universidades dejan de operar como piezas aisladas. Cuando todos se conectan y comparten capacidad, oportunidades e información, forman TeCaiGO.",
+      script: "Al inicio todos aparecen desordenados. Luego TeCaiGO organiza directamente a comercios turísticos, tour operadores, transportistas y turistas; y de manera indirecta conecta a universidades, gobierno y banca.",
     },
   },
   {

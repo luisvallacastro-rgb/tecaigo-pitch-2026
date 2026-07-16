@@ -107,13 +107,13 @@ const operatorGallery = [
 const audienceQuestion = "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?";
 const conversationImages = [1, 2, 3, 4, 5].map(number => `/assets/conversations/conversation-${number}.jpeg`);
 const formationSectors = [
-  [Hotel, "Comercios turísticos", "-34vw", "-24vh"],
-  [BriefcaseBusiness, "Tour operadores", "-8vw", "-32vh"],
-  [BusFront, "Transportistas", "24vw", "-27vh"],
-  [Users, "Turistas", "35vw", "2vh"],
-  [Landmark, "Gobierno", "22vw", "27vh"],
-  [CircleDollarSign, "Banca", "-8vw", "32vh"],
-  [GraduationCap, "Universidades", "-34vw", "20vh"],
+  [Hotel, "Comercios turísticos", "-34vw", "-24vh", "-30vw", "-22vh"],
+  [BriefcaseBusiness, "Tour operadores", "22vw", "26vh", "-10vw", "-22vh"],
+  [BusFront, "Transportistas", "24vw", "-27vh", "10vw", "-22vh"],
+  [Users, "Turistas", "-34vw", "20vh", "30vw", "-22vh"],
+  [GraduationCap, "Universidades", "-8vw", "-32vh", "-21vw", "22vh"],
+  [Landmark, "Gobierno", "35vw", "2vh", "0vw", "22vh"],
+  [CircleDollarSign, "Banca", "-8vw", "32vh", "21vw", "22vh"],
 ] as const;
 
 function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
@@ -336,14 +336,16 @@ function FormationSlide({ reduceMotion }: { reduceMotion: boolean }) {
         <div className="formation__brand"><Brand /><small>Ecosistema conectado</small></div>
       </div>
       <div className="formation__sectors">
-        {formationSectors.map(([Icon, label, x, y], sectorIndex) => (
-          <div className="formation__sector" key={label} style={{ "--x": x, "--y": y, "--sector": sectorIndex } as React.CSSProperties}>
+        {formationSectors.map(([Icon, label, x, y, endX, endY], sectorIndex) => (
+          <div className="formation__sector" key={label} style={{ "--x": x, "--y": y, "--end-x": endX, "--end-y": endY, "--sector": sectorIndex } as React.CSSProperties}>
             <motion.div className="formation__chip" initial={reduceMotion ? false : { opacity: 0, scale: .65 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .18 + sectorIndex * .09, duration: .55, ease: [0.22, 1, 0.36, 1] }}>
               <span><Icon size={23} /></span><strong>{label}</strong>
             </motion.div>
           </div>
         ))}
       </div>
+      <div className="formation__group formation__group--direct"><span>Directamente</span><i /></div>
+      <div className="formation__group formation__group--indirect"><span>De manera indirecta</span><i /></div>
       <div className="formation__result">Cuando todos se conectan, nace <strong>TeCaiGO.</strong></div>
     </div>
   );
