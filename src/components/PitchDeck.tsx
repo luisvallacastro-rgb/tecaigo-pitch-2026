@@ -94,13 +94,13 @@ function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduc
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
     const nodes = [
-      { x: .64, y: .31, r: 5, label: "Tour operadores", labelY: -34 },
-      { x: .78, y: .23, r: 4, label: "Clusters", labelY: -34 },
-      { x: .91, y: .39, r: 5, label: "Transporte", labelY: -34 },
-      { x: .88, y: .58, r: 4, label: "Comercios", labelY: 34 },
-      { x: .78, y: .71, r: 6, label: "Turistas", labelY: 36 },
-      { x: .59, y: .49, r: 4, label: "Instituciones", labelY: 36 },
-      { x: .76, y: .49, r: 10, label: "Tecaigo", labelY: -40 },
+      { x: .68, y: .31, r: 5, label: "Tour operadores", labelY: -34 },
+      { x: .82, y: .23, r: 4, label: "Clusters", labelY: -34 },
+      { x: .94, y: .39, r: 5, label: "Transporte", labelY: -34 },
+      { x: .91, y: .58, r: 4, label: "Comercios", labelY: 34 },
+      { x: .82, y: .71, r: 6, label: "Turistas", labelY: 36 },
+      { x: .63, y: .49, r: 4, label: "Instituciones", labelY: 36 },
+      { x: .80, y: .49, r: 10, label: "Tecaigo", labelY: -40 },
     ];
     const links = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[6,0],[6,1],[6,2],[6,3],[6,4],[6,5]];
     let width = 0, height = 0, frame = 0, animationFrame = 0;
