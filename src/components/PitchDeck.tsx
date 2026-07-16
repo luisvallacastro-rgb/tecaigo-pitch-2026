@@ -400,6 +400,45 @@ function HomefeedPanorama({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function HomefeedConnection({ reduceMotion }: { reduceMotion: boolean }) {
+  return (
+    <div className="homefeed-connection" aria-label="Conexión entre comercio turístico y tour operador por medio del Homefeed">
+      <motion.div className="homefeed-connection__panel homefeed-connection__panel--commerce" initial={reduceMotion ? false : { opacity: 0, x: -120 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: reduceMotion ? 0 : 1, ease: [0.16, 1, 0.3, 1] }}>
+        <img src="/assets/homefeed-commerce.png" alt="Comercio turístico usando el Homefeed de TeCaiGO" />
+        <div className="homefeed-connection__role"><span><Store size={20} /></span><small>Origen de la oportunidad</small><strong>Comercio turístico</strong></div>
+      </motion.div>
+      <motion.div className="homefeed-connection__panel homefeed-connection__panel--operator" initial={reduceMotion ? false : { opacity: 0, x: 120 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: reduceMotion ? 0 : 1, ease: [0.16, 1, 0.3, 1] }}>
+        <img src="/assets/homefeed-tour-operator.png" alt="Tour operador descubriendo oportunidades en el Homefeed de TeCaiGO" />
+        <div className="homefeed-connection__role"><span><BriefcaseBusiness size={20} /></span><small>Destino de la oportunidad</small><strong>Tour operador</strong></div>
+      </motion.div>
+      <div className="homefeed-connection__veil" aria-hidden="true" />
+      <motion.header className="homefeed-connection__headline" initial={reduceMotion ? false : { opacity: 0, y: -24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .45, duration: .65 }}>
+        <small>La conexión ocurre en tiempo real</small>
+        <strong>Una publicación.<br /><span>Dos mundos conectados.</span></strong>
+      </motion.header>
+      <div className="homefeed-connection__bridge" aria-hidden="true">
+        <motion.i className="homefeed-connection__line" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 1.05, duration: .9, ease: [0.16, 1, 0.3, 1] }} />
+        <i className="homefeed-connection__packet homefeed-connection__packet--1" />
+        <i className="homefeed-connection__packet homefeed-connection__packet--2" />
+        <i className="homefeed-connection__packet homefeed-connection__packet--3" />
+      </div>
+      <motion.div className="homefeed-connection__hub" initial={reduceMotion ? false : { opacity: 0, scale: .4, rotate: -12 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: reduceMotion ? 0 : 1.1, duration: .75, type: "spring", stiffness: 140, damping: 16 }}>
+        <span>Conexión por</span><Brand compact /><small>HOMEFEED</small>
+      </motion.div>
+      <motion.div className="homefeed-connection__exchange" initial={reduceMotion ? false : { opacity: 0, y: 42 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.65, duration: .7, ease: [0.16, 1, 0.3, 1] }}>
+        <div><Store size={18} /><span><small>El comercio</small><strong>Publica una oportunidad</strong></span></div>
+        <ChevronRight className="homefeed-connection__arrow" />
+        <div><Network size={18} /><span><small>El Homefeed</small><strong>La hace visible</strong></span></div>
+        <ChevronRight className="homefeed-connection__arrow" />
+        <div><Route size={18} /><span><small>El operador</small><strong>La convierte en ruta</strong></span></div>
+      </motion.div>
+      <motion.p className="homefeed-connection__statement" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: reduceMotion ? 0 : 2.15, duration: .7 }}>
+        Lo que antes era una publicación aislada, ahora se convierte en una <strong>oportunidad compartida, operable y vendible.</strong>
+      </motion.p>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -458,6 +497,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "problemPoints": return null;
     case "formation": return null;
     case "homefeedPanorama": return null;
+    case "homefeedConnection": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -486,7 +526,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -539,7 +579,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
