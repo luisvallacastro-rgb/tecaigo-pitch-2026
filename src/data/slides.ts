@@ -46,8 +46,7 @@ export const slides: PitchSlide[] = [
     id: 2,
     kind: "gallery",
     eyebrow: "Nuestro origen",
-    title: "El turismo se construye entre personas.",
-    statement: "Tour operadores convirtiendo territorio, conocimiento y colaboración en experiencias.",
+    title: "Lo que ven en pantalla es una comunidad real de tour operadores que se organiza, colabora y crece unida.",
     duration: 15,
     evaluation: "Personas",
     notes: {

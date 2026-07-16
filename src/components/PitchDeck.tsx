@@ -212,16 +212,8 @@ function OperatorGallery({ reduceMotion }: { reduceMotion: boolean }) {
       </div>
       <div className="operator-gallery__veil" aria-hidden="true" />
       <motion.div className="operator-gallery__panel" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .55, duration: .7 }}>
-        <div className="operator-gallery__eyebrow"><span /> Nuestro origen</div>
-        <h1>Tour operadores<br /><em>en acción.</em></h1>
-        <p>Personas que convierten territorio, conocimiento y colaboración en experiencias.</p>
-        <div className="operator-gallery__signals">
-          <span><b>15</b> memorias reales</span>
-          <span><b>1</b> comunidad conectada</span>
-          <span><Network size={18} /> la red antes de la plataforma</span>
-        </div>
+        <p className="operator-gallery__statement">Lo que ven en pantalla es una comunidad real de tour operadores que se organiza, colabora y crece unida.</p>
       </motion.div>
-      <div className="operator-gallery__live"><i /> RED EN MOVIMIENTO</div>
     </div>
   );
 }
