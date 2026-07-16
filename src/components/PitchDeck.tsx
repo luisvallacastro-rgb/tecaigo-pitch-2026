@@ -439,6 +439,65 @@ function HomefeedConnection({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function EventModes({ reduceMotion }: { reduceMotion: boolean }) {
+  const modes = [
+    {
+      kind: "private",
+      image: "/assets/event-private.png",
+      icon: ShieldCheck,
+      number: "01",
+      title: "Evento privado",
+      lead: "Control interno",
+      description: "Solo el clúster del anfitrión puede completar los cupos.",
+      chips: ["Sin vendedores externos", "Gobernanza del anfitrión"],
+    },
+    {
+      kind: "public",
+      image: "/assets/event-public.png",
+      icon: Network,
+      number: "02",
+      title: "Evento público",
+      lead: "Alcance colaborativo",
+      description: "Otros vendedores conectados ayudan a completar los cupos.",
+      chips: ["Mayor alcance", "Comisión por cliente"],
+    },
+  ] as const;
+  return (
+    <div className="event-modes" aria-label="Comparación entre eventos públicos y privados en TeCaiGO">
+      <div className="event-modes__grid">
+        {modes.map(({ kind, image, icon: Icon, number, title, lead, description, chips }, modeIndex) => (
+          <motion.article className={`event-mode event-mode--${kind}`} key={kind} initial={reduceMotion ? false : { opacity: 0, x: modeIndex === 0 ? -90 : 90, scale: .95 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ duration: reduceMotion ? 0 : .9, delay: reduceMotion ? 0 : .12 + modeIndex * .14, ease: [0.16, 1, 0.3, 1] }}>
+            <img src={image} alt={title} />
+            <div className="event-mode__veil" />
+            <div className="event-mode__top"><span>{number}</span><small>Modo operativo</small></div>
+            <div className="event-mode__content">
+              <span className="event-mode__icon"><Icon size={24} /></span>
+              <small>{lead}</small>
+              <strong>{title}</strong>
+              <p>{description}</p>
+              <div>{chips.map((chip, chipIndex) => <motion.span key={chip} initial={reduceMotion ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.05 + modeIndex * .18 + chipIndex * .12 }}>{chip}</motion.span>)}</div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+      <motion.header className="event-modes__headline" initial={reduceMotion ? false : { opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .6, duration: .65 }}>
+        <small>La estrategia cambia. La operación permanece conectada.</small>
+        <strong>Un evento. <span>Dos caminos.</span></strong>
+      </motion.header>
+      <motion.div className="event-modes__choice" initial={reduceMotion ? false : { opacity: 0, scale: .4 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 1.15, duration: .7, type: "spring", stiffness: 160, damping: 16 }}>
+        <span>El anfitrión</span><strong>ELIGE</strong><small>cómo completar sus cupos</small>
+      </motion.div>
+      <motion.div className="event-modes__footer" initial={reduceMotion ? false : { opacity: 0, y: 35 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.55, duration: .7, ease: [0.16, 1, 0.3, 1] }}>
+        <div><ShieldCheck size={18} /><span><small>Privado</small><strong>Protege el control</strong></span></div>
+        <i />
+        <p>TeCaiGO permite decidir entre <strong>control interno</strong> o <strong>distribución colaborativa</strong> según el objetivo de cada salida.</p>
+        <i />
+        <div><Network size={18} /><span><small>Público</small><strong>Multiplica el alcance</strong></span></div>
+      </motion.div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -498,6 +557,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "formation": return null;
     case "homefeedPanorama": return null;
     case "homefeedConnection": return null;
+    case "eventModes": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -526,7 +586,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -579,7 +639,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
