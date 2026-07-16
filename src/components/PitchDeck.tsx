@@ -86,6 +86,24 @@ const heroBackgrounds = [
   ["/assets/hero/tourist-beach.png", "Turistas"],
 ] as const;
 
+const operatorGallery = [
+  "45442007_1907864685917564_2402222178415149056_n.jpg",
+  "45570123_1907864512584248_8965224646731366400_n.jpg",
+  "48406134_1974158145954884_6418375105390313472_n.jpg",
+  "52038601_2054577661246265_4502118890150559744_n.jpg",
+  "57244795_2138685466168817_1917057604597579776_n.jpg",
+  "57251271_2138212869549410_4119106814933467136_n.jpg",
+  "57311619_2138212939549403_3508221113773588480_n.jpg",
+  "57319701_2138212682882762_6475376412399239168_n.jpg",
+  "57352905_2138212899549407_8256299230344249344_n.jpg",
+  "57352965_2138685449502152_1897649459135774720_n.jpg",
+  "57437629_2138685536168810_4536898981262786560_n.jpg",
+  "57486702_2138212776216086_8381434876334702592_n.jpg",
+  "57503844_2138212706216093_1031818983231193088_n.jpg",
+  "57989048_2138685489502148_5610972836299538432_n.jpg",
+  "58377032_2138212786216085_3731329228688326656_n.jpg",
+] as const;
+
 function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -174,6 +192,38 @@ function LandingHeroCover({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function OperatorGallery({ reduceMotion }: { reduceMotion: boolean }) {
+  return (
+    <div className="operator-gallery" aria-label="Galería de tour operadores">
+      <div className="operator-gallery__grid" aria-hidden="true">
+        {operatorGallery.map((image, photoIndex) => (
+          <motion.figure
+            className={`operator-photo operator-photo--${photoIndex + 1}`}
+            key={image}
+            initial={reduceMotion ? false : { opacity: 0, scale: .88, y: photoIndex % 2 ? 28 : -28 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: .72, delay: reduceMotion ? 0 : photoIndex * .045, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img src={`/assets/tour-operators/${image}`} alt="" />
+          </motion.figure>
+        ))}
+      </div>
+      <div className="operator-gallery__veil" aria-hidden="true" />
+      <motion.div className="operator-gallery__panel" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .55, duration: .7 }}>
+        <div className="operator-gallery__eyebrow"><span /> Nuestro origen</div>
+        <h1>Tour operadores<br /><em>en acción.</em></h1>
+        <p>Personas que convierten territorio, conocimiento y colaboración en experiencias.</p>
+        <div className="operator-gallery__signals">
+          <span><b>15</b> memorias reales</span>
+          <span><b>1</b> comunidad conectada</span>
+          <span><Network size={18} /> la red antes de la plataforma</span>
+        </div>
+      </motion.div>
+      <div className="operator-gallery__live"><i /> RED EN MOVIMIENTO</div>
+    </div>
+  );
+}
+
 function ProblemVisual() {
   return (
     <div className="problem-grid">
@@ -186,7 +236,7 @@ function ProblemVisual() {
         <div className="privacy-label"><ShieldCheck size={16} /> Evidencia recreada y anonimizada</div>
       </div>
       <div className="problem-list">
-        {slides[1].bullets?.map((item, index) => <div key={item}><span>0{index + 1}</span>{item}</div>)}
+        {slides.find(slide => slide.kind === "problem")?.bullets?.map((item, index) => <div key={item}><span>0{index + 1}</span>{item}</div>)}
       </div>
     </div>
   );
@@ -239,12 +289,13 @@ function BusinessVisual() {
 }
 
 function ClosingVisual() {
-  return <div className="closing-layout"><div className="impact-grid">{slides[9].bullets?.map((item, index) => { const icons = [BriefcaseBusiness, Landmark, Users, Building2, BarChart3, TrendingUp]; const Icon = icons[index]; return <div key={item}><Icon size={28} /><strong>{item}</strong></div>; })}</div><div className="closing-brand"><Brand /><span>En TeCaiGO nadie gana solo.</span></div></div>;
+  return <div className="closing-layout"><div className="impact-grid">{slides.find(slide => slide.kind === "closing")?.bullets?.map((item, index) => { const icons = [BriefcaseBusiness, Landmark, Users, Building2, BarChart3, TrendingUp]; const Icon = icons[index]; return <div key={item}><Icon size={28} /><strong>{item}</strong></div>; })}</div><div className="closing-brand"><Brand /><span>En TeCaiGO nadie gana solo.</span></div></div>;
 }
 
 function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion: boolean }) {
   switch (slide.kind) {
     case "cover": return null;
+    case "gallery": return null;
     case "problem": return <ProblemVisual />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -273,6 +324,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
+  const immersive = current.kind === "cover" || current.kind === "gallery";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -318,14 +370,14 @@ export default function PitchDeck() {
   const toggleFullscreen = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
 
   return (
-    <main className={`deck-shell ${current.kind === "cover" ? "deck-shell--cover" : ""}`}>
+    <main className={`deck-shell ${immersive ? "deck-shell--cover" : ""}`}>
       {aspectWarning && <div className="aspect-warning"><Maximize2 size={16} /> Para una mejor experiencia usa una pantalla 16:9.</div>}
       <div className="deck-progress" style={{ "--progress": `${progress}%` } as React.CSSProperties} />
       <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
