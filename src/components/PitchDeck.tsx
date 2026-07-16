@@ -568,6 +568,37 @@ function TouristArrival({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
+  const pillars = [
+    ["/assets/impact-banking.png", CircleDollarSign, "Banca", "Financiamiento", "El historial transaccional convierte actividad real en acceso a capital."],
+    ["/assets/impact-government.png", Landmark, "Gobierno", "Formalización", "Más negocios visibles fortalecen la recaudación y la toma de decisiones."],
+    ["/assets/impact-university.png", GraduationCap, "Universidades", "Talento", "La operación conectada abre formación y empleo para nuevas generaciones."],
+  ] as const;
+  return (
+    <div className="ecosystem-impact" aria-label="Impacto de TeCaiGO en banca, gobierno y universidades">
+      <div className="ecosystem-impact__grid">
+        {pillars.map(([image, Icon, sector, impact, detail], pillarIndex) => (
+          <motion.article className="ecosystem-impact__pillar" key={sector} initial={reduceMotion ? false : { opacity: 0, y: pillarIndex === 1 ? -80 : 80, scale: .94 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .12 + pillarIndex * .18, duration: .9, ease: [0.16, 1, 0.3, 1] }}>
+            <motion.img src={image} alt={`${sector}: ${impact}`} animate={reduceMotion ? undefined : { scale: [1.035, 1, 1.025] }} transition={{ duration: 9 + pillarIndex, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }} />
+            <div className="ecosystem-impact__veil" />
+            <div className="ecosystem-impact__pillar-copy"><span><Icon size={20} /></span><small>{sector}</small><strong>{impact}</strong><p>{detail}</p></div>
+          </motion.article>
+        ))}
+      </div>
+      <motion.header className="ecosystem-impact__headline" initial={reduceMotion ? false : { opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .65, duration: .65 }}>
+        <small><span>12</span><i /> Impacto sistémico</small>
+        <strong>Una red digital.<br /><b>Tres motores de desarrollo.</b></strong>
+      </motion.header>
+      <motion.div className="ecosystem-impact__connector" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 1.05, duration: 1.15, ease: [0.16, 1, 0.3, 1] }}><i /><i /><i /><span><Brand compact /></span></motion.div>
+      <motion.aside className="ecosystem-impact__glass" initial={reduceMotion ? false : { opacity: 0, y: 70, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 1.15, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
+        <p><strong>TeCaigo impulsa un turismo más formal, inclusivo y sostenible.</strong> Al digitalizar la actividad del sector, genera historial transaccional que facilita el acceso a financiamiento, fortalece la recaudación fiscal mediante la formalización de los negocios y crea oportunidades de formación y empleo para nuevas generaciones de profesionales del turismo.</p>
+        <blockquote>Nuestro impacto trasciende la tecnología: <strong>fortalecemos el desarrollo económico y social de todo el ecosistema.</strong></blockquote>
+      </motion.aside>
+      <div className="ecosystem-impact__pulse" aria-hidden="true"><i /><i /><i /></div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -630,6 +661,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "eventModes": return null;
     case "transportIntegration": return null;
     case "touristArrival": return null;
+    case "ecosystemImpact": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -658,7 +690,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -711,7 +743,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
