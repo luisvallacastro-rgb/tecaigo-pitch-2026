@@ -104,6 +104,8 @@ const operatorGallery = [
   "58377032_2138212786216085_3731329228688326656_n.jpg",
 ] as const;
 
+const audienceQuestion = "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?";
+
 function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -224,6 +226,32 @@ function OperatorGallery({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function AudienceQuestion({ reduceMotion }: { reduceMotion: boolean }) {
+  const words = audienceQuestion.split(" ");
+  return (
+    <div className="audience-question" aria-label={audienceQuestion}>
+      <div className="audience-question__orb audience-question__orb--one" aria-hidden="true" />
+      <div className="audience-question__orb audience-question__orb--two" aria-hidden="true" />
+      <div className="audience-question__mark" aria-hidden="true">?</div>
+      <motion.div className="audience-question__content" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }}>
+        <span className="audience-question__eyebrow"><i /> Pensemos por un momento</span>
+        <h1 aria-hidden="true">
+          {words.map((word, wordIndex) => (
+            <motion.span
+              key={`${word}-${wordIndex}`}
+              initial={reduceMotion ? false : { opacity: 0, y: 30, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: .5, delay: reduceMotion ? 0 : .28 + wordIndex * .15, ease: [0.22, 1, 0.36, 1] }}
+            >{word}</motion.span>
+          ))}
+          <motion.i className="audience-question__cursor" aria-hidden="true" initial={{ opacity: 0 }} animate={{ opacity: [0, 1, 1, 0] }} transition={{ delay: reduceMotion ? 0 : 2.65, duration: 1.1, repeat: reduceMotion ? 0 : Infinity }} />
+        </h1>
+        <motion.div className="audience-question__line" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 2.5, duration: .8, ease: [0.22, 1, 0.36, 1] }} />
+      </motion.div>
+    </div>
+  );
+}
+
 function ProblemVisual() {
   return (
     <div className="problem-grid">
@@ -296,6 +324,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
   switch (slide.kind) {
     case "cover": return null;
     case "gallery": return null;
+    case "question": return null;
     case "problem": return <ProblemVisual />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -324,7 +353,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -377,7 +406,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 

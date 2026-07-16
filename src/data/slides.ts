@@ -1,6 +1,7 @@
 export type SlideKind =
   | "cover"
   | "gallery"
+  | "question"
   | "problem"
   | "founder"
   | "ecosystem"
@@ -34,7 +35,7 @@ export const slides: PitchSlide[] = [
     eyebrow: "Turismo conectado",
     title: "Turismo conectado. Economía colaborativa.",
     statement: "Operación turística conectada en una sola red.",
-    duration: 12,
+    duration: 10,
     evaluation: "Producto",
     notes: {
       message: "Abrir mostrando que TeCaiGO conecta una economía completa, no solo una aplicación.",
@@ -47,7 +48,7 @@ export const slides: PitchSlide[] = [
     eyebrow: "Nuestro origen",
     title: "El turismo se construye entre personas.",
     statement: "Tour operadores convirtiendo territorio, conocimiento y colaboración en experiencias.",
-    duration: 18,
+    duration: 15,
     evaluation: "Personas",
     notes: {
       message: "Mostrar que TeCaiGO nace de una comunidad real y de experiencia directa en el territorio.",
@@ -56,12 +57,24 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 3,
+    kind: "question",
+    eyebrow: "Una pregunta",
+    title: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?",
+    duration: 15,
+    evaluation: "Producto",
+    notes: {
+      message: "Hacer una pausa y dejar que la audiencia responda mentalmente antes de mostrar el problema.",
+      script: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?",
+    },
+  },
+  {
+    id: 4,
     kind: "problem",
     eyebrow: "El problema",
     title: "Así opera hoy una industria completa.",
     statement: "Miles de oportunidades dependen de mensajes que desaparecen en minutos.",
     bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
-    duration: 32,
+    duration: 28,
     evaluation: "Producto",
     notes: {
       message: "Hacer visible la fragmentación operativa que TeCaiGO resuelve.",
@@ -69,7 +82,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 4,
+    id: 5,
     kind: "founder",
     eyebrow: "Personas",
     title: "Viví el problema antes de construir la solución.",
@@ -82,7 +95,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 5,
+    id: 6,
     kind: "ecosystem",
     eyebrow: "La solución",
     title: "TeCaiGO organiza a quienes hacen posible el turismo.",
@@ -95,7 +108,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     kind: "flow",
     eyebrow: "Cómo funciona",
     title: "De una oportunidad local a una experiencia comercial.",
@@ -107,7 +120,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     kind: "innovation",
     eyebrow: "Innovación",
     title: "Una forma diferente de organizar el turismo.",
@@ -120,7 +133,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     kind: "product",
     eyebrow: "Producto en funcionamiento",
     title: "Una plataforma para cada actor del ecosistema.",
@@ -133,12 +146,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
     kind: "market",
     eyebrow: "Potencial",
     title: "Nuestro mercado no es un país; es un modelo operativo.",
     statement: "Donde existan organizadores que integran proveedores y venden experiencias manualmente, existe una oportunidad para TeCaiGO.",
-    duration: 33,
+    duration: 30,
     evaluation: "Potencial",
     notes: {
       message: "Presentar la lógica de expansión sin inventar cifras.",
@@ -146,12 +159,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 10,
+    id: 11,
     kind: "business",
     eyebrow: "Previsibilidad",
     title: "Un modelo escalable con múltiples fuentes de ingresos.",
     statement: "Más actores generan más oferta, transacciones, datos y valor para toda la red.",
-    duration: 33,
+    duration: 30,
     evaluation: "Previsibilidad",
     notes: {
       message: "Mostrar cómo captura valor la plataforma sin prometer precios no validados.",
@@ -159,7 +172,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 11,
+    id: 12,
     kind: "closing",
     eyebrow: "Impacto",
     title: "Organizar digitalmente el turismo para transformar la economía.",
