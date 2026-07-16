@@ -105,6 +105,7 @@ const operatorGallery = [
 ] as const;
 
 const audienceQuestion = "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?";
+const conversationImages = [1, 2, 3, 4, 5].map(number => `/assets/conversations/conversation-${number}.jpeg`);
 
 function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -244,19 +245,42 @@ function AudienceQuestion({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
-function ProblemVisual() {
+function ProblemVisual({ reduceMotion }: { reduceMotion: boolean }) {
+  const [activeConversation, setActiveConversation] = useState(0);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const id = window.setInterval(() => setActiveConversation(value => (value + 1) % conversationImages.length), 3300);
+    return () => window.clearInterval(id);
+  }, [reduceMotion]);
+
   return (
-    <div className="problem-grid">
-      <div className="chat-evidence" aria-label="Representación anonimizada de coordinación por mensajería">
-        <div className="chat-evidence__top"><span className="anon-avatar">TO</span><div><strong>Grupo de coordinación</strong><small>Identidad anonimizada</small></div><span>•••</span></div>
-        <div className="bubble bubble--in">¿Cuántos cupos quedan para el sábado?<time>10:42</time></div>
-        <div className="bubble bubble--out">Tengo 6… creo que otro operador reservó 3.<time>10:44</time></div>
-        <div className="bubble bubble--in">¿Quién confirma el microbús?<time>10:47</time></div>
-        <div className="bubble bubble--out bubble--alert">Mensaje eliminado<time>10:51</time></div>
-        <div className="privacy-label"><ShieldCheck size={16} /> Evidencia recreada y anonimizada</div>
+    <div className="conversation-carousel" aria-label="Carrusel de conversaciones de tour operadores">
+      <div className="conversation-carousel__label"><span /> Conversaciones reales · operación diaria</div>
+      <div className="conversation-carousel__stage">
+        {conversationImages.map((image, imageIndex) => {
+          let offset = (imageIndex - activeConversation + conversationImages.length) % conversationImages.length;
+          if (offset > 2) offset -= conversationImages.length;
+          const distance = Math.abs(offset);
+          return (
+            <motion.div
+              className="conversation-carousel__item"
+              key={image}
+              style={{ zIndex: 10 - distance }}
+              animate={{ x: `${offset * 34}%`, scale: distance === 0 ? 1 : distance === 1 ? .82 : .66, opacity: distance === 0 ? 1 : distance === 1 ? .58 : .2, rotateY: offset * -7 }}
+              transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 90, damping: 20, mass: .85 }}
+            >
+              <figure className={`conversation-phone ${distance === 0 ? "is-active" : ""}`}>
+                <div className="conversation-phone__speaker" aria-hidden="true" />
+                <img src={image} alt={`Conversación de coordinación ${imageIndex + 1}`} />
+                <span className="conversation-phone__shine" aria-hidden="true" />
+              </figure>
+            </motion.div>
+          );
+        })}
       </div>
-      <div className="problem-list">
-        {slides.find(slide => slide.kind === "problem")?.bullets?.map((item, index) => <div key={item}><span>0{index + 1}</span>{item}</div>)}
+      <div className="conversation-carousel__dots" aria-label="Seleccionar conversación">
+        {conversationImages.map((_, dotIndex) => <button key={dotIndex} className={dotIndex === activeConversation ? "is-active" : ""} onClick={() => setActiveConversation(dotIndex)} aria-label={`Mostrar conversación ${dotIndex + 1}`} />)}
       </div>
     </div>
   );
@@ -317,7 +341,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "cover": return null;
     case "gallery": return null;
     case "question": return null;
-    case "problem": return <ProblemVisual />;
+    case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
     case "flow": return <FlowVisual reduceMotion={reduceMotion} />;
