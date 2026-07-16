@@ -106,6 +106,15 @@ const operatorGallery = [
 
 const audienceQuestion = "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?";
 const conversationImages = [1, 2, 3, 4, 5].map(number => `/assets/conversations/conversation-${number}.jpeg`);
+const formationSectors = [
+  [Hotel, "Comercios turísticos", "-34vw", "-24vh"],
+  [BriefcaseBusiness, "Tour operadores", "-8vw", "-32vh"],
+  [BusFront, "Transportistas", "24vw", "-27vh"],
+  [Users, "Turistas", "35vw", "2vh"],
+  [Landmark, "Gobierno", "22vw", "27vh"],
+  [CircleDollarSign, "Banca", "-8vw", "32vh"],
+  [GraduationCap, "Universidades", "-34vw", "20vh"],
+] as const;
 
 function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -316,6 +325,30 @@ function ProblemPointsSlide({ slide, reduceMotion }: { slide: PitchSlide; reduce
   );
 }
 
+function FormationSlide({ reduceMotion }: { reduceMotion: boolean }) {
+  return (
+    <div className={`formation ${reduceMotion ? "is-static" : ""}`} aria-label="Sectores que se unen para formar TeCaiGO">
+      <div className="formation__field" aria-hidden="true" />
+      <div className="formation__caption"><span /> Siete sectores · una sola red <span /></div>
+      <div className="formation__energy" aria-hidden="true"><i /><i /><i /></div>
+      <div className="formation__core">
+        <div className="formation__rings" aria-hidden="true"><i /><i /><i /></div>
+        <div className="formation__brand"><Brand /><small>Ecosistema conectado</small></div>
+      </div>
+      <div className="formation__sectors">
+        {formationSectors.map(([Icon, label, x, y], sectorIndex) => (
+          <div className="formation__sector" key={label} style={{ "--x": x, "--y": y, "--sector": sectorIndex } as React.CSSProperties}>
+            <motion.div className="formation__chip" initial={reduceMotion ? false : { opacity: 0, scale: .65 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .18 + sectorIndex * .09, duration: .55, ease: [0.22, 1, 0.36, 1] }}>
+              <span><Icon size={23} /></span><strong>{label}</strong>
+            </motion.div>
+          </div>
+        ))}
+      </div>
+      <div className="formation__result">Cuando todos se conectan, nace <strong>TeCaiGO.</strong></div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -372,6 +405,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "gallery": return null;
     case "question": return null;
     case "problemPoints": return null;
+    case "formation": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -400,7 +434,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -453,7 +487,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 

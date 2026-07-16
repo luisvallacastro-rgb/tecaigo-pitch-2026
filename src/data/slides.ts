@@ -4,6 +4,7 @@ export type SlideKind =
   | "question"
   | "problem"
   | "problemPoints"
+  | "formation"
   | "founder"
   | "ecosystem"
   | "flow"
@@ -87,7 +88,7 @@ export const slides: PitchSlide[] = [
     eyebrow: "Problema",
     title: "Problema:",
     bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
-    duration: 18,
+    duration: 15,
     evaluation: "Producto",
     notes: {
       message: "Condensar la fragmentación operativa en cinco problemas concretos.",
@@ -96,11 +97,23 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 6,
+    kind: "formation",
+    eyebrow: "El ecosistema",
+    title: "Cuando todos se conectan, nace TeCaiGO.",
+    duration: 18,
+    evaluation: "Producto",
+    notes: {
+      message: "Mostrar que TeCaiGO es el resultado de conectar a toda la cadena de valor.",
+      script: "Comercios turísticos, tour operadores, transportistas, turistas, gobierno, banca y universidades dejan de operar como piezas aisladas. Cuando todos se conectan y comparten capacidad, oportunidades e información, forman TeCaiGO.",
+    },
+  },
+  {
+    id: 7,
     kind: "founder",
     eyebrow: "Personas",
     title: "Viví el problema antes de construir la solución.",
     statement: "Experiencia operativa, visión financiera y conocimiento del riesgo aplicados a una industria conocida desde adentro.",
-    duration: 25,
+    duration: 22,
     evaluation: "Personas",
     notes: {
       message: "Conectar la experiencia del fundador con la capacidad para ejecutar.",
@@ -108,12 +121,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     kind: "ecosystem",
     eyebrow: "La solución",
     title: "TeCaiGO organiza a quienes hacen posible el turismo.",
     statement: "No somos únicamente una aplicación; somos una infraestructura digital de coordinación turística.",
-    duration: 28,
+    duration: 25,
     evaluation: "Producto",
     notes: {
       message: "Explicar la arquitectura B2E en una frase y una imagen.",
@@ -121,11 +134,11 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     kind: "flow",
     eyebrow: "Cómo funciona",
     title: "De una oportunidad local a una experiencia comercial.",
-    duration: 28,
+    duration: 25,
     evaluation: "Producto",
     notes: {
       message: "Contar un caso concreto que muestre el valor para todos.",
@@ -133,12 +146,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
     kind: "innovation",
     eyebrow: "Innovación",
     title: "Una forma diferente de organizar el turismo.",
     statement: "La mayoría conecta oferta y demanda. TeCaiGO conecta toda la cadena de valor.",
-    duration: 28,
+    duration: 25,
     evaluation: "Producto",
     notes: {
       message: "Definir B2E como la innovación central y separar presente de visión.",
@@ -146,12 +159,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 10,
+    id: 11,
     kind: "product",
     eyebrow: "Producto en funcionamiento",
     title: "Una plataforma para cada actor del ecosistema.",
     statement: "Una experiencia especializada; una misma infraestructura compartida.",
-    duration: 28,
+    duration: 25,
     evaluation: "Producto",
     notes: {
       message: "Demostrar que el producto traduce el modelo en flujos concretos.",
@@ -159,7 +172,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 11,
+    id: 12,
     kind: "market",
     eyebrow: "Potencial",
     title: "Nuestro mercado no es un país; es un modelo operativo.",
@@ -172,7 +185,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 12,
+    id: 13,
     kind: "business",
     eyebrow: "Previsibilidad",
     title: "Un modelo escalable con múltiples fuentes de ingresos.",
@@ -185,7 +198,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 13,
+    id: 14,
     kind: "closing",
     eyebrow: "Impacto",
     title: "Organizar digitalmente el turismo para transformar la economía.",
