@@ -160,14 +160,16 @@ function LandingHeroCover({ reduceMotion }: { reduceMotion: boolean }) {
       </div>
       <div className="landing-hero__shade" />
       <HeroNetwork activeLabel={heroBackgrounds[backgroundIndex][1]} reduceMotion={reduceMotion} />
-      <motion.div className="landing-hero__focus" initial={reduceMotion ? false : { opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .8, ease: [0.22, 1, 0.36, 1] }}>
-        <div className="landing-hero__aura" aria-hidden="true"><span /><span /><span /></div>
-        <div className="landing-hero__brand"><Brand /></div>
-        <div className="landing-hero__actions">
-          <a className="is-primary" href="https://tecaigo-app.onrender.com/?v=tecaigo-mobile-login-20" target="_blank" rel="noreferrer"><Network size={25} /><span>TeCaiGO.EXE</span></a>
-          <a href="https://tecaigo-flutter-prototype.onrender.com/?v=desktop-frame-36a965e" target="_blank" rel="noreferrer"><Smartphone size={25} /><span>TeCaiGO.APP</span></a>
-        </div>
-      </motion.div>
+      <div className="landing-hero__focus">
+        <motion.div className="landing-hero__focus-inner" initial={reduceMotion ? false : { opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .8, ease: [0.22, 1, 0.36, 1] }}>
+          <div className="landing-hero__aura" aria-hidden="true"><span /><span /><span /></div>
+          <div className="landing-hero__brand"><Brand /></div>
+          <div className="landing-hero__actions">
+            <a className="is-primary" href="https://tecaigo-app.onrender.com/?v=tecaigo-mobile-login-20" target="_blank" rel="noreferrer"><Network size={25} /><span>TeCaiGO.EXE</span></a>
+            <a href="https://tecaigo-flutter-prototype.onrender.com/?v=desktop-frame-36a965e" target="_blank" rel="noreferrer"><Smartphone size={25} /><span>TeCaiGO.APP</span></a>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
