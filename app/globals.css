@@ -154,6 +154,11 @@ button { font:inherit; }
 .formation.is-static .formation__sector { animation:none; transform:translate(calc(-50% + var(--end-x)),calc(-50% + var(--end-y))); }
 .formation.is-static .formation__core,.formation.is-static .formation__result { animation:none; opacity:1; }
 .formation.is-static .formation__group { animation:none; opacity:1; }
+.formation.is-settled .formation__sector { animation:none; transform:translate(calc(-50% + var(--end-x)),calc(-50% + var(--end-y))) scale(.9); opacity:1; filter:none; }
+.formation.is-settled .formation__core { animation:none; opacity:1; transform:translate(-50%,-50%) scale(1); }
+.formation.is-settled .formation__group { animation:none; opacity:1; transform:translateX(-50%); }
+.formation.is-settled .formation__result { animation:none; opacity:0; }
+.formation.is-settled .formation__field,.formation.is-settled .formation__energy,.formation.is-settled .formation__rings:before,.formation.is-settled .formation__rings i { animation:none; }
 @keyframes formationJoin { 0%,18%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1);opacity:1;filter:blur(0)} 42%,58%{transform:translate(-50%,-50%) scale(.16);opacity:.06;filter:blur(5px)} 76%,90%{transform:translate(calc(-50% + var(--end-x)),calc(-50% + var(--end-y))) scale(.9);opacity:1;filter:blur(0)} 100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1);opacity:1;filter:blur(0)} }
 @keyframes formationCore { 0%,22%,90%,100%{opacity:.16;transform:translate(-50%,-50%) scale(.72)} 43%,68%{opacity:1;transform:translate(-50%,-50%) scale(1.08)} 76%{opacity:.9;transform:translate(-50%,-50%) scale(1)} }
 @keyframes formationResult { 0%,32%,88%,100%{opacity:0;transform:translate(-50%,18px)} 48%,74%{opacity:1;transform:translate(-50%,0)} }

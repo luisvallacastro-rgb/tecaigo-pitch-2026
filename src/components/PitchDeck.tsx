@@ -326,8 +326,17 @@ function ProblemPointsSlide({ slide, reduceMotion }: { slide: PitchSlide; reduce
 }
 
 function FormationSlide({ reduceMotion }: { reduceMotion: boolean }) {
+  const [settled, setSettled] = useState(reduceMotion);
+
+  useEffect(() => {
+    if (reduceMotion) { setSettled(true); return; }
+    setSettled(false);
+    const id = window.setTimeout(() => setSettled(true), 9800);
+    return () => window.clearTimeout(id);
+  }, [reduceMotion]);
+
   return (
-    <div className={`formation ${reduceMotion ? "is-static" : ""}`} aria-label="Sectores que se unen para formar TeCaiGO">
+    <div className={`formation ${settled ? "is-settled" : ""}`} aria-label="Sectores que se unen para formar TeCaiGO">
       <div className="formation__field" aria-hidden="true" />
       <div className="formation__caption"><span /> Siete sectores · una sola red <span /></div>
       <div className="formation__energy" aria-hidden="true"><i /><i /><i /></div>
