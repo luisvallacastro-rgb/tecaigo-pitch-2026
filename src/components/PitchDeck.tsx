@@ -86,8 +86,6 @@ const heroBackgrounds = [
   ["/assets/hero/tourist-beach.png", "Turistas"],
 ] as const;
 
-const economyWords = ["conectada.", "colaborativa.", "digital.", "sostenible.", "turística.", "transparente.", "dinámica.", "inclusiva.", "cultural."];
-
 function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -148,29 +146,11 @@ function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduc
 
 function LandingHeroCover({ reduceMotion }: { reduceMotion: boolean }) {
   const [backgroundIndex, setBackgroundIndex] = useState(4);
-  const [word, setWord] = useState("cultural.");
 
   useEffect(() => {
     if (reduceMotion) return;
     const id = window.setInterval(() => setBackgroundIndex(value => (value + 1) % heroBackgrounds.length), 5600);
     return () => window.clearInterval(id);
-  }, [reduceMotion]);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    let wordIndex = 8, characterIndex = economyWords[wordIndex].length, deleting = true, timer = 0;
-    const type = () => {
-      const currentWord = economyWords[wordIndex]; let delay = deleting ? 58 : 84;
-      if (deleting) {
-        characterIndex -= 1; setWord(currentWord.slice(0, Math.max(characterIndex, 0)));
-        if (characterIndex <= 0) { deleting = false; wordIndex = (wordIndex + 1) % economyWords.length; delay = 180; }
-      } else {
-        const nextWord = economyWords[wordIndex]; characterIndex += 1; setWord(nextWord.slice(0, characterIndex));
-        if (characterIndex >= nextWord.length) { deleting = true; delay = 1450; }
-      }
-      timer = window.setTimeout(type, delay);
-    };
-    timer = window.setTimeout(type, 1400); return () => window.clearTimeout(timer);
   }, [reduceMotion]);
 
   return (
@@ -180,16 +160,13 @@ function LandingHeroCover({ reduceMotion }: { reduceMotion: boolean }) {
       </div>
       <div className="landing-hero__shade" />
       <HeroNetwork activeLabel={heroBackgrounds[backgroundIndex][1]} reduceMotion={reduceMotion} />
-      <motion.div className="landing-hero__copy" initial={reduceMotion ? false : { opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .7 }}>
-        <h1>Turismo<br />conectado.</h1>
-        <h2>Economía <span>{word}</span><i aria-hidden="true" /></h2>
-        <p>Operación turística conectada en una sola red.</p>
+      <motion.div className="landing-hero__focus" initial={reduceMotion ? false : { opacity: 0, scale: .94 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .8, ease: [0.22, 1, 0.36, 1] }}>
+        <div className="landing-hero__aura" aria-hidden="true"><span /><span /><span /></div>
+        <div className="landing-hero__brand"><Brand /></div>
         <div className="landing-hero__actions">
-          <a className="is-primary" href="https://tecaigo-app.onrender.com/?v=tecaigo-mobile-login-20" target="_blank" rel="noreferrer">TeCaigo.Exe</a>
-          <a href="https://tecaigo-flutter-prototype.onrender.com/?v=desktop-frame-36a965e" target="_blank" rel="noreferrer">TeCaigo.APP</a>
+          <a className="is-primary" href="https://tecaigo-app.onrender.com/?v=tecaigo-mobile-login-20" target="_blank" rel="noreferrer"><Network size={25} /><span>TeCaiGO.EXE</span></a>
+          <a href="https://tecaigo-flutter-prototype.onrender.com/?v=desktop-frame-36a965e" target="_blank" rel="noreferrer"><Smartphone size={25} /><span>TeCaiGO.APP</span></a>
         </div>
-        <div className="landing-hero__notes"><span>TeCaigo.EXE: para una mejor experiencia, visualizar en escritorio.</span><span>TeCaigo.APP: para una mejor experiencia visual, abrir desde teléfono.</span></div>
-        <div className="landing-hero__stores"><span><Play size={20} fill="currentColor" /><small>Disponible en<strong>Google Play</strong></small></span><span><Smartphone size={20} /><small>Disponible en<strong>App Store</strong></small></span></div>
       </motion.div>
     </div>
   );
@@ -285,7 +262,6 @@ function formatTime(seconds: number) {
 
 export default function PitchDeck() {
   const [index, setIndex] = useState(0);
-  const [started, setStarted] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [running, setRunning] = useState(false);
@@ -337,7 +313,6 @@ export default function PitchDeck() {
 
   const timeline = useMemo(() => slides.slice(0, index).reduce((sum, slide) => sum + slide.duration, 0), [index]);
 
-  const start = () => { setStarted(true); setRunning(true); resetTimer(); };
   const toggleFullscreen = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
 
   return (
@@ -370,7 +345,6 @@ export default function PitchDeck() {
 
       <AnimatePresence>{notesOpen && <motion.aside className="presenter-notes" initial={{ x: 420 }} animate={{ x: 0 }} exit={{ x: 420 }} transition={{ duration: .28 }}><button className="notes-close" onClick={() => setNotesOpen(false)}><X /></button><span className="eyebrow">Vista del presentador · P</span><h2>Diapositiva {current.id}</h2><div className="notes-time"><Clock3 /> {current.duration}s recomendados <span>Inicio ideal {formatTime(timeline)}</span></div><h3>Mensaje principal</h3><p>{current.notes.message}</p><h3>Texto sugerido</h3><p>{current.notes.script}</p><div className="notes-evaluation">P asociada <strong>{current.evaluation}</strong></div></motion.aside>}</AnimatePresence>
 
-      <AnimatePresence>{!started && <motion.div className="start-dock" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}><button onClick={start}><Play fill="currentColor" /> Iniciar presentación</button><small>5:00 · 10 diapositivas</small></motion.div>}</AnimatePresence>
     </main>
   );
 }
