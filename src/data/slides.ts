@@ -3,6 +3,7 @@ export type SlideKind =
   | "gallery"
   | "question"
   | "problem"
+  | "problemPoints"
   | "founder"
   | "ecosystem"
   | "flow"
@@ -47,7 +48,7 @@ export const slides: PitchSlide[] = [
     kind: "gallery",
     eyebrow: "Nuestro origen",
     title: "Lo que ven en pantalla es una comunidad real de tour operadores que se organiza, colabora y crece unida.",
-    duration: 15,
+    duration: 13,
     evaluation: "Personas",
     notes: {
       message: "Mostrar que TeCaiGO nace de una comunidad real y de experiencia directa en el territorio.",
@@ -59,7 +60,7 @@ export const slides: PitchSlide[] = [
     kind: "question",
     eyebrow: "Una pregunta",
     title: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?",
-    duration: 15,
+    duration: 12,
     evaluation: "Producto",
     notes: {
       message: "Hacer una pausa y dejar que la audiencia responda mentalmente antes de mostrar el problema.",
@@ -73,7 +74,7 @@ export const slides: PitchSlide[] = [
     title: "Así opera hoy una industria completa.",
     statement: "Miles de oportunidades dependen de mensajes que desaparecen en minutos.",
     bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
-    duration: 28,
+    duration: 20,
     evaluation: "Producto",
     notes: {
       message: "Hacer visible la fragmentación operativa que TeCaiGO resuelve.",
@@ -82,11 +83,24 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 5,
+    kind: "problemPoints",
+    eyebrow: "Problema",
+    title: "Problema:",
+    bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
+    duration: 18,
+    evaluation: "Producto",
+    notes: {
+      message: "Condensar la fragmentación operativa en cinco problemas concretos.",
+      script: "El problema se manifiesta en cinco puntos: cupos dispersos, información duplicada, capacidad sin visibilidad, reservas sin trazabilidad y decisiones sin datos.",
+    },
+  },
+  {
+    id: 6,
     kind: "founder",
     eyebrow: "Personas",
     title: "Viví el problema antes de construir la solución.",
     statement: "Experiencia operativa, visión financiera y conocimiento del riesgo aplicados a una industria conocida desde adentro.",
-    duration: 28,
+    duration: 25,
     evaluation: "Personas",
     notes: {
       message: "Conectar la experiencia del fundador con la capacidad para ejecutar.",
@@ -94,7 +108,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     kind: "ecosystem",
     eyebrow: "La solución",
     title: "TeCaiGO organiza a quienes hacen posible el turismo.",
@@ -107,7 +121,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     kind: "flow",
     eyebrow: "Cómo funciona",
     title: "De una oportunidad local a una experiencia comercial.",
@@ -119,7 +133,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     kind: "innovation",
     eyebrow: "Innovación",
     title: "Una forma diferente de organizar el turismo.",
@@ -132,7 +146,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
     kind: "product",
     eyebrow: "Producto en funcionamiento",
     title: "Una plataforma para cada actor del ecosistema.",
@@ -145,7 +159,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 10,
+    id: 11,
     kind: "market",
     eyebrow: "Potencial",
     title: "Nuestro mercado no es un país; es un modelo operativo.",
@@ -158,7 +172,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 11,
+    id: 12,
     kind: "business",
     eyebrow: "Previsibilidad",
     title: "Un modelo escalable con múltiples fuentes de ingresos.",
@@ -171,13 +185,13 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 12,
+    id: 13,
     kind: "closing",
     eyebrow: "Impacto",
     title: "Organizar digitalmente el turismo para transformar la economía.",
     statement: "Mientras otras plataformas venden viajes, TeCaiGO organiza la industria que los hace posibles.",
     bullets: ["Formalización", "Inclusión financiera", "Empleo", "Capacidad productiva", "Datos para decidir", "Desarrollo regional"],
-    duration: 32,
+    duration: 30,
     evaluation: "Potencial",
     notes: {
       message: "Cerrar con diferenciación, impacto y una visión memorable.",

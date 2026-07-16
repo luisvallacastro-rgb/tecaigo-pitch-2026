@@ -286,6 +286,36 @@ function ProblemVisual({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function ProblemPointsSlide({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion: boolean }) {
+  return (
+    <div className="problem-impact">
+      <div className="problem-impact__grid" aria-hidden="true" />
+      <div className="problem-impact__pulse" aria-hidden="true"><span /><span /><span /></div>
+      <motion.div className="problem-impact__title" initial={reduceMotion ? false : { opacity: 0, x: -70 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .75, ease: [0.22, 1, 0.36, 1] }}>
+        <small>05 · Diagnóstico</small>
+        <h1>Problema<span>:</span></h1>
+        <motion.i initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : .6, duration: .8 }} />
+      </motion.div>
+      <div className="problem-impact__stack">
+        {slide.bullets?.map((item, itemIndex) => (
+          <motion.div
+            className="problem-impact__card"
+            key={item}
+            style={{ "--item": itemIndex } as React.CSSProperties}
+            initial={reduceMotion ? false : { opacity: 0, x: 180, rotateX: -58, scale: .84 }}
+            animate={{ opacity: 1, x: 0, rotateX: 0, scale: 1 }}
+            transition={{ duration: .7, delay: reduceMotion ? 0 : .28 + itemIndex * .16, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span>{String(itemIndex + 1).padStart(2, "0")}</span>
+            <strong>{item}</strong>
+            <i aria-hidden="true" />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -341,6 +371,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "cover": return null;
     case "gallery": return null;
     case "question": return null;
+    case "problemPoints": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -369,7 +400,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -422,7 +453,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
