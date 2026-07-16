@@ -25,6 +25,7 @@ import {
   RefreshCcw,
   Route,
   ShieldCheck,
+  Smartphone,
   Sparkles,
   Store,
   TicketCheck,
@@ -76,17 +77,120 @@ function Brand({ compact = false }: { compact?: boolean }) {
   return <div className={`brand ${compact ? "brand--compact" : ""}`}><span>TeCai</span><b>GO</b></div>;
 }
 
-function CoverVisual() {
+const heroBackgrounds = [
+  ["/assets/hero/guide-mountain.png", "Tour operadores"],
+  ["/assets/hero/transport-microbus.png", "Transporte"],
+  ["/assets/hero/restaurant-owner.png", "Comercios"],
+  ["/assets/hero/guides-cluster.png", "Clusters"],
+  ["/assets/hero/university-classroom.png", "Instituciones"],
+  ["/assets/hero/tourist-beach.png", "Turistas"],
+] as const;
+
+const economyWords = ["conectada.", "colaborativa.", "digital.", "sostenible.", "turística.", "transparente.", "dinámica.", "inclusiva.", "cultural."];
+
+function HeroNetwork({ activeLabel, reduceMotion }: { activeLabel: string; reduceMotion: boolean }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
+    const nodes = [
+      { x: .64, y: .31, r: 5, label: "Tour operadores", labelY: -34 },
+      { x: .78, y: .23, r: 4, label: "Clusters", labelY: -34 },
+      { x: .91, y: .39, r: 5, label: "Transporte", labelY: -34 },
+      { x: .88, y: .58, r: 4, label: "Comercios", labelY: 34 },
+      { x: .78, y: .71, r: 6, label: "Turistas", labelY: 36 },
+      { x: .59, y: .49, r: 4, label: "Instituciones", labelY: 36 },
+      { x: .76, y: .49, r: 10, label: "Tecaigo", labelY: -40 },
+    ];
+    const links = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[6,0],[6,1],[6,2],[6,3],[6,4],[6,5]];
+    let width = 0, height = 0, frame = 0, animationFrame = 0;
+    let pointer = { x: .5, y: .5 };
+    const resize = () => {
+      const ratio = window.devicePixelRatio || 1;
+      width = canvas.offsetWidth; height = canvas.offsetHeight;
+      canvas.width = width * ratio; canvas.height = height * ratio;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+    const onPointerMove = (event: PointerEvent) => { pointer = { x: event.clientX / Math.max(window.innerWidth, 1), y: event.clientY / Math.max(window.innerHeight, 1) }; };
+    const draw = () => {
+      frame += 1; ctx.clearRect(0, 0, width, height);
+      const points = nodes.map((node, index) => ({
+        x: node.x * width + (reduceMotion ? 0 : Math.sin(frame * .012 + index) * 8) + (pointer.x - .5) * 10,
+        y: node.y * height + (reduceMotion ? 0 : Math.cos(frame * .01 + index) * 8) + (pointer.y - .5) * 10,
+      }));
+      const core = points[6];
+      const glow = ctx.createRadialGradient(core.x, core.y, 20, core.x, core.y, Math.min(width, height) * .34);
+      glow.addColorStop(0, "rgba(10,165,173,.38)"); glow.addColorStop(.48, "rgba(10,165,173,.16)"); glow.addColorStop(1, "rgba(10,165,173,0)");
+      ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(core.x, core.y, Math.min(width, height) * .34, 0, Math.PI * 2); ctx.fill();
+      links.forEach(([a,b], linkIndex) => {
+        const alpha = .52 + (reduceMotion ? 0 : Math.sin(frame * .018 + linkIndex) * .1);
+        ctx.strokeStyle = `rgba(10,165,173,${alpha})`; ctx.lineWidth = 1.45; ctx.beginPath(); ctx.moveTo(points[a].x, points[a].y); ctx.lineTo(points[b].x, points[b].y); ctx.stroke();
+      });
+      points.forEach((point, nodeIndex) => {
+        const node = nodes[nodeIndex]; const coreNode = node.label === "Tecaigo"; const highlighted = node.label === activeLabel;
+        ctx.beginPath(); ctx.arc(point.x, point.y, node.r + (coreNode ? 6 : highlighted ? 8 : 2), 0, Math.PI * 2); ctx.fillStyle = coreNode || highlighted ? "rgba(10,165,173,.34)" : "rgba(10,165,173,.22)"; ctx.fill();
+        ctx.beginPath(); ctx.arc(point.x, point.y, node.r, 0, Math.PI * 2); ctx.fillStyle = coreNode || highlighted ? "#0aa5ad" : "rgba(255,253,247,.94)"; ctx.fill();
+        const labelY = point.y + node.labelY; ctx.font = `${coreNode || highlighted ? 800 : 700} ${coreNode || highlighted ? 15 : 13}px Arial, sans-serif`; ctx.textBaseline = "middle"; ctx.textAlign = "center";
+        const textWidth = ctx.measureText(node.label).width; ctx.fillStyle = coreNode || highlighted ? "rgba(10,165,173,.34)" : "rgba(6,18,17,.55)"; ctx.strokeStyle = coreNode || highlighted ? "rgba(10,165,173,.84)" : "rgba(10,165,173,.48)"; ctx.lineWidth = highlighted ? 1.6 : 1;
+        ctx.beginPath(); ctx.roundRect(point.x - textWidth / 2 - 9, labelY - 13, textWidth + 18, 26, 8); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = coreNode || highlighted ? "rgba(10,210,220,1)" : "rgba(255,253,247,.96)"; ctx.fillText(node.label, point.x, labelY);
+      });
+      if (!reduceMotion) animationFrame = requestAnimationFrame(draw);
+    };
+    resize(); draw(); window.addEventListener("resize", resize); window.addEventListener("pointermove", onPointerMove);
+    return () => { cancelAnimationFrame(animationFrame); window.removeEventListener("resize", resize); window.removeEventListener("pointermove", onPointerMove); };
+  }, [activeLabel, reduceMotion]);
+
+  return <canvas ref={canvasRef} className="landing-hero__network" aria-hidden="true" />;
+}
+
+function LandingHeroCover({ reduceMotion }: { reduceMotion: boolean }) {
+  const [backgroundIndex, setBackgroundIndex] = useState(4);
+  const [word, setWord] = useState("cultural.");
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const id = window.setInterval(() => setBackgroundIndex(value => (value + 1) % heroBackgrounds.length), 5600);
+    return () => window.clearInterval(id);
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    let wordIndex = 8, characterIndex = economyWords[wordIndex].length, deleting = true, timer = 0;
+    const type = () => {
+      const currentWord = economyWords[wordIndex]; let delay = deleting ? 58 : 84;
+      if (deleting) {
+        characterIndex -= 1; setWord(currentWord.slice(0, Math.max(characterIndex, 0)));
+        if (characterIndex <= 0) { deleting = false; wordIndex = (wordIndex + 1) % economyWords.length; delay = 180; }
+      } else {
+        const nextWord = economyWords[wordIndex]; characterIndex += 1; setWord(nextWord.slice(0, characterIndex));
+        if (characterIndex >= nextWord.length) { deleting = true; delay = 1450; }
+      }
+      timer = window.setTimeout(type, delay);
+    };
+    timer = window.setTimeout(type, 1400); return () => window.clearTimeout(timer);
+  }, [reduceMotion]);
+
   return (
-    <div className="cover-visual" aria-label="Vista del producto TeCaiGO">
-      <div className="orbit orbit--one" />
-      <div className="orbit orbit--two" />
-      <div className="phone">
-        <div className="phone__speaker" />
-        <img src="/assets/operadores.png" alt="Pantalla de TeCaiGO para tour operadores" />
+    <div className="landing-hero" aria-label="Turismo conectado por TeCaiGO">
+      <div className="landing-hero__background" aria-hidden="true">
+        {heroBackgrounds.map(([src, label], imageIndex) => <img key={src} className={imageIndex === backgroundIndex ? "is-active" : ""} src={src} alt="" data-actor={label} />)}
       </div>
-      <div className="floating-card floating-card--top"><Network size={22} /> TeCaiGO.EXE</div>
-      <div className="floating-card floating-card--bottom"><TicketCheck size={22} /> TeCaiGO.APP</div>
+      <div className="landing-hero__shade" />
+      <HeroNetwork activeLabel={heroBackgrounds[backgroundIndex][1]} reduceMotion={reduceMotion} />
+      <motion.div className="landing-hero__copy" initial={reduceMotion ? false : { opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .7 }}>
+        <h1>Turismo<br />conectado.</h1>
+        <h2>Economía <span>{word}</span><i aria-hidden="true" /></h2>
+        <p>Operación turística conectada en una sola red.</p>
+        <div className="landing-hero__actions">
+          <a className="is-primary" href="https://tecaigo-app.onrender.com/?v=tecaigo-mobile-login-20" target="_blank" rel="noreferrer">TeCaigo.Exe</a>
+          <a href="https://tecaigo-flutter-prototype.onrender.com/?v=desktop-frame-36a965e" target="_blank" rel="noreferrer">TeCaigo.APP</a>
+        </div>
+        <div className="landing-hero__notes"><span>TeCaigo.EXE: para una mejor experiencia, visualizar en escritorio.</span><span>TeCaigo.APP: para una mejor experiencia visual, abrir desde teléfono.</span></div>
+        <div className="landing-hero__stores"><span><Play size={20} fill="currentColor" /><small>Disponible en<strong>Google Play</strong></small></span><span><Smartphone size={20} /><small>Disponible en<strong>App Store</strong></small></span></div>
+      </motion.div>
     </div>
   );
 }
@@ -161,7 +265,7 @@ function ClosingVisual() {
 
 function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion: boolean }) {
   switch (slide.kind) {
-    case "cover": return <CoverVisual />;
+    case "cover": return null;
     case "problem": return <ProblemVisual />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -237,15 +341,14 @@ export default function PitchDeck() {
   const toggleFullscreen = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
 
   return (
-    <main className="deck-shell">
+    <main className={`deck-shell ${current.kind === "cover" ? "deck-shell--cover" : ""}`}>
       {aspectWarning && <div className="aspect-warning"><Maximize2 size={16} /> Para una mejor experiencia usa una pantalla 16:9.</div>}
       <div className="deck-progress" style={{ "--progress": `${progress}%` } as React.CSSProperties} />
       <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          <div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}{current.kind === "cover" && <div className="founder-signature"><strong>Luis Valladares</strong><span>Fundador</span></div>}</div>
-          <div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div>
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
@@ -267,7 +370,7 @@ export default function PitchDeck() {
 
       <AnimatePresence>{notesOpen && <motion.aside className="presenter-notes" initial={{ x: 420 }} animate={{ x: 0 }} exit={{ x: 420 }} transition={{ duration: .28 }}><button className="notes-close" onClick={() => setNotesOpen(false)}><X /></button><span className="eyebrow">Vista del presentador · P</span><h2>Diapositiva {current.id}</h2><div className="notes-time"><Clock3 /> {current.duration}s recomendados <span>Inicio ideal {formatTime(timeline)}</span></div><h3>Mensaje principal</h3><p>{current.notes.message}</p><h3>Texto sugerido</h3><p>{current.notes.script}</p><div className="notes-evaluation">P asociada <strong>{current.evaluation}</strong></div></motion.aside>}</AnimatePresence>
 
-      <AnimatePresence>{!started && <motion.div className="start-screen" exit={{ opacity: 0 }}><div className="start-card"><Brand /><span className="eyebrow">Pitch de inversión · 5 minutos</span><h2>Una industria conectada empieza aquí.</h2><p>10 diapositivas · Navegación por teclado · Notas del presentador</p><button onClick={start}><Play fill="currentColor" /> Iniciar presentación</button><small>Usa ← →, Page Up / Page Down, P para notas y F para pantalla completa.</small></div></motion.div>}</AnimatePresence>
+      <AnimatePresence>{!started && <motion.div className="start-dock" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}><button onClick={start}><Play fill="currentColor" /> Iniciar presentación</button><small>5:00 · 10 diapositivas</small></motion.div>}</AnimatePresence>
     </main>
   );
 }

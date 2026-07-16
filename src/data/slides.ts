@@ -30,14 +30,14 @@ export const slides: PitchSlide[] = [
   {
     id: 1,
     kind: "cover",
-    eyebrow: "Copa Mundial de Emprendimiento 2026",
-    title: "La infraestructura digital que organiza el turismo colaborativo.",
-    statement: "Conectamos, organizamos y potenciamos a todos los actores del ecosistema turístico.",
+    eyebrow: "Turismo conectado",
+    title: "Turismo conectado. Economía colaborativa.",
+    statement: "Operación turística conectada en una sola red.",
     duration: 15,
     evaluation: "Producto",
     notes: {
-      message: "Abrir con una visión de industria, no con una lista de funciones.",
-      script: "Soy Luis Valladares, fundador de TeCaiGO. Estamos construyendo la infraestructura digital que organiza a quienes hacen posible el turismo: desde quien crea una ruta hasta quien la transporta, la vende y la vive.",
+      message: "Abrir mostrando que TeCaiGO conecta una economía completa, no solo una aplicación.",
+      script: "El turismo no funciona como una sola empresa: funciona como una red. TeCaiGO conecta esa operación en un solo entorno digital, integrando operadores, clústeres, transporte, comercios, turistas e instituciones.",
     },
   },
   {
