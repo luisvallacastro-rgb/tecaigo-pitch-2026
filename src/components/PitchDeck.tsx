@@ -578,19 +578,29 @@ function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
     <div className="ecosystem-impact" aria-label="Impacto de TeCaiGO en banca, gobierno y universidades">
       <div className="ecosystem-impact__grid">
         {pillars.map(([image, Icon, sector, impact, detail], pillarIndex) => (
-          <motion.article className="ecosystem-impact__pillar" key={sector} initial={reduceMotion ? false : { opacity: 0, y: pillarIndex === 1 ? -80 : 80, scale: .94 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .12 + pillarIndex * .18, duration: .9, ease: [0.16, 1, 0.3, 1] }}>
-            <motion.img src={image} alt={`${sector}: ${impact}`} animate={reduceMotion ? undefined : { scale: [1.035, 1, 1.025] }} transition={{ duration: 9 + pillarIndex, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }} />
+          <motion.article
+            className="ecosystem-impact__pillar"
+            key={sector}
+            initial={reduceMotion ? false : { opacity: 0, top: "0%", height: "100%" }}
+            animate={reduceMotion ? { opacity: 1, top: `${pillarIndex * 33.333}%`, height: "33.334%" } : {
+              opacity: pillarIndex === 0 ? [1, 1, 1] : [0, 0, 1, 1],
+              top: pillarIndex === 0 ? ["0%", "0%", "0%"] : ["0%", "0%", "0%", `${pillarIndex * 33.333}%`],
+              height: pillarIndex === 0 ? ["100%", "100%", "33.334%"] : ["100%", "100%", "100%", "33.334%"],
+            }}
+            transition={reduceMotion ? { duration: 0 } : { delay: pillarIndex * 2.05, duration: 2.05, times: pillarIndex === 0 ? [0, .55, 1] : [0, .06, .52, 1], ease: [0.16, 1, 0.3, 1] }}
+          >
+            <motion.img src={image} alt={`${sector}: ${impact}`} animate={reduceMotion ? undefined : { scale: [1.06, 1, 1.025] }} transition={{ delay: pillarIndex * 2.05, duration: 4.1, ease: "easeInOut" }} />
             <div className="ecosystem-impact__veil" />
-            <div className="ecosystem-impact__pillar-copy"><span><Icon size={20} /></span><small>{sector}</small><strong>{impact}</strong><p>{detail}</p></div>
+            <motion.div className="ecosystem-impact__pillar-copy" initial={reduceMotion ? false : { opacity: 0, x: 42 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 6.25 + pillarIndex * .12, duration: .55 }}><span><Icon size={20} /></span><small>{sector}</small><strong>{impact}</strong><p>{detail}</p></motion.div>
           </motion.article>
         ))}
       </div>
-      <motion.header className="ecosystem-impact__headline" initial={reduceMotion ? false : { opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .65, duration: .65 }}>
+      <motion.header className="ecosystem-impact__headline" initial={reduceMotion ? false : { opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 6.25, duration: .65 }}>
         <small><span>12</span><i /> Impacto sistémico</small>
         <strong>Una red digital.<br /><b>Tres motores de desarrollo.</b></strong>
       </motion.header>
-      <motion.div className="ecosystem-impact__connector" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 1.05, duration: 1.15, ease: [0.16, 1, 0.3, 1] }}><i /><i /><i /><span><Brand compact /></span></motion.div>
-      <motion.aside className="ecosystem-impact__glass" initial={reduceMotion ? false : { opacity: 0, y: 70, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 1.15, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
+      <motion.div className="ecosystem-impact__connector" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 6.55, duration: 1.15, ease: [0.16, 1, 0.3, 1] }}><i /><i /><i /><span><Brand compact /></span></motion.div>
+      <motion.aside className="ecosystem-impact__glass" initial={reduceMotion ? false : { opacity: 0, y: 70, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 6.75, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
         <p><strong>TeCaigo impulsa un turismo más formal, inclusivo y sostenible.</strong> Al digitalizar la actividad del sector, genera historial transaccional que facilita el acceso a financiamiento, fortalece la recaudación fiscal mediante la formalización de los negocios y crea oportunidades de formación y empleo para nuevas generaciones de profesionales del turismo.</p>
         <blockquote>Nuestro impacto trasciende la tecnología: <strong>fortalecemos el desarrollo económico y social de todo el ecosistema.</strong></blockquote>
       </motion.aside>
