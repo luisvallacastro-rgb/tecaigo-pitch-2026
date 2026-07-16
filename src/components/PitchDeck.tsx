@@ -360,6 +360,36 @@ function FormationSlide({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function HomefeedComic({ reduceMotion }: { reduceMotion: boolean }) {
+  const fragments = [
+    <><strong>El Homefeed de TeCaiGO</strong> es una ventana tipo red social</>,
+    <>donde los comercios turísticos publican sus instalaciones, servicios y promociones</>,
+    <>para que los tour operadores descubran oportunidades</>,
+    <>y las conviertan en nuevas rutas y eventos turísticos.</>,
+  ];
+  return (
+    <div className="comic-homefeed" aria-label="Historieta sobre el Homefeed de TeCaiGO">
+      <div className="comic-homefeed__halftone" aria-hidden="true" />
+      <motion.div className="comic-homefeed__chapter" initial={reduceMotion ? false : { opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .55 }}><span>07</span> Capítulo 01 · Descubrir</motion.div>
+      <motion.div className="comic-homefeed__laptop" initial={reduceMotion ? false : { opacity: 0, y: 130, rotateX: 18, scale: .82 }} animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }} transition={{ duration: .95, ease: [0.16, 1, 0.3, 1] }}>
+        <div className="comic-laptop__screen">
+          <div className="comic-laptop__camera" aria-hidden="true" />
+          <img src="/assets/comic/homefeed.png" alt="Homefeed de TeCaiGO visto desde una laptop" />
+          <motion.span className="comic-laptop__scan" aria-hidden="true" initial={reduceMotion ? false : { y: "-120%" }} animate={{ y: "720%" }} transition={{ delay: reduceMotion ? 0 : .8, duration: 1.5, ease: "easeInOut" }} />
+        </div>
+        <div className="comic-laptop__base"><i /></div>
+      </motion.div>
+      <motion.aside className="comic-homefeed__bubble" initial={reduceMotion ? false : { opacity: 0, scale: .35, rotate: 7 }} animate={{ opacity: 1, scale: 1, rotate: -1.5 }} transition={{ delay: reduceMotion ? 0 : .72, duration: .72, type: "spring", stiffness: 150, damping: 14 }}>
+        <span className="comic-homefeed__kicker">¡UNA OPORTUNIDAD APARECE!</span>
+        <p>
+          {fragments.map((fragment, fragmentIndex) => <motion.span key={fragmentIndex} initial={reduceMotion ? false : { opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 1.15 + fragmentIndex * .3, duration: .45 }}>{fragment}</motion.span>)}
+        </p>
+      </motion.aside>
+      <div className="comic-homefeed__speed" aria-hidden="true"><i /><i /><i /><i /></div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -417,6 +447,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "question": return null;
     case "problemPoints": return null;
     case "formation": return null;
+    case "homefeedComic": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -445,7 +476,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedComic";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -498,7 +529,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedComic" ? <HomefeedComic reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
