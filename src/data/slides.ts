@@ -9,6 +9,7 @@ export type SlideKind =
   | "homefeedConnection"
   | "eventModes"
   | "transportIntegration"
+  | "touristArrival"
   | "founder"
   | "ecosystem"
   | "flow"
@@ -165,11 +166,24 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 11,
+    kind: "touristArrival",
+    eyebrow: "Usuario final",
+    title: "Todo el ecosistema llega al turista en una sola experiencia.",
+    statement: "Centralizar comercios, operadores, eventos, cupos y transporte simplifica la búsqueda, la reserva y la compra para el usuario final.",
+    duration: 20,
+    evaluation: "Producto",
+    notes: {
+      message: "Mostrar que la complejidad operativa queda detrás de la plataforma mientras el turista recibe una experiencia simple y confiable.",
+      script: "Después de conectar comercios, operadores, cupos, eventos y transporte, todo llega al turista en una sola experiencia. Puede descubrir, comparar, reservar y comprar con información clara, una ruta coordinada y una transacción trazable. Centralizar por dentro simplifica por fuera.",
+    },
+  },
+  {
+    id: 12,
     kind: "founder",
     eyebrow: "Personas",
     title: "Viví el problema antes de construir la solución.",
     statement: "Experiencia operativa, visión financiera y conocimiento del riesgo aplicados a una industria conocida desde adentro.",
-    duration: 14,
+    duration: 12,
     evaluation: "Personas",
     notes: {
       message: "Conectar la experiencia del fundador con la capacidad para ejecutar.",
@@ -177,12 +191,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 12,
+    id: 13,
     kind: "ecosystem",
     eyebrow: "La solución",
     title: "TeCaiGO organiza a quienes hacen posible el turismo.",
     statement: "No somos únicamente una aplicación; somos una infraestructura digital de coordinación turística.",
-    duration: 16,
+    duration: 14,
     evaluation: "Producto",
     notes: {
       message: "Explicar la arquitectura B2E en una frase y una imagen.",
@@ -190,11 +204,11 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 13,
+    id: 14,
     kind: "flow",
     eyebrow: "Cómo funciona",
     title: "De una oportunidad local a una experiencia comercial.",
-    duration: 16,
+    duration: 14,
     evaluation: "Producto",
     notes: {
       message: "Contar un caso concreto que muestre el valor para todos.",
@@ -202,12 +216,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 14,
+    id: 15,
     kind: "innovation",
     eyebrow: "Innovación",
     title: "Una forma diferente de organizar el turismo.",
     statement: "La mayoría conecta oferta y demanda. TeCaiGO conecta toda la cadena de valor.",
-    duration: 16,
+    duration: 14,
     evaluation: "Producto",
     notes: {
       message: "Definir B2E como la innovación central y separar presente de visión.",
@@ -215,12 +229,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 15,
+    id: 16,
     kind: "product",
     eyebrow: "Producto en funcionamiento",
     title: "Una plataforma para cada actor del ecosistema.",
     statement: "Una experiencia especializada; una misma infraestructura compartida.",
-    duration: 16,
+    duration: 14,
     evaluation: "Producto",
     notes: {
       message: "Demostrar que el producto traduce el modelo en flujos concretos.",
@@ -228,12 +242,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 16,
+    id: 17,
     kind: "market",
     eyebrow: "Potencial",
     title: "Nuestro mercado no es un país; es un modelo operativo.",
     statement: "Donde existan organizadores que integran proveedores y venden experiencias manualmente, existe una oportunidad para TeCaiGO.",
-    duration: 19,
+    duration: 16,
     evaluation: "Potencial",
     notes: {
       message: "Presentar la lógica de expansión sin inventar cifras.",
@@ -241,12 +255,12 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 17,
+    id: 18,
     kind: "business",
     eyebrow: "Previsibilidad",
     title: "Un modelo escalable con múltiples fuentes de ingresos.",
     statement: "Más actores generan más oferta, transacciones, datos y valor para toda la red.",
-    duration: 19,
+    duration: 16,
     evaluation: "Previsibilidad",
     notes: {
       message: "Mostrar cómo captura valor la plataforma sin prometer precios no validados.",
@@ -254,13 +268,13 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 18,
+    id: 19,
     kind: "closing",
     eyebrow: "Impacto",
     title: "Organizar digitalmente el turismo para transformar la economía.",
     statement: "Mientras otras plataformas venden viajes, TeCaiGO organiza la industria que los hace posibles.",
     bullets: ["Formalización", "Inclusión financiera", "Empleo", "Capacidad productiva", "Datos para decidir", "Desarrollo regional"],
-    duration: 16,
+    duration: 12,
     evaluation: "Potencial",
     notes: {
       message: "Cerrar con diferenciación, impacto y una visión memorable.",

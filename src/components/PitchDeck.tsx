@@ -534,6 +534,40 @@ function TransportIntegration({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function TouristArrival({ reduceMotion }: { reduceMotion: boolean }) {
+  const benefits = [
+    [Smartphone, "Todo en un solo lugar", "Explorar, comparar y reservar"],
+    [ShieldCheck, "Compra segura", "Información y pago trazables"],
+    [Route, "Experiencia coordinada", "Ruta, operador y transporte alineados"],
+    [TicketCheck, "Decisión más simple", "Oferta clara y disponibilidad real"],
+  ] as const;
+  return (
+    <div className="tourist-arrival" aria-label="Ventajas de centralizar el ecosistema para el turista">
+      <motion.img className="tourist-arrival__image" src="/assets/tourist-final-destination.png" alt="Turista explorando y reservando una experiencia en TeCaiGO" initial={reduceMotion ? false : { scale: 1.08, filter: "brightness(.62) saturate(.82)" }} animate={{ scale: 1, filter: "brightness(.96) saturate(1.05)" }} transition={{ duration: reduceMotion ? 0 : 1.7, ease: [0.16, 1, 0.3, 1] }} />
+      <div className="tourist-arrival__shade" aria-hidden="true" />
+      <motion.div className="tourist-arrival__label" initial={reduceMotion ? false : { opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .28, duration: .6 }}><span>11</span><i /> El destino de toda la red</motion.div>
+      <motion.aside className="tourist-arrival__glass" initial={reduceMotion ? false : { opacity: 0, x: -85, scale: .96 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .45, duration: .85, ease: [0.16, 1, 0.3, 1] }}>
+        <small>Usuario final</small>
+        <h2>Todo llega al turista en <strong>una sola experiencia.</strong></h2>
+        <p>La complejidad se coordina detrás de TeCaiGO. El turista solo descubre, decide y disfruta.</p>
+        <div className="tourist-arrival__benefits">
+          {benefits.map(([Icon, title, detail], benefitIndex) => (
+            <motion.div key={title} initial={reduceMotion ? false : { opacity: 0, x: -22 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .95 + benefitIndex * .18, duration: .5 }}>
+              <span><Icon size={19} /></span><div><strong>{title}</strong><small>{detail}</small></div><i />
+            </motion.div>
+          ))}
+        </div>
+        <motion.blockquote initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.85, duration: .6 }}>Centralizar por dentro.<br /><strong>Simplificar por fuera.</strong></motion.blockquote>
+      </motion.aside>
+      <motion.div className="tourist-arrival__network" initial={reduceMotion ? false : { opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.35, duration: .7, ease: [0.16, 1, 0.3, 1] }}>
+        <span><Store size={17} /> Comercio</span><ChevronRight /><span><BriefcaseBusiness size={17} /> Operador</span><ChevronRight /><span><BusFront size={17} /> Transporte</span><ChevronRight /><strong><Users size={18} /> Turista</strong>
+      </motion.div>
+      <div className="tourist-arrival__focus" aria-hidden="true"><i /><i /><i /></div>
+      <motion.div className="tourist-arrival__ready" initial={reduceMotion ? false : { opacity: 0, scale: .7 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 2.2, duration: .6, type: "spring", stiffness: 150, damping: 15 }}><TicketCheck size={18} /> Experiencia lista para reservar</motion.div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -595,6 +629,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "homefeedConnection": return null;
     case "eventModes": return null;
     case "transportIntegration": return null;
+    case "touristArrival": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -623,7 +658,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -676,7 +711,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
