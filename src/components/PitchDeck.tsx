@@ -498,6 +498,42 @@ function EventModes({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function TransportIntegration({ reduceMotion }: { reduceMotion: boolean }) {
+  const stages = [
+    [TicketCheck, "Cupos completos", "Demanda confirmada"],
+    [Network, "Solicitud publicada", "La red se activa"],
+    [BusFront, "Transporte asignado", "Vehículo adecuado"],
+    [Route, "Ruta definida", "Operación lista"],
+  ] as const;
+  return (
+    <div className="transport-integration" aria-label="Integración del sector transporte en TeCaiGO">
+      <motion.img className="transport-integration__image" src="/assets/transport-route-assignment.png" alt="Transportista recibiendo una solicitud y ruta definida en TeCaiGO" initial={reduceMotion ? false : { scale: 1.08, filter: "brightness(.55) saturate(.8)" }} animate={{ scale: 1, filter: "brightness(.92) saturate(1.04)" }} transition={{ duration: reduceMotion ? 0 : 1.7, ease: [0.16, 1, 0.3, 1] }} />
+      <div className="transport-integration__shade" aria-hidden="true" />
+      <motion.div className="transport-integration__label" initial={reduceMotion ? false : { opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .3, duration: .6 }}><span>10</span><i /> Cierre del ciclo operativo</motion.div>
+      <motion.header className="transport-integration__headline" initial={reduceMotion ? false : { opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .5, duration: .75, ease: [0.16, 1, 0.3, 1] }}>
+        <small>Sector transporte integrado</small>
+        <strong>Los cupos se llenan.<br /><span>La ruta se pone en marcha.</span></strong>
+        <p>TeCaiGO comunica la demanda confirmada, asigna el vehículo adecuado y entrega la <b>ruta definida.</b></p>
+      </motion.header>
+      <motion.div className="transport-integration__badge" initial={reduceMotion ? false : { opacity: 0, x: 35 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .75, duration: .6 }}>
+        <span><BusFront size={25} /></span><div><small>Nuevo actor activado</small><strong>Transporte turístico</strong></div><i>EN RUTA</i>
+      </motion.div>
+      <div className="transport-integration__signal" aria-hidden="true"><i /><i /><i /></div>
+      <motion.div className="transport-integration__route" initial={reduceMotion ? false : { opacity: 0, y: 48 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.1, duration: .72, ease: [0.16, 1, 0.3, 1] }}>
+        <motion.i className="transport-integration__route-line" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 1.45, duration: 1.15, ease: [0.16, 1, 0.3, 1] }} />
+        {stages.map(([Icon, title, detail], stageIndex) => (
+          <motion.div key={title} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.35 + stageIndex * .23, duration: .5 }}>
+            <span><Icon size={20} /></span><small>0{stageIndex + 1}</small><strong>{title}</strong><p>{detail}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+      <motion.div className="transport-integration__result" initial={reduceMotion ? false : { opacity: 0, scale: .85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 2.5, duration: .65, type: "spring", stiffness: 130, damping: 15 }}>
+        <Sparkles size={18} /><span>De una oportunidad comercial a una <strong>operación real.</strong></span>
+      </motion.div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -558,6 +594,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "homefeedPanorama": return null;
     case "homefeedConnection": return null;
     case "eventModes": return null;
+    case "transportIntegration": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -586,7 +623,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -639,7 +676,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
