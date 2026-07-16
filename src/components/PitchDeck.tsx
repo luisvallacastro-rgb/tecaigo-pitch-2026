@@ -360,6 +360,46 @@ function FormationSlide({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function HomefeedPanorama({ reduceMotion }: { reduceMotion: boolean }) {
+  const story = [
+    [Store, "Publican", "Comercios turísticos"],
+    [Sparkles, "Descubren", "Tour operadores"],
+    [Route, "Convierten", "Rutas y eventos"],
+  ] as const;
+  return (
+    <div className="homefeed-panorama" aria-label="Funciones del Homefeed de TeCaiGO">
+      <motion.img
+        className="homefeed-panorama__image"
+        src="/assets/homefeed-panorama.png"
+        alt="Interfaz panorámica del Homefeed de TeCaiGO"
+        initial={reduceMotion ? false : { scale: 1.09, filter: "brightness(.55) saturate(.78)" }}
+        animate={{ scale: 1, filter: "brightness(.86) saturate(1.02)" }}
+        transition={{ duration: reduceMotion ? 0 : 1.8, ease: [0.16, 1, 0.3, 1] }}
+      />
+      <div className="homefeed-panorama__shade" aria-hidden="true" />
+      <motion.div className="homefeed-panorama__label" initial={reduceMotion ? false : { opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .35, duration: .6 }}>
+        <span>07</span><i /> Producto en acción
+      </motion.div>
+      <motion.div className="homefeed-panorama__title" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .55, duration: .7 }}>
+        <small>Homefeed</small>
+        <strong>La oportunidad<br />empieza aquí.</strong>
+      </motion.div>
+      <div className="homefeed-panorama__story" aria-label="Publicar, descubrir y convertir">
+        {story.map(([Icon, action, actor], storyIndex) => (
+          <motion.div key={action} initial={reduceMotion ? false : { opacity: 0, x: 34 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .9 + storyIndex * .22, duration: .55, ease: [0.16, 1, 0.3, 1] }}>
+            <span><Icon size={19} /></span><small>{actor}</small><strong>{action}</strong>
+          </motion.div>
+        ))}
+      </div>
+      <motion.aside className="homefeed-panorama__narrative" initial={reduceMotion ? false : { opacity: 0, y: 55 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.25, duration: .75, ease: [0.16, 1, 0.3, 1] }}>
+        <i aria-hidden="true" />
+        <p>Es una ventana tipo red social donde los <strong>comercios turísticos publican</strong> sus instalaciones, servicios y promociones para que los <strong>tour operadores descubran oportunidades</strong> y las <strong>conviertan en nuevas rutas y eventos turísticos.</strong></p>
+      </motion.aside>
+      <motion.div className="homefeed-panorama__scan" aria-hidden="true" initial={reduceMotion ? false : { x: "-130%" }} animate={{ x: "260%" }} transition={{ delay: reduceMotion ? 0 : .5, duration: 2.2, ease: "easeInOut" }} />
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -417,6 +457,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "question": return null;
     case "problemPoints": return null;
     case "formation": return null;
+    case "homefeedPanorama": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -445,7 +486,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -498,7 +539,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
