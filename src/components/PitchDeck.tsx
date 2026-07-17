@@ -608,13 +608,13 @@ function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
 
 function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion: boolean }) {
   const countries = [
-    ["Belice", "31%", "10%"],
-    ["Guatemala", "17%", "29%"],
-    ["Honduras", "46%", "28%"],
-    ["El Salvador", "31%", "46%"],
-    ["Nicaragua", "61%", "49%"],
-    ["Costa Rica", "69%", "69%"],
-    ["Panamá", "86%", "80%"],
+    ["Belice", "32%", "15%"],
+    ["Guatemala", "23%", "30%"],
+    ["Honduras", "40%", "31%"],
+    ["El Salvador", "30%", "43%"],
+    ["Nicaragua", "47%", "49%"],
+    ["Costa Rica", "54%", "65%"],
+    ["Panamá", "74%", "72%"],
   ] as const;
   const collage = Array.from({ length: 18 }, (_, index) => `/assets/regional-collage/collage-bg-${String(index + 1).padStart(2, "0")}.jpeg`);
   return (
@@ -635,6 +635,17 @@ function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceM
       </motion.section>
       <motion.div className="regional-potential__network" initial={reduceMotion ? false : { opacity: 0, scale: .88 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .8, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
         <div className="regional-potential__map-glow" />
+        <motion.svg className="regional-potential__map" viewBox="0 0 900 620" aria-hidden="true" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: reduceMotion ? 0 : .9, duration: .8 }}>
+          <path className="regional-potential__map-halo" d="M142 224 C176 144 240 94 310 92 C376 96 430 144 492 184 C570 234 654 314 746 412 C784 454 766 516 704 530 C622 548 560 486 512 432 C468 386 420 360 358 330 C300 300 240 284 184 270 C148 262 132 244 142 224Z" />
+          <path d="M261.9 212.6 L253 213.1 L255.4 220 L235.2 231.9 L232.2 240.2 L212.7 232.9 L183 231.1 L145.4 207.3 L152.4 186 L146.9 178 L165.9 146.1 L218.5 144.6 L220.2 131.7 L210.6 129.1 L204 116.1 L177.9 98.6 L196.1 98 L196.5 75.5 L270.1 75.3 L267 152.9 L285.1 154.3 L292.3 160.6 L297.2 154.8 L292.5 149.8 L308 159.7 L270.1 186.5 L270.1 205.9Z" />
+          <path d="M268.7 132.7 L270.3 70.2 L281.7 72.2 L295.6 49.5 L304.7 48.4 L302.5 55.6 L313 52.7 L313.6 59.3 L305.3 83.8 L310.2 87.5 L305.4 94.5 L308.2 109.5 L303 127.4 L304.4 121.8 L278.5 153.4 L267 152.9Z" />
+          <path d="M261.9 212.6 L270.1 205.9 L270.1 186.5 L304.1 161.7 L333.4 151.2 L338 157.2 L382.6 157.8 L400.4 151.1 L397.4 147.3 L418.3 153.9 L438.1 149.1 L451.8 157.7 L460.2 156.8 L466.6 156.2 L489.4 172.8 L480.9 178.5 L493.7 177 L499.4 180.3 L490.5 172.7 L513.6 189.1 L498.3 188.5 L494 194.1 L459 204.3 L441.9 196.4 L432.2 206.6 L431.2 216.4 L408.7 230.8 L408.1 236.5 L396.9 227.1 L384 239.2 L366.8 239.6 L369.3 257.7 L360.9 260.1 L355.9 270.6 L344.6 270.5 L336.6 258.2 L341.1 253.1 L324.3 253.3 L328.9 236.8 L316.3 234.7 L307.4 229.6 L296.9 235.4 L283.1 225.3 L272.2 213.4Z" />
+          <path className="is-core" d="M232.2 240.2 L235.2 231.9 L255.4 220 L253 213.1 L260.5 211.4 L272.2 213.4 L283.1 225.3 L296.6 230 L296.9 235.4 L311.9 229.7 L328.9 236.8 L328.2 251.1 L323.5 251.9 L325.4 258.1 L319.8 263.3 L285.2 259.8 L266.4 250.7 L243.9 248.5Z" />
+          <path d="M409.7 347.2 L330.4 270.5 L341.5 273.2 L355.9 270.6 L360.9 260.1 L369.3 257.7 L366.8 239.6 L384 239.2 L393.8 227.6 L408.1 236.5 L431.2 216.4 L432.2 206.6 L441.9 196.4 L459 204.3 L494 194.1 L513.6 189.1 L501.7 196.9 L511.3 215.3 L496.3 252.9 L499.4 293.3 L491.7 310.6 L492.5 325.5 L483.8 339.4 L492.1 358.3 L481.4 362 L470.7 359.3 L464.1 350.7 L451.1 347.7 L440.8 352.8 L413.9 342Z" />
+          <path d="M490.7 353.1 L510.6 385.7 L536.5 409.5 L525 407 L521.2 412.8 L521.3 428.9 L530.2 434.4 L522 441.1 L525 452.9 L516.7 458.4 L523 470.2 L512.8 456.7 L499.4 442.9 L489.1 447.7 L495.6 439.8 L493.2 429.5 L470 412.5 L453.6 407.9 L448.8 392.2 L426.4 379.5 L443.5 397.8 L433.3 408.8 L426 398.6 L411.3 394.9 L404 381.6 L405.4 370.1 L412.6 365.8 L399.9 354.6 L409.4 353.4 L413.9 342 L440.8 352.8 L451.1 347.7 L464.1 350.7 L481.8 362.1 L492.1 358.3Z" />
+          <path d="M536.1 408 L545.4 413.8 L545.1 422.9 L552.3 423.2 L549.4 431.1 L568.3 433.7 L564 424 L577.8 438.8 L587.3 440.1 L648.4 417.2 L654.9 406.7 L681.6 408.1 L678 412.8 L702.5 414.8 L726.4 426.8 L746.1 444.8 L741.4 452.5 L754.6 474.1 L737.7 490.7 L730.3 483.5 L724 502.3 L703.1 469.3 L710.6 466.9 L715.4 455.3 L731.4 466.4 L715.3 449 L704.3 449.5 L696 440.4 L677 431.7 L657.5 432.9 L650 438.7 L649.1 448.2 L621 462.7 L639.3 493.6 L605.2 503.7 L597.4 475.2 L590.8 475.8 L582.5 484.9 L569.5 463.9 L552.9 465.3 L526.6 459.7 L523 470.2 L516.7 458.4 L525 452.9 L522 441.1 L530.2 434.4 L521.3 428.9 L521.2 412.8 L525 407 L533.7 411.7Z" />
+          <path className="regional-potential__map-border" d="M146 178 C204 114 282 78 362 154 C422 211 494 190 514 189 C498 255 498 300 410 347 C454 408 536 410 536 408 C607 438 686 390 754 474" />
+        </motion.svg>
         <div className="regional-potential__lines" aria-hidden="true">{Array.from({ length: 8 }, (_, index) => <motion.i key={index} initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 1.1 + index * .14, duration: .55 }} />)}</div>
         {countries.map(([country, left, top], countryIndex) => {
           const Icon = countryIndex % 2 ? BusFront : Smartphone;
