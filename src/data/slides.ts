@@ -34,11 +34,12 @@ export type PitchSlide = {
       icon: "subscriptions" | "commissions" | "positioning" | "analytics" | "finance";
       title: string;
       description: string;
+      detail?: string;
       status?: string;
     }>;
     networkFlow: string[];
     impact: string;
-    support: string;
+    support?: string;
   };
   duration: number;
   evaluation: "Personas" | "Producto" | "Potencial" | "Previsibilidad";
@@ -225,15 +226,14 @@ export const slides: PitchSlide[] = [
     statement: "Múltiples fuentes de ingresos impulsadas por un solo ecosistema.",
     businessModel: {
       streams: [
-        { icon: "subscriptions", title: "Suscripciones", description: "Planes para tour operadores, comercios turísticos y empresas de transporte." },
-        { icon: "commissions", title: "Comisiones", description: "Ingresos por reservas, intermediación y comercialización de eventos." },
-        { icon: "positioning", title: "Publicidad y posicionamiento", description: "Mayor visibilidad para comercios, destinos y servicios turísticos." },
-        { icon: "analytics", title: "Analítica e inteligencia de negocio", description: "Información estratégica para empresas, instituciones y aliados." },
-        { icon: "finance", title: "Servicios financieros", description: "Historial transaccional que facilita acceso a financiamiento y nuevos productos bancarios.", status: "Roadmap · Próxima evolución" },
+        { icon: "subscriptions", title: "Suscripciones SaaS", description: "Planes mensuales.", detail: "Operadores · Comercios · Transporte" },
+        { icon: "commissions", title: "Comisiones", description: "Por reservas e intermediación." },
+        { icon: "positioning", title: "Publicidad", description: "Mayor visibilidad comercial." },
+        { icon: "analytics", title: "Analítica", description: "Datos estratégicos." },
+        { icon: "finance", title: "Próxima evolución", description: "Servicios financieros.", status: "Próxima evolución" },
       ],
-      networkFlow: ["Más actores", "Más eventos", "Más transacciones", "Más información", "Más valor", "Más ingresos"],
-      impact: "Mientras más actores participan en TeCaiGO, más transacciones se generan, más información se produce y mayor valor adquiere todo el ecosistema.",
-      support: "Nuestro crecimiento no depende únicamente de vender más; depende de fortalecer un ecosistema donde cada nuevo participante incrementa el valor para todos.",
+      networkFlow: ["Más actores", "Más transacciones", "Más ingresos"],
+      impact: "Cada nuevo participante fortalece el ecosistema y aumenta el valor de toda la plataforma.",
     },
     duration: 20,
     evaluation: "Previsibilidad",

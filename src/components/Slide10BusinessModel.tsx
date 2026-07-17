@@ -4,11 +4,8 @@ import { motion } from "framer-motion";
 import {
   BarChart3,
   BriefcaseBusiness,
-  CalendarDays,
   ChevronRight,
   CreditCard,
-  Database,
-  Gem,
   Landmark,
   Megaphone,
   TrendingUp,
@@ -24,7 +21,7 @@ const revenueIcons = {
   finance: Landmark,
 } as const;
 
-const flowIcons = [Users, CalendarDays, CreditCard, Database, Gem, TrendingUp] as const;
+const flowIcons = [Users, CreditCard, TrendingUp] as const;
 
 export default function Slide10BusinessModel({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion: boolean }) {
   const content = slide.businessModel;
@@ -62,6 +59,7 @@ export default function Slide10BusinessModel({ slide, reduceMotion }: { slide: P
               {stream.status && <em>{stream.status}</em>}
               <h3>{stream.title}</h3>
               <p>{stream.description}</p>
+              {stream.detail && <small className="business-model-slide__card-detail">{stream.detail}</small>}
               <i aria-hidden="true" />
             </motion.article>
           );
@@ -102,7 +100,10 @@ export default function Slide10BusinessModel({ slide, reduceMotion }: { slide: P
         transition={{ delay: reduceMotion ? 0 : 2.55, duration: .65, ease: [0.16, 1, 0.3, 1] }}
       >
         <span aria-hidden="true"><TrendingUp size={24} /></span>
-        <div><strong>{content.impact}</strong><small>{content.support}</small></div>
+        <div>
+          <strong>{content.impact}</strong>
+          {content.support && <small>{content.support}</small>}
+        </div>
       </motion.footer>
     </div>
   );
