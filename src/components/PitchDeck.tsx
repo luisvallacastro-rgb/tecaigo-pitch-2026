@@ -595,16 +595,6 @@ function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
           </motion.article>
         ))}
       </div>
-      <motion.header className="ecosystem-impact__headline" initial={reduceMotion ? false : { opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 6.25, duration: .65 }}>
-        <small><span>12</span><i /> Impacto sistémico</small>
-        <strong>Una red digital.<br /><b>Tres motores de desarrollo.</b></strong>
-      </motion.header>
-      <motion.div className="ecosystem-impact__connector" initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 6.55, duration: 1.15, ease: [0.16, 1, 0.3, 1] }}><i /><i /><i /><span><Brand compact /></span></motion.div>
-      <motion.aside className="ecosystem-impact__glass" initial={reduceMotion ? false : { opacity: 0, y: 70, scale: .97 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 6.75, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
-        <p><strong>TeCaigo impulsa un turismo más formal, inclusivo y sostenible.</strong> Al digitalizar la actividad del sector, genera historial transaccional que facilita el acceso a financiamiento, fortalece la recaudación fiscal mediante la formalización de los negocios y crea oportunidades de formación y empleo para nuevas generaciones de profesionales del turismo.</p>
-        <blockquote>Nuestro impacto trasciende la tecnología: <strong>fortalecemos el desarrollo económico y social de todo el ecosistema.</strong></blockquote>
-      </motion.aside>
-      <div className="ecosystem-impact__pulse" aria-hidden="true"><i /><i /><i /></div>
     </div>
   );
 }
