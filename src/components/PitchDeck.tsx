@@ -595,6 +595,13 @@ function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
           </motion.article>
         ))}
       </div>
+      <motion.header className="ecosystem-impact__manifesto" initial={reduceMotion ? false : { opacity: 0, x: -60 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 6.3, duration: .75, ease: [0.16, 1, 0.3, 1] }}>
+        <small><span>12</span><i /> Impacto sistémico</small>
+        <strong>El turismo se conecta.<br /><b>El desarrollo se multiplica.</b></strong>
+      </motion.header>
+      <motion.div className="ecosystem-impact__promise" initial={reduceMotion ? false : { opacity: 0, x: -35 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 6.75, duration: .65 }}>
+        <span>Formal</span><i /><span>Inclusivo</span><i /><span>Sostenible</span>
+      </motion.div>
     </div>
   );
 }
