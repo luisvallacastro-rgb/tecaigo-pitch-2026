@@ -606,6 +606,48 @@ function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
+function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion: boolean }) {
+  const countries = [
+    ["Belice", "31%", "10%"],
+    ["Guatemala", "17%", "29%"],
+    ["Honduras", "46%", "28%"],
+    ["El Salvador", "31%", "46%"],
+    ["Nicaragua", "61%", "49%"],
+    ["Costa Rica", "69%", "69%"],
+    ["Panamá", "86%", "80%"],
+  ] as const;
+  const collage = Array.from({ length: 18 }, (_, index) => `/assets/regional-collage/collage-bg-${String(index + 1).padStart(2, "0")}.jpeg`);
+  return (
+    <div className="regional-potential" aria-label="Potencial regional y efecto de red de TeCaiGO">
+      <div className="regional-potential__collage" aria-hidden="true">
+        {collage.map((image, tileIndex) => <motion.figure key={image} initial={reduceMotion ? false : { opacity: 0, scale: .88 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : tileIndex * .035, duration: .65, ease: [0.16, 1, 0.3, 1] }}><motion.img src={image} alt="" animate={reduceMotion ? undefined : { scale: [1, 1.08, 1.025] }} transition={{ duration: 11 + tileIndex % 4, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }} /></motion.figure>)}
+      </div>
+      <div className="regional-potential__veil" aria-hidden="true" />
+      <div className="regional-potential__grid" aria-hidden="true" />
+      <motion.section className="regional-potential__copy" initial={reduceMotion ? false : { opacity: 0, x: -70 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .45, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
+        <small><span>13</span><i /> {slide.eyebrow}</small>
+        <h2>Un mercado definido por <strong>cómo opera,</strong><br />no por dónde está.</h2>
+        <div className="regional-potential__text">
+          <p>El mercado de TeCaigo no está definido por un país, sino por un <b>modelo operativo</b> presente en múltiples destinos turísticos. Miles de organizadores de experiencias crean grupos, subcontratan transporte, integran proveedores y comercializan viajes de forma manual.</p>
+          <p>TeCaigo digitaliza este modelo y lo convierte en un <b>ecosistema colaborativo</b>, replicable en cualquier mercado donde exista esta forma de operar.</p>
+          <p>Su ventaja competitiva radica en conectar toda la cadena de valor del turismo —operadores, comercios, transporte, comisionistas, turistas e instituciones— generando un <b>efecto de red</b> donde cada nuevo participante incrementa el valor de toda la plataforma.</p>
+        </div>
+      </motion.section>
+      <motion.div className="regional-potential__network" initial={reduceMotion ? false : { opacity: 0, scale: .88 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .8, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
+        <div className="regional-potential__map-glow" />
+        <div className="regional-potential__lines" aria-hidden="true">{Array.from({ length: 8 }, (_, index) => <motion.i key={index} initial={reduceMotion ? false : { scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: reduceMotion ? 0 : 1.1 + index * .14, duration: .55 }} />)}</div>
+        {countries.map(([country, left, top], countryIndex) => {
+          const Icon = countryIndex % 2 ? BusFront : Smartphone;
+          return <motion.div className={`regional-potential__node ${country === "El Salvador" ? "is-core" : ""}`} style={{ left, top }} key={country} initial={reduceMotion ? false : { opacity: 0, scale: .4 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 1.15 + countryIndex * .17, duration: .55, type: "spring", stiffness: 150, damping: 15 }}><strong>{country}</strong><span><Icon size={20} /></span></motion.div>;
+        })}
+        <div className="regional-potential__traveler regional-potential__traveler--one"><BusFront size={18} /></div>
+        <div className="regional-potential__traveler regional-potential__traveler--two"><Smartphone size={17} /></div>
+        <motion.div className="regional-potential__network-note" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 2.3, duration: .6 }}><Network size={18} /><span>Cada nuevo participante<br /><strong>incrementa el valor de toda la red.</strong></span></motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
 function FounderVisual() {
   const path = [
     [BusFront, "Tour operador"],
@@ -669,6 +711,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "transportIntegration": return null;
     case "touristArrival": return null;
     case "ecosystemImpact": return null;
+    case "regionalPotential": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
     case "founder": return <FounderVisual />;
     case "ecosystem": return <EcosystemVisual />;
@@ -697,7 +740,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact" || current.kind === "regionalPotential";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -750,7 +793,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
