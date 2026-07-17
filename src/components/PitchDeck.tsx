@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { slides, totalPitchSeconds, type PitchSlide } from "../data/slides";
+import FounderFinaleSlide from "./FounderFinaleSlide";
 import Slide10BusinessModel from "./Slide10BusinessModel";
 
 const actorIcons = [Users, Network, Store, BusFront, HandCoins, TicketCheck, Landmark];
@@ -670,22 +671,6 @@ function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceM
   );
 }
 
-function FounderVisual() {
-  const path = [
-    [BusFront, "Tour operador"],
-    [BriefcaseBusiness, "Contador público"],
-    [GraduationCap, "Máster en Banca y Finanzas"],
-    [ShieldCheck, "Gestión de Riesgos"],
-    [Sparkles, "Fundador de TeCaiGO"],
-  ] as const;
-  return (
-    <div className="founder-grid">
-      <div className="founder-photo-placeholder"><span>LV</span><strong>Luis Valladares</strong><small>Fotografía reemplazable</small></div>
-      <div className="founder-path">{path.map(([Icon, label], index) => <div key={label}><span><Icon size={25} /></span><strong>{label}</strong>{index < path.length - 1 && <ChevronRight size={20} />}</div>)}</div>
-    </div>
-  );
-}
-
 function EcosystemVisual() {
   return (
     <div className="ecosystem-map">
@@ -736,7 +721,7 @@ function SlideVisual({ slide, reduceMotion }: { slide: PitchSlide; reduceMotion:
     case "regionalPotential": return null;
     case "businessModel": return null;
     case "problem": return <ProblemVisual reduceMotion={reduceMotion} />;
-    case "founder": return <FounderVisual />;
+    case "founder": return null;
     case "ecosystem": return <EcosystemVisual />;
     case "flow": return <FlowVisual reduceMotion={reduceMotion} />;
     case "innovation": return <InnovationVisual />;
@@ -763,7 +748,7 @@ export default function PitchDeck() {
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact" || current.kind === "regionalPotential" || current.kind === "businessModel";
+  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact" || current.kind === "regionalPotential" || current.kind === "businessModel" || current.kind === "founder";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -816,7 +801,7 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : current.kind === "businessModel" ? <Slide10BusinessModel slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : current.kind === "businessModel" ? <Slide10BusinessModel slide={current} reduceMotion={reduceMotion} /> : current.kind === "founder" ? <FounderFinaleSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
