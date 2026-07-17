@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import {
   BarChart3,
   BriefcaseBusiness,
@@ -57,6 +58,11 @@ export default function Slide10BusinessModel({ slide, reduceMotion }: { slide: P
                 <b>{String(index + 1).padStart(2, "0")}</b>
               </div>
               {stream.status && <em>{stream.status}</em>}
+              <div
+                className="business-model-slide__card-media"
+                style={{ "--card-media-position": `${index * 25}%` } as CSSProperties}
+                aria-hidden="true"
+              />
               <h3>{stream.title}</h3>
               <p>{stream.description}</p>
               {stream.detail && <small className="business-model-slide__card-detail">{stream.detail}</small>}
