@@ -4,8 +4,8 @@ services:
     runtime: node
     plan: free
     branch: main
-    buildCommand: npm ci && npm run build
-    startCommand: npm start
+    buildCommand: npm ci && npx next build --webpack
+    startCommand: npx next start -H 0.0.0.0 -p $PORT
     healthCheckPath: /
     autoDeployTrigger: commit
     renderSubdomainPolicy: enabled
