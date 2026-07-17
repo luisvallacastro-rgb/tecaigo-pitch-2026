@@ -628,8 +628,7 @@ function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceM
         <small><span>13</span><i /> {slide.eyebrow}</small>
         <h2>Un mercado definido por <strong>cómo opera,</strong><br />no por dónde está.</h2>
         <div className="regional-potential__text">
-          <p>TeCaigo digitaliza un <b>modelo operativo que ya se repite</b> en múltiples destinos: crear grupos, integrar proveedores, subcontratar transporte y comercializar experiencias.</p>
-          <p>Al conectar toda la cadena de valor, cada nuevo participante <b>incrementa el valor de la red.</b></p>
+          <p>Cada nueva frontera conectada convierte a TeCaigo en una <b>red más fuerte</b>, un <b>ecosistema más inteligente</b> y una <b>industria más integrada.</b></p>
         </div>
       </motion.section>
       <motion.div className="regional-potential__network" initial={reduceMotion ? false : { opacity: 0, scale: .88 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .8, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
@@ -665,7 +664,6 @@ function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceM
           const Icon = countryIndex % 2 ? BusFront : Smartphone;
           return <motion.div className={`regional-potential__node ${country === "El Salvador" ? "is-core" : ""}`} style={{ left, top }} key={country} initial={reduceMotion ? false : { opacity: 0, scale: .4 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : 1.15 + countryIndex * .17, duration: .55, type: "spring", stiffness: 150, damping: 15 }}><strong>{country}</strong><span><Icon size={20} /></span></motion.div>;
         })}
-        <motion.div className="regional-potential__network-note" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 2.3, duration: .6 }}><Network size={18} /><span>Cada nuevo participante<br /><strong>incrementa el valor de toda la red.</strong></span></motion.div>
       </motion.div>
     </div>
   );
