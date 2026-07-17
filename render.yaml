@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: tecaigo-pitch-2026
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeployTrigger: commit
+    renderSubdomainPolicy: enabled
