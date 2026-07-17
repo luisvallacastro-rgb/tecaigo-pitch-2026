@@ -79,12 +79,12 @@ export const slides: PitchSlide[] = [
     id: 3,
     kind: "question",
     eyebrow: "Una pregunta",
-    title: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?",
+    title: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestro país?",
     duration: 12,
     evaluation: "Producto",
     notes: {
       message: "Hacer una pausa y dejar que la audiencia responda mentalmente antes de mostrar el problema.",
-      script: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?",
+      script: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestro país?",
     },
   },
   {
@@ -208,7 +208,7 @@ export const slides: PitchSlide[] = [
     id: 13,
     kind: "regionalPotential",
     eyebrow: "Potencial",
-    title: "Un mercado definido por cómo opera, no por dónde está.",
+    title: "Cada nueva frontera conectada convierte a TeCaigo en una red más fuerte, un ecosistema más inteligente y una industria más integrada.",
     statement: "El mercado de TeCaigo no está definido por un país, sino por un modelo operativo presente en múltiples destinos turísticos. Miles de organizadores de experiencias crean grupos, subcontratan transporte, integran proveedores y comercializan viajes de forma manual. TeCaigo digitaliza este modelo y lo convierte en un ecosistema colaborativo, replicable en cualquier mercado donde exista esta forma de operar. Su ventaja competitiva radica en conectar toda la cadena de valor del turismo —operadores, comercios, transporte, comisionistas, turistas e instituciones— generando un efecto de red donde cada nuevo participante incrementa el valor de toda la plataforma.",
     duration: 20,
     evaluation: "Potencial",

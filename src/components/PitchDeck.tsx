@@ -106,7 +106,7 @@ const operatorGallery = [
   "58377032_2138212786216085_3731329228688326656_n.jpg",
 ] as const;
 
-const audienceQuestion = "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestros países?";
+const audienceQuestion = "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestro país?";
 const conversationImages = [1, 2, 3, 4, 5].map(number => `/assets/conversations/conversation-${number}.jpeg`);
 const formationSectors = [
   [Hotel, "Comercios turísticos", "-34vw", "-24vh", "-30vw", "-22vh"],
@@ -628,7 +628,6 @@ function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceM
       <div className="regional-potential__grid" aria-hidden="true" />
       <motion.section className="regional-potential__copy" initial={reduceMotion ? false : { opacity: 0, x: -70 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .45, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
         <small><span>13</span><i /> {slide.eyebrow}</small>
-        <h2>Un mercado definido por <strong>cómo opera,</strong><br />no por dónde está.</h2>
         <div className="regional-potential__text">
           <p>Cada nueva frontera conectada convierte a TeCaigo en una <b>red más fuerte</b>, un <b>ecosistema más inteligente</b> y una <b>industria más integrada.</b></p>
         </div>
