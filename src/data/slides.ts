@@ -29,6 +29,21 @@ export type PitchSlide = {
   title: string;
   statement?: string;
   bullets?: string[];
+  innovationIntro?: {
+    actors: Array<{
+      id: "operators" | "commerce" | "transport" | "tourists";
+      label: string;
+      description: string;
+      image: string;
+    }>;
+  };
+  productInterfaces?: Array<{
+    id: "operators" | "commerce" | "tourists" | "transport";
+    label: string;
+    title: string;
+    description: string;
+    image: string;
+  }>;
   businessModel?: {
     streams: Array<{
       icon: "subscriptions" | "commissions" | "positioning" | "analytics" | "finance";
@@ -53,27 +68,87 @@ export type PitchSlide = {
 export const slides: PitchSlide[] = [
   {
     id: 1,
-    kind: "cover",
-    eyebrow: "Turismo conectado",
-    title: "Turismo conectado. Economía colaborativa.",
-    statement: "Operación turística conectada en una sola red.",
+    kind: "innovation",
+    eyebrow: "Innovación · Ecosistema conectado",
+    title: "¿Y si pudiéramos conectar todo el ecosistema turístico en un solo lugar?",
+    statement: "TeCaiGO convierte actores dispersos en un ecosistema que crea nuevas oportunidades de negocio.",
+    bullets: ["Quienes crean, operan, comercializan y consumen experiencias turísticas."],
+    innovationIntro: {
+      actors: [
+        {
+          id: "operators",
+          label: "Tour Operadores",
+          description: "Crean experiencias y colaboran.",
+          image: "/assets/hero/guide-mountain.png",
+        },
+        {
+          id: "commerce",
+          label: "Comercios Turísticos",
+          description: "Transforman su oferta en nuevas experiencias.",
+          image: "/assets/hero/restaurant-owner.png",
+        },
+        {
+          id: "transport",
+          label: "Transporte",
+          description: "Activa su capacidad disponible.",
+          image: "/assets/hero/transport-microbus.png",
+        },
+        {
+          id: "tourists",
+          label: "Turistas",
+          description: "Descubren, reservan y compran.",
+          image: "/assets/hero/tourist-beach.png",
+        },
+      ],
+    },
     duration: 10,
     evaluation: "Producto",
     notes: {
-      message: "Abrir mostrando que TeCaiGO conecta una economía completa, no solo una aplicación.",
-      script: "El turismo no funciona como una sola empresa: funciona como una red. TeCaiGO conecta esa operación en un solo entorno digital, integrando operadores, clústeres, transporte, comercios, turistas e instituciones.",
+      message: "Introducir la innovación de TeCaiGO como una red de cuatro actores que crea valor por medio de su interacción.",
+      script: "¿Y si pudiéramos conectar en un solo lugar a quienes crean, operan, comercializan y consumen experiencias turísticas? TeCaiGO convierte actores dispersos en un ecosistema que crea nuevas oportunidades de negocio.",
     },
   },
   {
     id: 2,
-    kind: "gallery",
-    eyebrow: "Nuestro origen",
-    title: "Lo que ven en pantalla es una comunidad real de tour operadores que se organiza, colabora y crece unida.",
-    duration: 13,
-    evaluation: "Personas",
+    kind: "product",
+    eyebrow: "Producto · Cuatro interfaces conectadas",
+    title: "Un producto. Cuatro experiencias.",
+    statement: "Cada actor recibe una interfaz especializada; toda la información permanece conectada en un mismo ecosistema.",
+    productInterfaces: [
+      {
+        id: "operators",
+        label: "Tour Operador",
+        title: "Coordina y comercializa experiencias",
+        description: "Eventos, cupos, solicitudes, clústeres y operación en una sola interfaz.",
+        image: "/assets/founder-carousel/tecaigo-to-mobile-04.jpg",
+      },
+      {
+        id: "commerce",
+        label: "Comercio Turístico",
+        title: "Convierte su oferta en oportunidades",
+        description: "Publica servicios, promociones y capacidad para integrarse a nuevas rutas.",
+        image: "/assets/founder-carousel/tecaigo-commerce-mobile-03.jpg",
+      },
+      {
+        id: "tourists",
+        label: "Turista",
+        title: "Descubre, reserva y compra",
+        description: "Explora experiencias coordinadas con información y disponibilidad trazables.",
+        image: "/assets/founder-carousel/tecaigo-tourist-mobile-03.jpg",
+      },
+      {
+        id: "transport",
+        label: "Transporte",
+        title: "Activa capacidad y ejecuta rutas",
+        description: "Gestiona vehículos, disponibilidad, pasajeros y recorridos confirmados.",
+        image: "/assets/founder-carousel/tecaigo-transport-mobile-03.jpg",
+      },
+    ],
+    duration: 40,
+    evaluation: "Producto",
     notes: {
-      message: "Mostrar que TeCaiGO nace de una comunidad real y de experiencia directa en el territorio.",
-      script: "Esta es la comunidad donde comenzó TeCaiGO. Tour operadores que conocen el territorio, coordinan personas y convierten una oportunidad local en una experiencia. La tecnología nace para potenciar esta red, no para sustituirla.",
+      message: "Mostrar durante diez segundos la interfaz especializada de cada actor del ecosistema.",
+      script: "TeCaiGO no obliga a todos a trabajar en una misma pantalla. Cada actor recibe una experiencia diseñada para su operación: el tour operador coordina, el comercio publica oportunidades, el turista reserva y el transporte ejecuta. Cuatro interfaces especializadas, conectadas por un solo ecosistema.",
     },
   },
   {

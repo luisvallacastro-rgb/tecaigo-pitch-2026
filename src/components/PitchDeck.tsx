@@ -38,6 +38,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { slides, totalPitchSeconds, type PitchSlide } from "../data/slides";
 import FounderFinaleSlide from "./FounderFinaleSlide";
 import Slide10BusinessModel from "./Slide10BusinessModel";
+import SlideProductInnovationIntro from "./SlideProductInnovationIntro";
+import SlideProductInterfacesShowcase from "./SlideProductInterfacesShowcase";
 
 const actorIcons = [Users, Network, Store, BusFront, HandCoins, TicketCheck, Landmark];
 const actors = ["Tour operadores", "Clústeres", "Comercios", "Transporte", "Comisionistas", "Turistas", "Instituciones"];
@@ -741,13 +743,13 @@ export default function PitchDeck() {
   const [notesOpen, setNotesOpen] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [running, setRunning] = useState(false);
-  const [autoDemo, setAutoDemo] = useState(false);
+  const [autoDemo, setAutoDemo] = useState(true);
   const [aspectWarning, setAspectWarning] = useState(false);
   const reduceMotion = Boolean(useReducedMotion());
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
-  const immersive = current.kind === "cover" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact" || current.kind === "regionalPotential" || current.kind === "businessModel" || current.kind === "founder";
+  const immersive = current.kind === "cover" || current.kind === "innovation" || current.kind === "product" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact" || current.kind === "regionalPotential" || current.kind === "businessModel" || current.kind === "founder";
   const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
@@ -757,7 +759,13 @@ export default function PitchDeck() {
   }, []);
   const next = useCallback(() => goTo(index + 1), [goTo, index]);
   const previous = useCallback(() => goTo(index - 1), [goTo, index]);
-  const resetTimer = useCallback(() => { setElapsed(0); slideStartedAt.current = Date.now(); }, []);
+  const restartPresentation = useCallback(() => {
+    setRunning(false);
+    setAutoDemo(true);
+    setElapsed(0);
+    setIndex(0);
+    slideStartedAt.current = Date.now();
+  }, []);
 
   useEffect(() => {
     const check = () => setAspectWarning(Math.abs(window.innerWidth / window.innerHeight - 16 / 9) > .32);
@@ -800,23 +808,13 @@ export default function PitchDeck() {
 
       <AnimatePresence mode="wait">
         <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : current.kind === "businessModel" ? <Slide10BusinessModel slide={current} reduceMotion={reduceMotion} /> : current.kind === "founder" ? <FounderFinaleSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "innovation" ? <SlideProductInnovationIntro slide={current} reduceMotion={reduceMotion} running={running} /> : current.kind === "product" ? <SlideProductInterfacesShowcase slide={current} reduceMotion={reduceMotion} running={running} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : current.kind === "businessModel" ? <Slide10BusinessModel slide={current} reduceMotion={reduceMotion} /> : current.kind === "founder" ? <FounderFinaleSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
-      <nav className="deck-controls" aria-label="Controles de la presentación">
-        <button onClick={previous} disabled={index === 0} aria-label="Diapositiva anterior"><ArrowLeft /></button>
-        <div className="deck-dots">{slides.map((slide, dot) => <button key={slide.id} onClick={() => goTo(dot)} className={dot === index ? "is-active" : ""} aria-label={`Ir a diapositiva ${slide.id}`} />)}</div>
-        <button onClick={next} disabled={index === slides.length - 1} aria-label="Diapositiva siguiente"><ArrowRight /></button>
-      </nav>
-
-      <div className="deck-tools">
+      <div className="deck-tools deck-tools--basic">
         <button onClick={() => setRunning(value => !value)} aria-label={running ? "Pausar temporizador" : "Iniciar temporizador"}>{running ? <Pause /> : <Play />}</button>
-        <button onClick={resetTimer} aria-label="Reiniciar temporizador"><TimerReset /></button>
-        <button className={`timer ${remaining < 30 ? "timer--danger" : ""}`} onClick={() => setRunning(value => !value)}><Clock3 /> {formatTime(elapsed)} <span>/ 5:00</span></button>
-        <button className={autoDemo ? "is-selected" : ""} onClick={() => setAutoDemo(value => !value)} aria-label="Alternar demostración automática"><RefreshCcw /></button>
-        <button onClick={() => setNotesOpen(value => !value)} aria-label="Abrir notas del presentador"><Presentation /></button>
-        <button onClick={() => window.print()} aria-label="Imprimir o exportar a PDF"><Printer /></button>
+        <button onClick={restartPresentation} aria-label="Volver a iniciar"><RefreshCcw /></button>
         <button onClick={toggleFullscreen} aria-label="Pantalla completa"><Expand /></button>
       </div>
 
