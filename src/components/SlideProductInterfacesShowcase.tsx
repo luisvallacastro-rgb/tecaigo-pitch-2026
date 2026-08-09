@@ -44,21 +44,21 @@ export default function SlideProductInterfacesShowcase({ slide, reduceMotion, ru
   const activeView = views[activeViewIndex] ?? views[0];
 
   useEffect(() => {
-    if (!running || reduceMotion || interfaces.length < 2) return;
+    if (!running || interfaces.length < 2) return;
     const timer = window.setInterval(() => {
       setActiveIndex(current => (current + 1) % interfaces.length);
     }, 10_000);
     return () => window.clearInterval(timer);
-  }, [interfaces.length, reduceMotion, running]);
+  }, [interfaces.length, running]);
 
   useEffect(() => {
     setActiveViewIndex(0);
-    if (!running || reduceMotion || views.length < 2) return;
+    if (!running || views.length < 2) return;
     const timer = window.setInterval(() => {
       setActiveViewIndex(current => (current + 1) % views.length);
     }, 10_000 / views.length);
     return () => window.clearInterval(timer);
-  }, [active?.id, reduceMotion, running, views.length]);
+  }, [active?.id, running, views.length]);
 
   if (!active || !activeView) return null;
 
@@ -126,7 +126,6 @@ export default function SlideProductInterfacesShowcase({ slide, reduceMotion, ru
         </div>
       </motion.div>
 
-      <div className="product-interfaces__role-progress" key={`progress-${active.id}-${running}`}><motion.span initial={{ scaleX: 0 }} animate={{ scaleX: running ? 1 : 0 }} transition={{ duration: reduceMotion || !running ? 0 : 10, ease: "linear" }} /></div>
     </div>
   );
 }

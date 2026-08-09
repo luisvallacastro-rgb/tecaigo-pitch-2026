@@ -17,6 +17,7 @@ import {
   Hotel,
   Landmark,
   Maximize2,
+  Minimize2,
   Network,
   Pause,
   Play,
@@ -742,29 +743,56 @@ export default function PitchDeck() {
   const [index, setIndex] = useState(0);
   const [notesOpen, setNotesOpen] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const [slideElapsed, setSlideElapsed] = useState(0);
   const [running, setRunning] = useState(false);
+  const [started, setStarted] = useState(false);
   const [autoDemo, setAutoDemo] = useState(true);
+  const [playbackKey, setPlaybackKey] = useState(0);
   const [aspectWarning, setAspectWarning] = useState(false);
+  const [fullscreenActive, setFullscreenActive] = useState(false);
   const reduceMotion = Boolean(useReducedMotion());
   const slideStartedAt = useRef(0);
 
   const current = slides[index];
   const immersive = current.kind === "cover" || current.kind === "innovation" || current.kind === "product" || current.kind === "gallery" || current.kind === "question" || current.kind === "problemPoints" || current.kind === "formation" || current.kind === "homefeedPanorama" || current.kind === "homefeedConnection" || current.kind === "eventModes" || current.kind === "transportIntegration" || current.kind === "touristArrival" || current.kind === "ecosystemImpact" || current.kind === "regionalPotential" || current.kind === "businessModel" || current.kind === "founder";
-  const progress = ((index + 1) / slides.length) * 100;
   const remaining = totalPitchSeconds - elapsed;
 
   const goTo = useCallback((next: number) => {
     setIndex(Math.max(0, Math.min(slides.length - 1, next)));
+    setSlideElapsed(0);
     slideStartedAt.current = Date.now();
   }, []);
   const next = useCallback(() => goTo(index + 1), [goTo, index]);
   const previous = useCallback(() => goTo(index - 1), [goTo, index]);
   const restartPresentation = useCallback(() => {
-    setRunning(false);
+    setStarted(true);
+    setRunning(true);
     setAutoDemo(true);
     setElapsed(0);
+    setSlideElapsed(0);
     setIndex(0);
+    setPlaybackKey(value => value + 1);
     slideStartedAt.current = Date.now();
+  }, []);
+
+  const togglePlayback = useCallback(() => {
+    if (!started) {
+      setStarted(true);
+      setRunning(true);
+      return;
+    }
+    setRunning(value => !value);
+  }, [started]);
+
+  const syncPageAnimations = useCallback((shouldPlay: boolean) => {
+    window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+      const animations = typeof document.getAnimations === "function"
+        ? document.getAnimations()
+        : Array.from(document.querySelectorAll("*")).flatMap(element =>
+            typeof element.getAnimations === "function" ? element.getAnimations() : []
+          );
+      animations.forEach(animation => shouldPlay ? animation.play() : animation.pause());
+    }));
   }, []);
 
   useEffect(() => {
@@ -774,15 +802,29 @@ export default function PitchDeck() {
 
   useEffect(() => {
     if (!running) return;
-    const id = window.setInterval(() => setElapsed(value => value + 1), 1000);
+    const id = window.setInterval(() => {
+      setElapsed(value => value + 1);
+      setSlideElapsed(value => value + 1);
+    }, 1000);
     return () => window.clearInterval(id);
   }, [running]);
 
   useEffect(() => {
-    if (!autoDemo || !running) return;
-    const id = window.setTimeout(() => index < slides.length - 1 ? next() : setAutoDemo(false), current.duration * 1000);
-    return () => window.clearTimeout(id);
-  }, [autoDemo, current.duration, index, next, running]);
+    if (!autoDemo || !running || slideElapsed < current.duration) return;
+    if (index < slides.length - 1) next();
+    else setAutoDemo(false);
+  }, [autoDemo, current.duration, index, next, running, slideElapsed]);
+
+  useEffect(() => {
+    if (!started) return;
+    syncPageAnimations(running);
+  }, [running, started, syncPageAnimations]);
+
+  useEffect(() => {
+    const updateFullscreenState = () => setFullscreenActive(Boolean(document.fullscreenElement));
+    document.addEventListener("fullscreenchange", updateFullscreenState);
+    return () => document.removeEventListener("fullscreenchange", updateFullscreenState);
+  }, []);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -791,31 +833,39 @@ export default function PitchDeck() {
       if (event.key === "Home") goTo(0);
       if (event.key === "End") goTo(slides.length - 1);
       if (event.key.toLowerCase() === "p") setNotesOpen(value => !value);
-      if (event.key.toLowerCase() === "f") document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+      if (event.key.toLowerCase() === "f") {
+        if (document.fullscreenElement) void document.exitFullscreen();
+        else void document.documentElement.requestFullscreen({ navigationUI: "hide" });
+      }
     };
     window.addEventListener("keydown", onKey); return () => window.removeEventListener("keydown", onKey);
   }, [goTo, next, previous]);
 
   const timeline = useMemo(() => slides.slice(0, index).reduce((sum, slide) => sum + slide.duration, 0), [index]);
 
-  const toggleFullscreen = () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  const toggleFullscreen = useCallback(() => {
+    const action = document.fullscreenElement
+      ? document.exitFullscreen()
+      : document.documentElement.requestFullscreen({ navigationUI: "hide" });
+    void action.catch(() => setFullscreenActive(Boolean(document.fullscreenElement)));
+  }, []);
 
   return (
     <main className={`deck-shell ${immersive ? "deck-shell--cover" : ""}`}>
       {aspectWarning && <div className="aspect-warning"><Maximize2 size={16} /> Para una mejor experiencia usa una pantalla 16:9.</div>}
-      <div className="deck-progress" style={{ "--progress": `${progress}%` } as React.CSSProperties} />
       <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
 
       <AnimatePresence mode="wait">
-        <motion.section key={current.id} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
-          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "innovation" ? <SlideProductInnovationIntro slide={current} reduceMotion={reduceMotion} running={running} /> : current.kind === "product" ? <SlideProductInterfacesShowcase slide={current} reduceMotion={reduceMotion} running={running} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : current.kind === "businessModel" ? <Slide10BusinessModel slide={current} reduceMotion={reduceMotion} /> : current.kind === "founder" ? <FounderFinaleSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
+        <motion.section key={`${playbackKey}-${current.id}`} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
+          {current.kind === "cover" ? <LandingHeroCover reduceMotion={reduceMotion} /> : current.kind === "innovation" ? <SlideProductInnovationIntro slide={current} reduceMotion={reduceMotion} started={started} /> : current.kind === "product" ? <SlideProductInterfacesShowcase slide={current} reduceMotion={reduceMotion} running={running} /> : current.kind === "gallery" ? <OperatorGallery reduceMotion={reduceMotion} /> : current.kind === "question" ? <AudienceQuestion reduceMotion={reduceMotion} /> : current.kind === "problemPoints" ? <ProblemPointsSlide slide={current} reduceMotion={reduceMotion} /> : current.kind === "formation" ? <FormationSlide reduceMotion={reduceMotion} /> : current.kind === "homefeedPanorama" ? <HomefeedPanorama reduceMotion={reduceMotion} /> : current.kind === "homefeedConnection" ? <HomefeedConnection reduceMotion={reduceMotion} /> : current.kind === "eventModes" ? <EventModes reduceMotion={reduceMotion} /> : current.kind === "transportIntegration" ? <TransportIntegration reduceMotion={reduceMotion} /> : current.kind === "touristArrival" ? <TouristArrival reduceMotion={reduceMotion} /> : current.kind === "ecosystemImpact" ? <EcosystemImpact reduceMotion={reduceMotion} /> : current.kind === "regionalPotential" ? <RegionalPotential slide={current} reduceMotion={reduceMotion} /> : current.kind === "businessModel" ? <Slide10BusinessModel slide={current} reduceMotion={reduceMotion} /> : current.kind === "founder" ? <FounderFinaleSlide slide={current} reduceMotion={reduceMotion} /> : <><div className="slide-copy"><span className="eyebrow">{current.eyebrow}</span><h1>{current.title}</h1>{current.statement && <p>{current.statement}</p>}</div><div className="slide-visual"><SlideVisual slide={current} reduceMotion={reduceMotion} /></div></>}
         </motion.section>
       </AnimatePresence>
 
       <div className="deck-tools deck-tools--basic">
-        <button onClick={() => setRunning(value => !value)} aria-label={running ? "Pausar temporizador" : "Iniciar temporizador"}>{running ? <Pause /> : <Play />}</button>
+        <button onClick={togglePlayback} aria-label={running ? "Pausar temporizador" : "Iniciar temporizador"}>{running ? <Pause /> : <Play />}</button>
         <button onClick={restartPresentation} aria-label="Volver a iniciar"><RefreshCcw /></button>
-        <button onClick={toggleFullscreen} aria-label="Pantalla completa"><Expand /></button>
+        <button className={fullscreenActive ? "is-fullscreen" : ""} onClick={toggleFullscreen} aria-label={fullscreenActive ? "Salir de pantalla completa" : "Pantalla completa"}>{fullscreenActive ? <Minimize2 /> : <Expand />}</button>
+        <div className="deck-tools__elapsed" aria-label={`Tiempo transcurrido ${formatTime(elapsed)}`}><Clock3 /><span>{formatTime(elapsed)}</span></div>
       </div>
 
       <AnimatePresence>{notesOpen && <motion.aside className="presenter-notes" initial={{ x: 420 }} animate={{ x: 0 }} exit={{ x: 420 }} transition={{ duration: .28 }}><button className="notes-close" onClick={() => setNotesOpen(false)}><X /></button><span className="eyebrow">Vista del presentador · P</span><h2>Diapositiva {current.id}</h2><div className="notes-time"><Clock3 /> {current.duration}s recomendados <span>Inicio ideal {formatTime(timeline)}</span></div><h3>Mensaje principal</h3><p>{current.notes.message}</p><h3>Texto sugerido</h3><p>{current.notes.script}</p><div className="notes-evaluation">P asociada <strong>{current.evaluation}</strong></div></motion.aside>}</AnimatePresence>
