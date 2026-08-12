@@ -143,16 +143,16 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 5,
+    id: 4,
     kind: "problemPoints",
-    eyebrow: "Problema",
-    title: "Problema:",
-    bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
-    duration: 15,
+    eyebrow: "Propuesta de Valor",
+    title: "Cuando la red comparte oportunidades, cada actor puede crecer más.",
+    statement: "Un ecosistema conectado multiplica beneficios para todos.",
+    duration: 30,
     evaluation: "Producto",
     notes: {
-      message: "Condensar la fragmentación operativa en cinco problemas concretos.",
-      script: "El problema se manifiesta en cinco puntos: cupos dispersos, información duplicada, capacidad sin visibilidad, reservas sin trazabilidad y decisiones sin datos.",
+      message: "Presentar la amplitud de beneficios que TeCaiGO genera cuando convierte actores dispersos en una red colaborativa.",
+      script: "La propuesta de valor de TeCaiGO se traduce en beneficios concretos: nuevas rutas, más ventas, costos compartidos, capacidad aprovechada, nuevos clientes, mayor visibilidad, acceso financiero y crecimiento compartido. Cuando la red comparte oportunidades, cada actor puede crecer más.",
     },
   },
   {
