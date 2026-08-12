@@ -853,7 +853,7 @@ export default function PitchDeck() {
   return (
     <main className={`deck-shell ${immersive ? "deck-shell--cover" : ""}`}>
       {aspectWarning && <div className="aspect-warning"><Maximize2 size={16} /> Para una mejor experiencia usa una pantalla 16:9.</div>}
-      <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
+      <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{index === 0 ? "Apertura" : index === 1 ? "Necesidad del Mercado" : current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
 
       <AnimatePresence mode="wait">
         <motion.section key={`${playbackKey}-${current.id}`} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
