@@ -49,7 +49,7 @@ export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchS
     </AnimatePresence>
     <div className="value-sequence__lines" aria-hidden="true"><i/><i/><i/></div>
     <AnimatePresence mode="wait">
-      <motion.div key={active} className="value-sequence__copy"
+      <motion.div key={active} className={`value-sequence__copy value-sequence__copy--${active}`}
         initial={reduceMotion?false:{opacity:0,y:35}}
         animate={{opacity:1,y:0}}
         exit={reduceMotion?undefined:{opacity:0,y:-18}}
