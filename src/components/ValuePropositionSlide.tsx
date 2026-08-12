@@ -37,7 +37,7 @@ export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchS
   },[reduceMotion]);
   const scene=scenes[active];
   return <div className="value-sequence" aria-label="Secuencia de propuesta de valor de TeCaiGO">
-    <AnimatePresence mode="popLayout" initial={false}>
+    <AnimatePresence mode="popLayout" initial>
       <motion.figure key={scene.image} className="value-sequence__scene"
         initial={reduceMotion?false:{x:"100%",clipPath:"inset(0 0 0 100%)"}}
         animate={{x:"0%",clipPath:"inset(0 0 0 0%)"}}
