@@ -10,10 +10,10 @@ const VIEWS_PER_ROLE = 3;
 const VIEW_DURATION = ROLE_DURATION / VIEWS_PER_ROLE;
 
 const roles = [
-  { id:"operators", label:"Tour operadores", count:11, prefix:"tecaigo-to-mobile" },
-  { id:"commerce", label:"Comercio turístico", count:9, prefix:"tecaigo-commerce-mobile" },
-  { id:"tourists", label:"Turista", count:6, prefix:"tecaigo-tourist-mobile" },
-  { id:"transport", label:"Transporte", count:11, prefix:"tecaigo-transport-mobile" },
+  { id:"operators", label:"Tour operadores", count:11, prefix:"tecaigo-to-mobile", background:"/assets/page-3/operators.jpg" },
+  { id:"commerce", label:"Comercio turístico", count:9, prefix:"tecaigo-commerce-mobile", background:"/assets/page-3/commerce.jpg" },
+  { id:"tourists", label:"Turista", count:6, prefix:"tecaigo-tourist-mobile", background:"/assets/page-3/tourists.jpg" },
+  { id:"transport", label:"Transporte", count:11, prefix:"tecaigo-transport-mobile", background:"/assets/page-3/transport.jpg" },
 ] as const;
 
 export default function SlideProductInterfacesShowcase({ reduceMotion, running }: { slide: PitchSlide; reduceMotion: boolean; running: boolean }) {
@@ -34,7 +34,7 @@ export default function SlideProductInterfacesShowcase({ reduceMotion, running }
 
   return (
     <div className="product-interfaces product-interfaces--cinematic" aria-label="Carrusel automático de las cuatro interfaces de TeCaiGO">
-      <div className="product-interfaces__veil" />
+      <motion.div className="product-interfaces__role-background" key={role.background} style={{ backgroundImage:`url("${role.background}")` }} initial={reduceMotion ? false : { opacity:0, scale:1.09 }} animate={{ opacity:1, scale:1.02 }} transition={{ duration:reduceMotion ? 0 : 1.35, ease:[.22,1,.36,1] }} /><div className="product-interfaces__veil" /><div className="product-interfaces__light-sweep" aria-hidden="true" />
       <div className="product-interfaces__rings" aria-hidden="true"><i/><i/><i/></div>
 
       <motion.h1 className="product-interfaces__role-title" key={role.id} initial={reduceMotion ? false : { opacity:0, y:-16 }} animate={{ opacity:1, y:0 }} transition={{ duration:.55 }}>{role.label}</motion.h1>
