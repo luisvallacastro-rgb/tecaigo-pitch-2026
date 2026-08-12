@@ -1002,3 +1002,11 @@ button { font:inherit; }
 .value-cloud__word.word-29{position:static;grid-column:10/13;grid-row:9;font-size:clamp(.75rem,1.3vw,1.65rem);opacity:1!important;translate:0}
 .value-cloud__message{left:40%;bottom:3.5%;width:min(850px,57vw)}
 @media(max-aspect-ratio:4/3){.value-cloud__block{width:76vw;height:62vh}.value-cloud__hero{font-size:clamp(3.5rem,8.7vw,7.5rem)}.value-cloud__message{left:43%;width:73vw}}
+
+
+/* Final benefits-cloud proportions */
+.value-cloud__block{top:45%;width:min(1060px,58vw);height:min(690px,66vh)}
+.value-cloud__hero{font-size:clamp(4rem,7.35vw,9.4rem);letter-spacing:-.078em}
+.value-cloud__word{overflow:visible;font-stretch:condensed}
+.value-cloud__word.word-12,.value-cloud__word.word-15,.value-cloud__word.word-16,.value-cloud__word.word-19,.value-cloud__word.word-23,.value-cloud__word.word-25{justify-content:center}
+.value-cloud__message{left:38%;bottom:3.4%;width:min(810px,54vw)}
