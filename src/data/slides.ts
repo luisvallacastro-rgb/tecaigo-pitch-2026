@@ -102,7 +102,7 @@ export const slides: PitchSlide[] = [
         },
       ],
     },
-    duration: 20,
+    duration: 15,
     evaluation: "Producto",
     notes: {
       message: "Introducir la innovación de TeCaiGO como una red de cuatro actores que crea valor por medio de su interacción.",
