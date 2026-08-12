@@ -587,6 +587,9 @@ button { font:inherit; }
 .conversation-carousel__dots { position:absolute; z-index:30; left:50%; bottom:3px; display:flex; align-items:center; gap:8px; transform:translateX(-50%); }
 .conversation-carousel__dots button { width:7px; height:7px; padding:0; border:0; border-radius:999px; background:#3b5152; cursor:pointer; transition:.3s ease; }
 .conversation-carousel__dots button.is-active { width:28px; background:#67e0e4; box-shadow:0 0 16px rgba(103,224,228,.55); }
+.problem-thesis { margin-top:clamp(24px,3vh,38px); padding:16px 0 0 20px; border-left:2px solid #45d7de; display:flex; flex-direction:column; gap:7px; max-width:620px; }
+.problem-thesis span { color:#81999b; font-size:clamp(.68rem,.82vw,.9rem); font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+.problem-thesis strong { color:#eaf4f4; font-size:clamp(1rem,1.35vw,1.5rem); line-height:1.18; letter-spacing:-.025em; }
 .slide--problem .slide-copy { max-width:720px; }
 .slide--problem .slide-visual { overflow:visible; }
 .chat-evidence { position:relative; padding:20px; border:1px solid rgba(113,228,234,.18); border-radius:28px; background:linear-gradient(145deg,#0b2023,#061316); box-shadow:0 35px 90px rgba(0,0,0,.35); }
