@@ -128,6 +128,11 @@ button { font:inherit; }
 .product-interfaces__statement { position:absolute; z-index:22; left:50%; bottom:8.6%; width:min(1120px,76vw); translate:-50% 0; color:#b8c7c8; font-size:clamp(.72rem,.96vw,1.05rem); font-weight:650; text-align:center; }
 .product-interfaces__role-progress { position:absolute; z-index:24; left:5%; right:5%; bottom:4.8%; height:3px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.08); }
 .product-interfaces__role-progress span { display:block; width:100%; height:100%; transform-origin:left; background:linear-gradient(90deg,var(--teal),var(--cyan)); box-shadow:0 0 18px rgba(113,228,234,.6); }
+.product-interfaces--cinematic .product-interfaces__veil { background:radial-gradient(circle at 50% 55%,rgba(16,184,200,.16),transparent 38%),linear-gradient(145deg,#020a0c,#041719 55%,#02090b); }
+.product-interfaces__role-title { position:absolute; z-index:28; left:50%; top:7%; translate:-50% 0; margin:0; color:#f5fafa; font-size:clamp(2.2rem,4.3vw,5.1rem); font-weight:760; line-height:.9; letter-spacing:-.06em; text-align:center; text-shadow:0 16px 45px #000; white-space:nowrap; }
+.product-interfaces--cinematic .product-interfaces__stage { top:15%; bottom:7%; }
+.product-interfaces--cinematic .product-interfaces__carousel figure { height:92%; will-change:transform,opacity,filter; }
+
 
 .product-unified { position:absolute; inset:0; overflow:hidden; background:#02090b; }
 .product-unified__panels { position:absolute; inset:0; display:flex; gap:2px; }
