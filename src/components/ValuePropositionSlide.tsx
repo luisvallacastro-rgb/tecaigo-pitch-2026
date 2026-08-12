@@ -1,38 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import type { PitchSlide } from "../data/slides";
 
-const words = [
-  "Conexión","Inclusión","Ventas","Ahorro","Ocupación","Reservas","Rutas","Alianzas","Turismo","Integración",
-  "Visibilidad","Experiencias","Formalización","Logística","Movilidad","Desarrollo","Crecimiento","Innovación",
-  "Colaboración","Oportunidades","Rentabilidad","Expansión","Digitalización","Bancarización","Trazabilidad",
-  "Productividad","Competitividad","Comercialización","Coordinación","Ecosistema"
+const scenes = [
+  {
+    image: "/assets/page-4/ecosistema-colaborativo.png",
+    kicker: "DE UNA OPORTUNIDAD AISLADA",
+    title: "Nuevas relaciones comerciales.",
+    body: "Comercios y operadores convierten una oferta existente en una experiencia lista para activarse.",
+    metric: "OFERTA + OPERACIÓN",
+  },
+  {
+    image: "/assets/page-4/costos-compartidos.png",
+    kicker: "A UNA RED QUE COLABORA",
+    title: "Costos y capacidad compartidos.",
+    body: "Varios operadores integran cupos, reducen costos y aprovechan mejor los recursos disponibles.",
+    metric: "44 / 50 CUPOS",
+  },
+  {
+    image: "/assets/page-4/cupos-compartidos.png",
+    kicker: "Y CREA NUEVO VALOR",
+    title: "Más rutas. Más ventas. Más ocupación.",
+    body: "TeCaiGO conecta solicitudes, oferta y disponibilidad para abrir nuevos canales de comercialización.",
+    metric: "UN SOLO ECOSISTEMA",
+  },
 ];
 
 export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchSlide;reduceMotion:boolean}) {
-  return <div className="value-cloud" aria-label="Beneficios de TeCaiGO">
-    <div className="value-cloud__aura" aria-hidden="true"/>
-    <div className="value-cloud__block">
-      {words.slice(0,29).map((word,index) => (
-        <motion.span
-          key={word}
-          className={`value-cloud__word word-${index + 1}`}
-          initial={reduceMotion ? false : {opacity:0,scale:.35,filter:"blur(10px)"}}
-          animate={{opacity:1,scale:1,filter:"blur(0px)"}}
-          transition={{delay:reduceMotion ? 0 : .22 + index * .16,duration:.7,type:"spring",stiffness:115,damping:16}}
-        >{word}</motion.span>
-      ))}
-      <motion.div
-        className="value-cloud__hero"
-        initial={reduceMotion ? false : {opacity:0,scaleX:.42,filter:"blur(16px)"}}
-        animate={{opacity:1,scaleX:1,filter:"blur(0px)"}}
-        transition={{delay:reduceMotion ? 0 : 2.8,duration:1.15,ease:[.22,1,.36,1]}}
-      >BENEFICIOS</motion.div>
-    </div>
-    <motion.div className="value-cloud__message" initial={reduceMotion?false:{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:reduceMotion?0:6.1,duration:.85}}>
+  const [active,setActive]=useState(0);
+  useEffect(()=>{
+    if(reduceMotion) return;
+    const timer=window.setInterval(()=>setActive(value=>(value+1)%scenes.length),10000);
+    return()=>window.clearInterval(timer);
+  },[reduceMotion]);
+  const scene=scenes[active];
+  return <div className="value-sequence" aria-label="Secuencia de propuesta de valor de TeCaiGO">
+    <AnimatePresence mode="popLayout" initial={false}>
+      <motion.figure key={scene.image} className="value-sequence__scene"
+        initial={reduceMotion?false:{x:"100%",clipPath:"inset(0 0 0 100%)"}}
+        animate={{x:"0%",clipPath:"inset(0 0 0 0%)"}}
+        exit={reduceMotion?undefined:{x:"-24%",opacity:.32,filter:"blur(7px)"}}
+        transition={{duration:reduceMotion?0:1.25,ease:[.22,1,.36,1]}}>
+        <motion.img src={scene.image} alt="" initial={reduceMotion?false:{scale:1.07}} animate={{scale:1.015}} transition={{duration:9.5,ease:"linear"}}/>
+        <div className="value-sequence__veil"/>
+      </motion.figure>
+    </AnimatePresence>
+    <div className="value-sequence__lines" aria-hidden="true"><i/><i/><i/></div>
+    <AnimatePresence mode="wait">
+      <motion.div key={active} className="value-sequence__copy"
+        initial={reduceMotion?false:{opacity:0,y:35}}
+        animate={{opacity:1,y:0}}
+        exit={reduceMotion?undefined:{opacity:0,y:-18}}
+        transition={{delay:reduceMotion?0:.45,duration:.75}}>
+        <small>{scene.kicker}</small>
+        <h1>{scene.title}</h1>
+        <p>{scene.body}</p>
+        <strong>{scene.metric}</strong>
+      </motion.div>
+    </AnimatePresence>
+    <motion.div className="value-sequence__thesis" initial={reduceMotion?false:{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{delay:reduceMotion?0:1.1,duration:.8}}>
       <span>PROPUESTA DE VALOR</span>
-      <h1>{slide.title}</h1>
+      <p><b>No vendemos tours por internet.</b> Convertimos relaciones dispersas en un ecosistema colaborativo.</p>
     </motion.div>
+    <div className="value-sequence__steps">{scenes.map((item,index)=><span key={item.image} className={index===active?"is-active":""}><i/></span>)}</div>
   </div>;
 }

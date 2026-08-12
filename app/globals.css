@@ -1045,3 +1045,31 @@ button { font:inherit; }
 .value-cloud__word.word-28{font-size:clamp(.48rem,.74vw,.92rem)!important}
 .value-cloud__word.word-29{font-size:clamp(.72rem,1.25vw,1.58rem)!important}
 .value-cloud__message{left:37%;bottom:3.2%;width:min(820px,55vw)}
+
+
+/* Page 4 — cinematic product value sequence */
+.value-sequence{position:absolute;inset:0;overflow:hidden;background:#02090b}
+.value-sequence__scene,.value-sequence__scene img,.value-sequence__veil{position:absolute;inset:0;width:100%;height:100%}
+.value-sequence__scene{margin:0;will-change:transform,clip-path}
+.value-sequence__scene img{object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.08) brightness(.72)}
+.value-sequence__veil{background:linear-gradient(90deg,rgba(1,9,11,.96) 0%,rgba(1,10,12,.82) 26%,rgba(1,10,12,.2) 58%,rgba(1,9,11,.46) 100%),linear-gradient(0deg,rgba(1,8,10,.9) 0%,transparent 43%,rgba(1,8,10,.28) 100%);box-shadow:inset 0 0 190px rgba(0,0,0,.52)}
+.value-sequence__lines{position:absolute;z-index:5;inset:0;pointer-events:none}
+.value-sequence__lines:before{content:"";position:absolute;left:5.3%;top:21%;width:1px;height:54%;background:linear-gradient(transparent,rgba(113,228,234,.7),transparent)}
+.value-sequence__lines i{position:absolute;width:7px;height:7px;border-radius:50%;background:#71e4ea;box-shadow:0 0 20px #71e4ea}
+.value-sequence__lines i:nth-child(1){left:5.15%;top:32%}.value-sequence__lines i:nth-child(2){left:5.15%;top:48%}.value-sequence__lines i:nth-child(3){left:5.15%;top:64%}
+.value-sequence__copy{position:absolute;z-index:10;left:8%;top:27%;width:min(650px,37vw);padding-left:clamp(20px,2vw,36px);border-left:2px solid rgba(113,228,234,.65);text-shadow:0 12px 35px #000}
+.value-sequence__copy small{display:block;color:#71e4ea;font-size:clamp(.55rem,.75vw,.85rem);font-weight:950;letter-spacing:.23em}
+.value-sequence__copy h1{max-width:640px;margin:16px 0 18px;color:#fff;font-size:clamp(2.7rem,4.7vw,6rem);font-weight:780;line-height:.91;letter-spacing:-.065em;text-wrap:balance}
+.value-sequence__copy p{max-width:570px;margin:0;color:#cad7d8;font-size:clamp(.82rem,1.15vw,1.3rem);font-weight:610;line-height:1.42;text-wrap:balance}
+.value-sequence__copy strong{display:inline-flex;margin-top:26px;padding:10px 16px;border:1px solid rgba(113,228,234,.45);border-radius:999px;color:#baf7f7;background:rgba(3,28,32,.72);font-size:clamp(.62rem,.8vw,.9rem);letter-spacing:.14em;box-shadow:0 0 35px rgba(16,184,200,.12);backdrop-filter:blur(10px)}
+.value-sequence__thesis{position:absolute;z-index:12;left:8%;bottom:10.5%;width:min(1040px,67vw);padding:17px 24px;border-top:1px solid rgba(113,228,234,.38);background:linear-gradient(90deg,rgba(2,17,20,.94),rgba(2,17,20,.68) 72%,transparent);text-shadow:0 10px 28px #000}
+.value-sequence__thesis span{color:#71e4ea;font-size:clamp(.48rem,.62vw,.7rem);font-weight:950;letter-spacing:.24em}
+.value-sequence__thesis p{max-width:none;margin:7px 0 0;color:#dce6e6;font-size:clamp(.92rem,1.35vw,1.55rem);line-height:1.18}
+.value-sequence__thesis b{color:#fff}
+.value-sequence__steps{position:absolute;z-index:15;right:5.5%;top:50%;display:flex;flex-direction:column;gap:13px;translate:0 -50%}
+.value-sequence__steps span{display:grid;place-items:center;width:15px;height:15px;border:1px solid rgba(113,228,234,.35);border-radius:50%}
+.value-sequence__steps i{width:5px;height:5px;border-radius:50%;background:#60787a;transition:.5s ease}
+.value-sequence__steps span.is-active{border-color:#71e4ea;box-shadow:0 0 18px rgba(113,228,234,.4)}
+.value-sequence__steps span.is-active i{width:9px;height:9px;background:#71e4ea}
+@media(max-aspect-ratio:4/3){.value-sequence__copy{left:7%;top:25%;width:48vw}.value-sequence__copy h1{font-size:clamp(2.3rem,5.2vw,4.6rem)}.value-sequence__thesis{left:7%;bottom:14%;width:72vw}.value-sequence__scene img{object-position:58% center}}
+@media(max-width:760px){.value-sequence__copy{left:8%;top:23%;width:72vw}.value-sequence__copy h1{font-size:2.2rem}.value-sequence__copy p{font-size:.7rem}.value-sequence__copy strong{margin-top:13px}.value-sequence__thesis{left:8%;bottom:16%;width:79vw;padding:10px}.value-sequence__thesis p{font-size:.7rem}.value-sequence__steps{right:4%}}
