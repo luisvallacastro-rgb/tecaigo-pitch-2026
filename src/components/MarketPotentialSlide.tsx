@@ -31,7 +31,6 @@ export default function MarketPotentialSlide({reduceMotion,running}:{reduceMotio
       </motion.figure>
     </AnimatePresence>
     <div className="market-potential__shade" aria-hidden="true" />
-    <div className="market-potential__map" aria-hidden="true"><i/><i/><i/><i/><i/></div>
     <AnimatePresence mode="wait">
       <motion.div key={active} className="market-potential__copy" initial={reduceMotion?false:{opacity:0,y:32}} animate={{opacity:1,y:0}} exit={reduceMotion?undefined:{opacity:0,y:-18}} transition={{delay:reduceMotion?0:.32,duration:.72}}>
         <span>{scene.sector}</span><h1>{scene.title}</h1><p>{scene.detail}</p>
