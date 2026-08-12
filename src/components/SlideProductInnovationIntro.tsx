@@ -9,7 +9,7 @@ type Props = {
   started: boolean;
 };
 
-const FRAME_SECONDS = 5;
+const FRAME_SECONDS = 3.75;
 
 export default function SlideProductInnovationIntro({ slide, reduceMotion, started }: Props) {
   const actors = slide.innovationIntro?.actors ?? [];
@@ -55,7 +55,7 @@ export default function SlideProductInnovationIntro({ slide, reduceMotion, start
         className="innovation-cinematic__question"
         initial={reduceMotion ? false : { opacity: 0, scale: 0.96 }}
         animate={!started || reduceMotion ? { opacity: 1, scale: 1 } : { opacity: [0, 1, 1, 0], scale: [0.96, 1, 1, 1.02] }}
-        transition={!started || reduceMotion ? { duration: 0 } : { duration: 18.2, times: [0, 0.025, 0.93, 1], ease: "easeInOut" }}
+        transition={!started || reduceMotion ? { duration: 0 } : { duration: 13.7, times: [0, 0.03, 0.92, 1], ease: "easeInOut" }}
       >
         <span>{slide.eyebrow}</span>
         <h1>{slide.title}</h1>
@@ -66,7 +66,7 @@ export default function SlideProductInnovationIntro({ slide, reduceMotion, start
         className="innovation-cinematic__finale"
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: started ? 1 : 0, y: started ? 0 : 16 }}
-        transition={{ duration: 0.58, delay: reduceMotion ? 0 : 18.05, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.58, delay: reduceMotion ? 0 : 13.55, ease: [0.22, 1, 0.36, 1] }}
       >
         <div><span>TeCai</span><b>GO</b></div>
         <p>{slide.statement}</p>
