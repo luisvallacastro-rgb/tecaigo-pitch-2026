@@ -1073,3 +1073,10 @@ button { font:inherit; }
 .value-sequence__steps span.is-active i{width:9px;height:9px;background:#71e4ea}
 @media(max-aspect-ratio:4/3){.value-sequence__copy{left:7%;top:25%;width:48vw}.value-sequence__copy h1{font-size:clamp(2.3rem,5.2vw,4.6rem)}.value-sequence__thesis{left:7%;bottom:14%;width:72vw}.value-sequence__scene img{object-position:58% center}}
 @media(max-width:760px){.value-sequence__copy{left:8%;top:23%;width:72vw}.value-sequence__copy h1{font-size:2.2rem}.value-sequence__copy p{font-size:.7rem}.value-sequence__copy strong{margin-top:13px}.value-sequence__thesis{left:8%;bottom:16%;width:79vw;padding:10px}.value-sequence__thesis p{font-size:.7rem}.value-sequence__steps{right:4%}}
+
+
+/* Page 4 visibility correction */
+.value-sequence__scene img{filter:saturate(.94) contrast(1.04) brightness(.96)}
+.value-sequence__veil{background:linear-gradient(90deg,rgba(1,9,11,.82) 0%,rgba(1,10,12,.58) 27%,rgba(1,10,12,.08) 55%,rgba(1,9,11,.04) 100%),linear-gradient(0deg,rgba(1,8,10,.4) 0%,transparent 35%,rgba(1,8,10,.08) 100%);box-shadow:inset 0 0 80px rgba(0,0,0,.18)}
+.value-sequence__copy{padding:clamp(22px,2.4vw,42px);border-left:2px solid rgba(113,228,234,.78);background:linear-gradient(90deg,rgba(2,13,16,.68),rgba(2,13,16,.28) 72%,transparent);backdrop-filter:blur(2px)}
+.value-sequence__thesis{background:linear-gradient(90deg,rgba(2,17,20,.84),rgba(2,17,20,.46) 72%,transparent)}
