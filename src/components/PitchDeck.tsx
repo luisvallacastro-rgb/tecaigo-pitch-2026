@@ -862,7 +862,9 @@ export default function PitchDeck() {
       </AnimatePresence>
 
       <div className="deck-tools deck-tools--basic">
+        <button onClick={previous} disabled={index === 0} aria-label="Diapositiva anterior"><ArrowLeft /></button>
         <button onClick={togglePlayback} aria-label={running ? "Pausar temporizador" : "Iniciar temporizador"}>{running ? <Pause /> : <Play />}</button>
+        <button onClick={next} disabled={index === slides.length - 1} aria-label="Diapositiva siguiente"><ArrowRight /></button>
         <button onClick={restartPresentation} aria-label="Volver a iniciar"><RefreshCcw /></button>
         <button className={fullscreenActive ? "is-fullscreen" : ""} onClick={toggleFullscreen} aria-label={fullscreenActive ? "Salir de pantalla completa" : "Pantalla completa"}>{fullscreenActive ? <Minimize2 /> : <Expand />}</button>
         <div className="deck-tools__elapsed" aria-label={`Tiempo transcurrido ${formatTime(elapsed)}`}><Clock3 /><span>{formatTime(elapsed)}</span></div>
