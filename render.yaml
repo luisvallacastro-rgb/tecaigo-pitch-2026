@@ -1,6 +1,9 @@
 services:
-  - type: static_site
-    name: tecaigo-pitch-2026
+  # Render service types are immutable. This new name provisions a separate
+  # CDN-backed static site instead of trying to convert the sleeping Node app.
+  - type: web
+    runtime: static
+    name: tecaigo-pitch-2026-static
     branch: main
     buildCommand: npm ci && npx next build --webpack
     staticPublishPath: ./out
