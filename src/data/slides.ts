@@ -110,6 +110,20 @@ export const slides: PitchSlide[] = [
     },
   },
   {
+    id: 2,
+    kind: "problem",
+    eyebrow: "La colaboración ya existe",
+    title: "Así opera hoy una industria completa.",
+    statement: "Está fragmentada entre WhatsApp, llamadas y contactos personales.",
+    bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
+    duration: 30,
+    evaluation: "Producto",
+    notes: {
+      message: "Mostrar que TeCaiGO organiza digitalmente una colaboración económica que ya sucede, pero hoy está fragmentada.",
+      script: "Hoy los operadores buscan cupos, transporte, clientes y proveedores mediante WhatsApp, llamadas y contactos personales. La colaboración ya existe, pero está fragmentada. TeCaiGO no intenta crear un comportamiento nuevo: organiza digitalmente una actividad económica que ya ocurre todos los días.",
+    },
+  },
+  {
     id: 3,
     kind: "innovationClosing",
     eyebrow: "Producto · Innovación",
@@ -120,20 +134,6 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Cerrar innovación mostrando cómo una industria fragmentada se convierte en una red colaborativa que genera valor.",
       script: "La innovación de TeCaiGO no es solamente digitalizar una reserva. Es conectar actores, capacidad, rutas, datos y oportunidades para convertir cualquier punto de la red en nuevo valor.",
-    },
-  },
-  {
-    id: 4,
-    kind: "problem",
-    eyebrow: "El problema",
-    title: "Así opera hoy una industria completa.",
-    statement: "Miles de oportunidades dependen de mensajes que desaparecen en minutos.",
-    bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
-    duration: 20,
-    evaluation: "Producto",
-    notes: {
-      message: "Hacer visible la fragmentación operativa que TeCaiGO resuelve.",
-      script: "Hoy un viaje puede depender de decenas de mensajes, llamadas y hojas de cálculo. Un cupo cambia, un transporte queda libre o aparece una oportunidad, pero la información se pierde y nadie ve el sistema completo.",
     },
   },
   {
