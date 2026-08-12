@@ -4,13 +4,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const scenes = [
-  { image:"/assets/page-5/tour-operador.jpg", sector:"Tour operadores", title:"Primero, conectamos la oferta.", detail:"Una red nacional que une experiencias de todos los destinos." },
-  { image:"/assets/page-5/transporte.jpg", sector:"Transporte", title:"Después, activamos la movilidad.", detail:"Capacidad disponible conectada con rutas que necesitan operar." },
-  { image:"/assets/page-5/comercios.jpg", sector:"Comercios turísticos", title:"Integramos cada destino.", detail:"Hoteles, restaurantes y comercios transforman su oferta en experiencias." },
-  { image:"/assets/page-5/turistas.jpg", sector:"Turistas", title:"La red llega a todo el país.", detail:"Más oferta visible, reservable y comprable desde un solo lugar." },
-  { image:"/assets/page-5/turistas-online.jpg", sector:"Mercado conectado", title:"El Salvador, nuestra primera meta.", detail:"Aquí validaremos, fortaleceremos y haremos predecible el modelo." },
-  { image:"/assets/page-5/banca.jpg", sector:"Ecosistema", title:"Una red que genera confianza.", detail:"Actividad digital, trazabilidad y nuevas posibilidades de crecimiento." },
-  { image:"/assets/page-5/universidades.jpg", sector:"Siguiente generación", title:"Del mercado nacional a la región.", detail:"Un modelo probado en El Salvador, listo para cruzar fronteras." },
+  { image:"/assets/page-5/tour-operador.jpg", sector:"Prioridad inicial", title:"Cubrir todo El Salvador.", detail:"Comenzamos conectando la oferta turística de los distintos destinos del país." },
+  { image:"/assets/page-5/transporte.jpg", sector:"Cobertura nacional", title:"Una red que llega a cada destino.", detail:"Operadores y transporte articulados para ampliar la capacidad de operación nacional." },
+  { image:"/assets/page-5/comercios.jpg", sector:"Oferta nacional", title:"Integrar hoteles, restaurantes y comercios.", detail:"Cada negocio suma su oferta a una red turística visible en todo El Salvador." },
+  { image:"/assets/page-5/turistas.jpg", sector:"Demanda nacional", title:"Conectar turistas con todo el país.", detail:"Una sola plataforma para descubrir, reservar y comprar experiencias nacionales." },
+  { image:"/assets/page-5/turistas-online.jpg", sector:"Mercado conectado", title:"Consolidar el mercado salvadoreño.", detail:"Más actores, más destinos y más transacciones dentro de una misma red." },
+  { image:"/assets/page-5/banca.jpg", sector:"Mercado fortalecido", title:"Hacer predecible el modelo.", detail:"Datos y trazabilidad para fortalecer la operación turística de El Salvador." },
+  { image:"/assets/page-5/universidades.jpg", sector:"Meta nacional", title:"El Salvador, conectado de punta a punta.", detail:"Primero consolidamos una red nacional sólida, activa y sostenible." },
 ] as const;
 
 const SCENE_MS = 30000 / scenes.length;
@@ -36,7 +36,7 @@ export default function MarketPotentialSlide({reduceMotion,running}:{reduceMotio
         <span>{scene.sector}</span><h1>{scene.title}</h1><p>{scene.detail}</p>
       </motion.div>
     </AnimatePresence>
-    <div className="market-potential__thesis"><strong>EL SALVADOR</strong><span>VALIDAR</span><i/><span>FORTALECER</span><i/><span>HACER PREDECIBLE</span></div>
+    <div className="market-potential__thesis"><strong>EL SALVADOR</strong><span>COBERTURA NACIONAL</span><i/><span>CONSOLIDACIÓN</span></div>
     <div className="market-potential__rail" aria-label={`Vista ${active+1} de ${scenes.length}`}>
       {scenes.map((item,index)=><button key={item.image} className={index===active?"is-active":""} onClick={()=>setActive(index)} aria-label={`Mostrar ${item.sector}`}><i/></button>)}
     </div>

@@ -161,11 +161,11 @@ export const slides: PitchSlide[] = [
     kind: "marketPotential",
     eyebrow: "Potencial de Mercado",
     title: "El Salvador, nuestra primera meta.",
-    statement: "Una red nacional para validar, fortalecer y hacer predecible el modelo.",
+    statement: "Cobertura nacional para consolidar el mercado turístico de El Salvador.",
     duration: 30,
     evaluation: "Potencial",
     notes: {
-      message: "Presentar a El Salvador como el mercado inicial donde TeCaiGO consolidará su red y probará un modelo replicable.",
+      message: "Demostrar que la prioridad inicial es alcanzar cobertura nacional y consolidar el mercado de El Salvador.",
       script: "Nuestra primera meta es cubrir El Salvador. Queremos consolidar una red nacional de operadores, transporte, hoteles, restaurantes, comercios, comisionistas y turistas que conecte la oferta de los distintos destinos del país. El Salvador es el mercado donde validaremos, fortaleceremos y haremos predecible el modelo antes de llevarlo a la región.",
     },
   },
