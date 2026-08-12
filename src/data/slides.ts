@@ -125,15 +125,21 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 3,
-    kind: "innovationClosing",
-    eyebrow: "Producto · Innovación",
-    title: "Una oportunidad puede nacer en cualquier punto de la red.",
-    statement: "TeCaiGO la conecta y la convierte en valor.",
-    duration: 20,
+    kind: "product",
+    eyebrow: "Innovación",
+    title: "Toda la red, en movimiento.",
+    statement: "Cuatro interfaces especializadas. Un solo ecosistema conectado.",
+    productInterfaces: [
+      { id:"operators", label:"Tour operadores", title:"Crear y coordinar", description:"Crea experiencias y coordina cupos.", image:"/assets/founder-carousel/tecaigo-to-mobile-01.jpg" },
+      { id:"commerce", label:"Comercio turístico", title:"Convertir oferta", description:"Convierte su oferta en nuevas rutas.", image:"/assets/founder-carousel/tecaigo-commerce-mobile-01.jpg" },
+      { id:"tourists", label:"Turista", title:"Descubrir y comprar", description:"Descubre, reserva y compra.", image:"/assets/founder-carousel/tecaigo-tourist-mobile-01.jpg" },
+      { id:"transport", label:"Transporte", title:"Activar capacidad", description:"Activa su capacidad disponible.", image:"/assets/founder-carousel/tecaigo-transport-mobile-01.jpg" },
+    ],
+    duration: 35,
     evaluation: "Producto",
     notes: {
-      message: "Cerrar innovación mostrando cómo una industria fragmentada se convierte en una red colaborativa que genera valor.",
-      script: "La innovación de TeCaiGO no es solamente digitalizar una reserva. Es conectar actores, capacidad, rutas, datos y oportunidades para convertir cualquier punto de la red en nuevo valor.",
+      message: "Mostrar las cuatro interfaces especializadas de TeCaiGO con el mismo tiempo y protagonismo.",
+      script: "TeCaiGO organiza la colaboración existente mediante cuatro experiencias conectadas: una para tour operadores, una para comercios turísticos, una para turistas y una para transporte. Cada actor recibe herramientas específicas, pero todos operan dentro de una sola red.",
     },
   },
   {
