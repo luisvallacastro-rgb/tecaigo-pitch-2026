@@ -39,11 +39,11 @@ export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchS
   return <div className="value-sequence" aria-label="Secuencia de propuesta de valor de TeCaiGO">
     <AnimatePresence mode="popLayout" initial>
       <motion.figure key={scene.image} className="value-sequence__scene"
-        initial={reduceMotion?false:{x:"100%",clipPath:"inset(0 0 0 100%)"}}
-        animate={{x:"0%",clipPath:"inset(0 0 0 0%)"}}
-        exit={reduceMotion?undefined:{x:"-24%",opacity:.32,filter:"blur(7px)"}}
+        initial={reduceMotion?false:{x:"100%",opacity:1}}
+        animate={{x:"0%",opacity:1}}
+        exit={reduceMotion?undefined:{x:"-18%",opacity:0}}
         transition={{duration:reduceMotion?0:1.25,ease:[.22,1,.36,1]}}>
-        <motion.img src={scene.image} alt="" initial={reduceMotion?false:{scale:1.07}} animate={{scale:1.015}} transition={{duration:9.5,ease:"linear"}}/>
+        <img src={scene.image} alt=""/>
         <div className="value-sequence__veil"/>
       </motion.figure>
     </AnimatePresence>
