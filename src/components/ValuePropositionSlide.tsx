@@ -28,7 +28,7 @@ export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchS
         initial={reduceMotion ? false : {opacity:0,scaleX:.42,filter:"blur(16px)"}}
         animate={{opacity:1,scaleX:1,filter:"blur(0px)"}}
         transition={{delay:reduceMotion ? 0 : 2.8,duration:1.15,ease:[.22,1,.36,1]}}
-      >ECOSISTEMA</motion.div>
+      >BENEFICIOS</motion.div>
     </div>
     <motion.div className="value-cloud__message" initial={reduceMotion?false:{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{delay:reduceMotion?0:6.1,duration:.85}}>
       <span>PROPUESTA DE VALOR</span>
