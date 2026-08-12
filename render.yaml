@@ -1,11 +1,11 @@
 services:
-  - type: web
+  - type: static_site
     name: tecaigo-pitch-2026
-    runtime: node
-    plan: free
     branch: main
     buildCommand: npm ci && npx next build --webpack
-    startCommand: npx next start -H 0.0.0.0 -p $PORT
-    healthCheckPath: /
+    staticPublishPath: ./out
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     autoDeployTrigger: commit
-    renderSubdomainPolicy: enabled

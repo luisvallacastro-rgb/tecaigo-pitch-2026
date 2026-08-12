@@ -17,6 +17,7 @@ export type SlideKind =
   | "ecosystem"
   | "flow"
   | "innovation"
+  | "innovationClosing"
   | "product"
   | "market"
   | "business"
@@ -64,7 +65,7 @@ export type PitchSlide = {
   };
 };
 
-// Los tiempos suman exactamente 300 segundos (5:00).
+// Los tiempos se calculan automáticamente para acompañar la reconstrucción del pitch.
 export const slides: PitchSlide[] = [
   {
     id: 1,
@@ -130,37 +131,38 @@ export const slides: PitchSlide[] = [
         image: "/assets/founder-carousel/tecaigo-commerce-mobile-03.jpg",
       },
       {
-        id: "tourists",
-        label: "Turista",
-        title: "Descubre, reserva y compra",
-        description: "Explora experiencias coordinadas con información y disponibilidad trazables.",
-        image: "/assets/founder-carousel/tecaigo-tourist-mobile-03.jpg",
-      },
-      {
         id: "transport",
         label: "Transporte",
         title: "Activa capacidad y ejecuta rutas",
         description: "Gestiona vehículos, disponibilidad, pasajeros y recorridos confirmados.",
         image: "/assets/founder-carousel/tecaigo-transport-mobile-03.jpg",
       },
+      {
+        id: "tourists",
+        label: "Turista",
+        title: "Descubre, reserva y compra",
+        description: "Explora experiencias coordinadas con información y disponibilidad trazables.",
+        image: "/assets/founder-carousel/tecaigo-tourist-mobile-03.jpg",
+      },
     ],
-    duration: 40,
+    duration: 30,
     evaluation: "Producto",
     notes: {
-      message: "Mostrar durante diez segundos la interfaz especializada de cada actor del ecosistema.",
+      message: "Mostrar durante 7.5 segundos la interfaz especializada de cada actor del ecosistema.",
       script: "TeCaiGO no obliga a todos a trabajar en una misma pantalla. Cada actor recibe una experiencia diseñada para su operación: el tour operador coordina, el comercio publica oportunidades, el turista reserva y el transporte ejecuta. Cuatro interfaces especializadas, conectadas por un solo ecosistema.",
     },
   },
   {
     id: 3,
-    kind: "question",
-    eyebrow: "Una pregunta",
-    title: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestro país?",
-    duration: 12,
+    kind: "innovationClosing",
+    eyebrow: "Producto · Innovación",
+    title: "Una oportunidad puede nacer en cualquier punto de la red.",
+    statement: "TeCaiGO la conecta y la convierte en valor.",
+    duration: 20,
     evaluation: "Producto",
     notes: {
-      message: "Hacer una pausa y dejar que la audiencia responda mentalmente antes de mostrar el problema.",
-      script: "Cómo creen que se organizan hoy gran parte de los tour operadores en nuestro país?",
+      message: "Cerrar innovación mostrando cómo una industria fragmentada se convierte en una red colaborativa que genera valor.",
+      script: "La innovación de TeCaiGO no es solamente digitalizar una reserva. Es conectar actores, capacidad, rutas, datos y oportunidades para convertir cualquier punto de la red en nuevo valor.",
     },
   },
   {
