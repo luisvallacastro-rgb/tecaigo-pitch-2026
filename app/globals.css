@@ -1106,3 +1106,9 @@ button { font:inherit; }
 .value-sequence__steps{right:auto;left:4.8%}
 @media(max-aspect-ratio:4/3){.value-sequence__copy{left:auto;right:6%;top:24%;width:47vw}.value-sequence__thesis{left:auto;right:7%;width:72vw}}
 @media(max-width:760px){.value-sequence:before{height:16%}.value-sequence:after{height:24%}.value-sequence__copy{left:auto;right:7%;top:22%;width:72vw}.value-sequence__thesis{left:auto;right:7%;bottom:16%;width:79vw}.value-sequence__steps{left:3.5%;right:auto}}
+
+
+/* Page 4 — scene-aware narrative placement */
+.value-sequence__copy--1,.value-sequence__copy--2{left:7.5%;right:auto;background:linear-gradient(90deg,rgba(2,13,16,.94),rgba(2,13,16,.76) 72%,rgba(2,13,16,.12));box-shadow:-20px 0 60px rgba(0,0,0,.28)}
+@media(max-aspect-ratio:4/3){.value-sequence__copy--1,.value-sequence__copy--2{left:6%;right:auto}}
+@media(max-width:760px){.value-sequence__copy--1,.value-sequence__copy--2{left:7%;right:auto}}
