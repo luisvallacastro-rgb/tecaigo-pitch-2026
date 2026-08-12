@@ -19,11 +19,11 @@ export default function ValuePropositionSlide({ slide, reduceMotion }: { slide: 
       <svg className="value-proposition__network" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         {benefits.map((item,index)=><motion.line key={item[0]} x1="50" y1="53" x2={item[2]} y2={item[3]} initial={reduceMotion?false:{pathLength:0,opacity:0}} animate={{pathLength:1,opacity:.22}} transition={{delay:reduceMotion?0:1.7+index*.13,duration:.8}} />)}
       </svg>
-      <div className="value-proposition__words">
+      <div className="value-proposition__words value-proposition__words--mosaic">
         {benefits.map((item,index)=>(
           <motion.span
             key={item[0]}
-            className={`is-${item[1]} tone-${index%4}`}
+            className={`is-${item[1]} tone-${index%4} ${index%5===1||index%7===0?"is-vertical":""}`}
             style={{left:`${item[2]}%`,top:`${item[3]}%`}}
             initial={reduceMotion?false:{opacity:0,scale:.62,y:20,filter:"blur(9px)"}}
             animate={{opacity:index<4?.98:index<12?.86:.68,scale:1,y:0,filter:"blur(0px)"}}
@@ -31,7 +31,7 @@ export default function ValuePropositionSlide({ slide, reduceMotion }: { slide: 
           >{item[0]}</motion.span>
         ))}
       </div>
-      <motion.div className="value-proposition__core" initial={reduceMotion?false:{opacity:0,scale:.65}} animate={{opacity:1,scale:1}} transition={{delay:reduceMotion?0:5.8,duration:1,type:"spring"}}>
+      <motion.div className="value-proposition__hero-word" initial={reduceMotion?false:{opacity:0,scaleX:.55,filter:"blur(12px)"}} animate={{opacity:1,scaleX:1,filter:"blur(0px)"}} transition={{delay:reduceMotion?0:4.8,duration:1.1,ease:[.22,1,.36,1]}}>VALOR</motion.div><motion.div className="value-proposition__core" initial={reduceMotion?false:{opacity:0,scale:.65}} animate={{opacity:1,scale:1}} transition={{delay:reduceMotion?0:5.8,duration:1,type:"spring"}}>
         <strong><span>TeCai</span>GO</strong><small>VALOR COMPARTIDO</small><i/><i/>
       </motion.div>
       <motion.div className="value-proposition__message" initial={reduceMotion?false:{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{delay:reduceMotion?0:7.2,duration:.9}}>
