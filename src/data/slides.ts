@@ -4,6 +4,7 @@ export type SlideKind =
   | "question"
   | "problem"
   | "problemPoints"
+  | "marketPotential"
   | "formation"
   | "homefeedPanorama"
   | "homefeedConnection"
@@ -153,6 +154,19 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Presentar la amplitud de beneficios que TeCaiGO genera cuando convierte actores dispersos en una red colaborativa.",
       script: "La propuesta de valor de TeCaiGO se traduce en beneficios concretos: nuevas rutas, más ventas, costos compartidos, capacidad aprovechada, nuevos clientes, mayor visibilidad, acceso financiero y crecimiento compartido. Cuando la red comparte oportunidades, cada actor puede crecer más.",
+    },
+  },
+  {
+    id: 5,
+    kind: "marketPotential",
+    eyebrow: "Potencial de Mercado",
+    title: "El Salvador, nuestra primera meta.",
+    statement: "Una red nacional para validar, fortalecer y hacer predecible el modelo.",
+    duration: 30,
+    evaluation: "Potencial",
+    notes: {
+      message: "Presentar a El Salvador como el mercado inicial donde TeCaiGO consolidará su red y probará un modelo replicable.",
+      script: "Nuestra primera meta es cubrir El Salvador. Queremos consolidar una red nacional de operadores, transporte, hoteles, restaurantes, comercios, comisionistas y turistas que conecte la oferta de los distintos destinos del país. El Salvador es el mercado donde validaremos, fortaleceremos y haremos predecible el modelo antes de llevarlo a la región.",
     },
   },
   {
