@@ -37,7 +37,7 @@ export default function Slide10BusinessModel({ slide, reduceMotion }: { slide: P
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: .65, ease: [0.16, 1, 0.3, 1] }}
       >
-        <small><span>14</span><i /> {slide.eyebrow}</small>
+        <small><span>{String(slide.id).padStart(2, "0")}</span><i /> {slide.eyebrow}</small>
         <h2>{slide.title}</h2>
         <p>{slide.statement}</p>
       </motion.header>
