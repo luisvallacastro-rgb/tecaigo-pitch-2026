@@ -15,7 +15,6 @@ export type SlideKind =
   | "regionalPotential"
   | "competitiveAdvantage"
   | "impact"
-  | "income"
   | "businessModel"
   | "founder"
   | "ecosystem"
@@ -212,27 +211,26 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 9,
-    kind: "income",
+    kind: "businessModel",
     eyebrow: "Ingresos",
-    title: "Previsibilidad que crece con el ecosistema.",
-    statement: "Monetización diversificada, recurrente y transaccional.",
+    title: "Modelo de negocio escalable",
+    statement: "Múltiples fuentes de ingresos impulsadas por un solo ecosistema.",
     businessModel: {
       streams: [
-        { icon: "subscriptions", title: "Suscripciones SaaS", description: "Herramientas de gestión para operadores, comercios y transporte.", status: "Recurrente" },
-        { icon: "commissions", title: "Comisiones", description: "Reservas, ventas e intermediación dentro del ecosistema.", status: "Transaccional" },
-        { icon: "positioning", title: "Publicidad", description: "Posicionamiento y visibilidad para negocios turísticos.", status: "Comercial" },
-        { icon: "analytics", title: "Analítica", description: "Datos e inteligencia de negocio conforme crece la red.", status: "Escalable" },
-        { icon: "finance", title: "Servicios financieros", description: "Alianzas futuras habilitadas por el historial transaccional.", status: "Evolución futura" },
+        { icon: "subscriptions", title: "Suscripciones SaaS", description: "Planes mensuales.", detail: "Operadores · Comercios · Transporte" },
+        { icon: "commissions", title: "Comisiones", description: "Por reservas e intermediación." },
+        { icon: "positioning", title: "Publicidad", description: "Mayor visibilidad comercial." },
+        { icon: "analytics", title: "Analítica", description: "Datos estratégicos." },
+        { icon: "finance", title: "Próxima evolución", description: "Servicios financieros.", status: "Próxima evolución" },
       ],
-      networkFlow: ["Más actores", "Más transacciones", "Más datos"],
-      impact: "A medida que crece la red, crecen las transacciones, los datos y la previsibilidad de ingresos.",
-      support: "Un ecosistema. Múltiples motores de monetización.",
+      networkFlow: ["Más actores", "Más transacciones", "Más ingresos"],
+      impact: "Cada nuevo participante fortalece el ecosistema y aumenta el valor de toda la plataforma.",
     },
-    duration: 30,
+    duration: 20,
     evaluation: "Previsibilidad",
     notes: {
-      message: "Mostrar un modelo diversificado que combina ingresos recurrentes, transaccionales y escalables, con una evolución futura hacia servicios financieros.",
-      script: "Nuestro modelo combina suscripciones SaaS para las herramientas de gestión, comisiones por reservas e intermediación, publicidad y posicionamiento para negocios turísticos y, conforme crezca el ecosistema, analítica e inteligencia de negocio. A futuro, el historial transaccional habilitará alianzas de servicios financieros.",
+      message: "Demostrar ingresos recurrentes, diversificación y crecimiento sostenible impulsado por el efecto de red.",
+      script: "TeCaiGO no depende de una única comisión. Combina suscripciones, comisiones, posicionamiento y analítica. Los servicios financieros son una evolución futura, habilitada por el historial transaccional. A medida que llegan más actores, crecen los eventos, las transacciones, la información, el valor del ecosistema y las oportunidades de ingreso.",
     },
   },
   {
@@ -289,30 +287,6 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 14,
-    kind: "businessModel",
-    eyebrow: "Previsibilidad",
-    title: "Modelo de negocio escalable",
-    statement: "Múltiples fuentes de ingresos impulsadas por un solo ecosistema.",
-    businessModel: {
-      streams: [
-        { icon: "subscriptions", title: "Suscripciones SaaS", description: "Planes mensuales.", detail: "Operadores · Comercios · Transporte" },
-        { icon: "commissions", title: "Comisiones", description: "Por reservas e intermediación." },
-        { icon: "positioning", title: "Publicidad", description: "Mayor visibilidad comercial." },
-        { icon: "analytics", title: "Analítica", description: "Datos estratégicos." },
-        { icon: "finance", title: "Próxima evolución", description: "Servicios financieros.", status: "Próxima evolución" },
-      ],
-      networkFlow: ["Más actores", "Más transacciones", "Más ingresos"],
-      impact: "Cada nuevo participante fortalece el ecosistema y aumenta el valor de toda la plataforma.",
-    },
-    duration: 20,
-    evaluation: "Previsibilidad",
-    notes: {
-      message: "Demostrar ingresos recurrentes, diversificación y crecimiento sostenible impulsado por el efecto de red.",
-      script: "TeCaiGO no depende de una única comisión. Combina suscripciones, comisiones, posicionamiento y analítica. Los servicios financieros son una evolución futura, habilitada por el historial transaccional. A medida que llegan más actores, crecen los eventos, las transacciones, la información, el valor del ecosistema y las oportunidades de ingreso.",
-    },
-  },
-  {
-    id: 15,
     kind: "founder",
     eyebrow: "Personas",
     title: "El problema lo viví. La solución la construyo.",
