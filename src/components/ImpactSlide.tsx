@@ -40,7 +40,10 @@ export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: b
   return (
     <div className="impact-slide" aria-label="Impacto económico y turístico de TeCaiGO">
       <div className="impact-slide__ambient" aria-hidden="true" />
-      <div className="impact-slide__canvas">
+      <div
+        className="impact-slide__canvas"
+        style={{ left: 0, top: 0, width: "100%", height: "auto", aspectRatio: "1448 / 1086", transform: "none", overflow: "hidden" }}
+      >
         <img className="impact-slide__desk" src="/assets/page-8/impact-desk.png" alt="Computadora mostrando información económica de El Salvador" />
         <div className="impact-slide__screen">
           <AnimatePresence initial={false} mode="sync">
