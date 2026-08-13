@@ -15,6 +15,7 @@ export type SlideKind =
   | "regionalPotential"
   | "competitiveAdvantage"
   | "impact"
+  | "income"
   | "businessModel"
   | "founder"
   | "ecosystem"
@@ -211,15 +212,27 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 9,
-    kind: "homefeedConnection",
-    eyebrow: "Conexión · Homefeed",
-    title: "Una publicación conecta dos mundos.",
-    statement: "El comercio muestra su oportunidad; el tour operador la descubre y la transforma en una experiencia vendible.",
-    duration: 20,
-    evaluation: "Producto",
+    kind: "income",
+    eyebrow: "Ingresos",
+    title: "Previsibilidad que crece con el ecosistema.",
+    statement: "Monetización diversificada, recurrente y transaccional.",
+    businessModel: {
+      streams: [
+        { icon: "subscriptions", title: "Suscripciones SaaS", description: "Herramientas de gestión para operadores, comercios y transporte.", status: "Recurrente" },
+        { icon: "commissions", title: "Comisiones", description: "Reservas, ventas e intermediación dentro del ecosistema.", status: "Transaccional" },
+        { icon: "positioning", title: "Publicidad", description: "Posicionamiento y visibilidad para negocios turísticos.", status: "Comercial" },
+        { icon: "analytics", title: "Analítica", description: "Datos e inteligencia de negocio conforme crece la red.", status: "Escalable" },
+        { icon: "finance", title: "Servicios financieros", description: "Alianzas futuras habilitadas por el historial transaccional.", status: "Evolución futura" },
+      ],
+      networkFlow: ["Más actores", "Más transacciones", "Más datos"],
+      impact: "A medida que crece la red, crecen las transacciones, los datos y la previsibilidad de ingresos.",
+      support: "Un ecosistema. Múltiples motores de monetización.",
+    },
+    duration: 30,
+    evaluation: "Previsibilidad",
     notes: {
-      message: "Mostrar cómo el Homefeed conecta en tiempo real la oferta del comercio turístico con la capacidad creadora del tour operador.",
-      script: "A un lado está el comercio turístico con instalaciones, servicios y promociones. Al otro está el tour operador buscando nuevas experiencias. El Homefeed conecta ambas necesidades: convierte una publicación en una oportunidad y una oportunidad en una nueva ruta.",
+      message: "Mostrar un modelo diversificado que combina ingresos recurrentes, transaccionales y escalables, con una evolución futura hacia servicios financieros.",
+      script: "Nuestro modelo combina suscripciones SaaS para las herramientas de gestión, comisiones por reservas e intermediación, publicidad y posicionamiento para negocios turísticos y, conforme crezca el ecosistema, analítica e inteligencia de negocio. A futuro, el historial transaccional habilitará alianzas de servicios financieros.",
     },
   },
   {
