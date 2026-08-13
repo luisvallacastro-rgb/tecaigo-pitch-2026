@@ -13,6 +13,7 @@ export type SlideKind =
   | "touristArrival"
   | "ecosystemImpact"
   | "regionalPotential"
+  | "competitiveAdvantage"
   | "businessModel"
   | "founder"
   | "ecosystem"
@@ -184,14 +185,14 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 7,
-    kind: "formation",
-    eyebrow: "El ecosistema",
-    title: "Cuando todos se conectan, nace TeCaiGO.",
-    duration: 18,
-    evaluation: "Producto",
+    kind: "competitiveAdvantage",
+    eyebrow: "Ventaja Competitiva",
+    title: "El software puede copiarse. La confianza que conecta a toda una red, no.",
+    duration: 25,
+    evaluation: "Potencial",
     notes: {
-      message: "Mostrar que TeCaiGO es el resultado de conectar a toda la cadena de valor.",
-      script: "Al inicio todos aparecen desordenados. Luego TeCaiGO organiza directamente a comercios turísticos, tour operadores, transportistas y turistas; y de manera indirecta conecta a universidades, gobierno y banca.",
+      message: "Explicar que la ventaja competitiva sostenible de TeCaiGO es la red activa de relaciones, información, transacciones y confianza construida alrededor del software.",
+      script: "Nuestra ventaja no es únicamente el software; es el ecosistema que construimos alrededor de él. Una función puede copiarse, pero una red activa de operadores, comercios, transporte, comisionistas y turistas, con relaciones, información e historial transaccional, requiere tiempo y confianza.",
     },
   },
   {
