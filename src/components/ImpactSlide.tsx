@@ -44,7 +44,7 @@ export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: b
         className="impact-slide__canvas"
         style={{ left: 0, top: 0, width: "100%", height: "auto", aspectRatio: "1448 / 1086", transform: "none", overflow: "hidden" }}
       >
-        <img className="impact-slide__desk" src="/assets/page-8/impact-desk.png" alt="Computadora mostrando información económica de El Salvador" />
+        <img className="impact-slide__desk" src="/assets/page-8/impact-desk.jpg" alt="Computadora mostrando información económica de El Salvador" />
         <div className="impact-slide__screen">
           <AnimatePresence initial={false} mode="sync">
             <motion.img
