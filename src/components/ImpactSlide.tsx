@@ -60,7 +60,11 @@ export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: b
         </div>
       </div>
 
-      <div className="impact-slide__chrome" aria-hidden="true" />
+      <div
+        className="impact-slide__chrome"
+        style={{ background: "linear-gradient(180deg, rgba(1,8,10,.28) 0%, transparent 18%, transparent 78%, rgba(1,8,10,.46) 100%)" }}
+        aria-hidden="true"
+      />
       <AnimatePresence mode="wait">
         <motion.section
           className="impact-slide__copy"
