@@ -48,18 +48,12 @@ export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: b
               key={scene.image}
               src={scene.image}
               alt=""
-              initial={reduceMotion ? false : { opacity: 0, scale: 1.035, x: 18 }}
-              animate={{ opacity: 1, scale: 1, x: 0 }}
-              exit={reduceMotion ? undefined : { opacity: 0, scale: .99, x: -12 }}
-              transition={{ duration: reduceMotion ? 0 : 1.15, ease: [.22, 1, .36, 1] }}
+              initial={reduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0 }}
+              transition={{ duration: reduceMotion ? 0 : .85, ease: "easeInOut" }}
             />
           </AnimatePresence>
-          <motion.i
-            key={`scan-${active}`}
-            initial={reduceMotion ? false : { x: "-120%", opacity: 0 }}
-            animate={{ x: "180%", opacity: [0, .28, 0] }}
-            transition={{ duration: reduceMotion ? 0 : 1.55, delay: .15, ease: "easeInOut" }}
-          />
         </div>
       </div>
 
