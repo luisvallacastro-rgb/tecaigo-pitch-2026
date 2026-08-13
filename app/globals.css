@@ -756,6 +756,10 @@ button { font:inherit; }
 .regional-potential__text p { position:relative; margin:0; padding:12px 0 12px 24px; border-left:4px solid var(--cyan); color:#eef8f8; font-size:clamp(1.9rem,2.75vw,3.55rem); font-weight:520; line-height:1.08; letter-spacing:-.035em; text-wrap:balance; }
 .regional-potential__text p:nth-child(2) { border-left-color:var(--cyan); color:#dbe7e8; }
 .regional-potential__text b { color:#84edf2; font-weight:850; }
+.regional-potential__stages { display:flex; align-items:center; gap:12px; margin:24px 0 0 24px; color:#d9f7f8; font-size:clamp(.58rem,.8vw,.86rem); font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.regional-potential__stages span { display:flex; align-items:center; gap:7px; padding:8px 11px; border:1px solid rgba(113,228,234,.28); border-radius:999px; background:rgba(3,23,26,.7); box-shadow:0 0 20px rgba(16,184,200,.08); }
+.regional-potential__stages span i { color:#031214; font-style:normal; padding:4px 6px; border-radius:999px; background:var(--cyan); letter-spacing:0; }
+.regional-potential__stages>b { color:#61dce3; font-size:1rem; }
 .regional-potential__network { position:absolute; z-index:4; right:1%; top:7%; width:52%; height:80%; }
 .regional-potential__map-glow { position:absolute; inset:3% 1% 1% 5%; opacity:.9; border:1px solid rgba(113,228,234,.14); border-radius:48% 38% 45% 52%; background:radial-gradient(ellipse at 48% 48%,rgba(16,184,200,.25),rgba(16,184,200,.07) 34%,transparent 69%); box-shadow:inset 0 0 90px rgba(16,184,200,.09),0 0 100px rgba(16,184,200,.08); transform:rotate(7deg); }
 .regional-potential__map-glow:before,.regional-potential__map-glow:after { content:""; position:absolute; border:1px dashed rgba(113,228,234,.16); border-radius:50%; }

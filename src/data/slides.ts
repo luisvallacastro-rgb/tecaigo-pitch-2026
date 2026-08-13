@@ -171,6 +171,19 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 6,
+    kind: "regionalPotential",
+    eyebrow: "Escalabilidad",
+    title: "Primero El Salvador. Luego el Triángulo Norte. Después Centroamérica.",
+    statement: "Una expansión ordenada y sostenible, construida mercado por mercado.",
+    duration: 25,
+    evaluation: "Potencial",
+    notes: {
+      message: "Demostrar una expansión ordenada y sostenible: después de consolidar El Salvador, ganar el Triángulo Norte y luego Centroamérica.",
+      script: "Nuestra expansión sigue una secuencia clara. Primero consolidamos El Salvador y hacemos predecible el modelo. Luego ganamos el Triángulo Norte, conectando Guatemala y Honduras a la red. Con esa base operativa, escalamos al resto de Centroamérica de manera ordenada, sostenible y replicable.",
+    },
+  },
+  {
+    id: 7,
     kind: "formation",
     eyebrow: "El ecosistema",
     title: "Cuando todos se conectan, nace TeCaiGO.",
@@ -182,7 +195,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     kind: "homefeedPanorama",
     eyebrow: "Producto · Homefeed",
     title: "Descubrir oportunidades antes de que se conviertan en rutas.",
@@ -195,7 +208,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     kind: "homefeedConnection",
     eyebrow: "Conexión · Homefeed",
     title: "Una publicación conecta dos mundos.",
@@ -208,7 +221,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
     kind: "eventModes",
     eyebrow: "Operación flexible",
     title: "Un evento. Dos formas de completar los cupos.",
@@ -221,7 +234,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 10,
+    id: 11,
     kind: "transportIntegration",
     eyebrow: "Sector transporte",
     title: "Los cupos se llenan. La ruta se pone en marcha.",
@@ -234,7 +247,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 11,
+    id: 12,
     kind: "touristArrival",
     eyebrow: "Usuario final",
     title: "Todo el ecosistema llega al turista en una sola experiencia.",
@@ -247,7 +260,7 @@ export const slides: PitchSlide[] = [
     },
   },
   {
-    id: 12,
+    id: 13,
     kind: "ecosystemImpact",
     eyebrow: "Impacto sistémico",
     title: "La tecnología activa desarrollo económico y social.",
@@ -257,19 +270,6 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Conectar la digitalización operativa con sus efectos indirectos en banca, gobierno y universidades.",
       script: "TeCaigo impulsa un turismo más formal, inclusivo y sostenible. La actividad digital genera historial transaccional para acceder a financiamiento, fortalece la recaudación mediante la formalización y abre oportunidades de formación y empleo. Nuestro impacto trasciende la tecnología: fortalece el desarrollo económico y social de todo el ecosistema.",
-    },
-  },
-  {
-    id: 13,
-    kind: "regionalPotential",
-    eyebrow: "Potencial",
-    title: "Cada nueva frontera conectada convierte a TeCaigo en una red más fuerte, un ecosistema más inteligente y una industria más integrada.",
-    statement: "El mercado de TeCaigo no está definido por un país, sino por un modelo operativo presente en múltiples destinos turísticos. Miles de organizadores de experiencias crean grupos, subcontratan transporte, integran proveedores y comercializan viajes de forma manual. TeCaigo digitaliza este modelo y lo convierte en un ecosistema colaborativo, replicable en cualquier mercado donde exista esta forma de operar. Su ventaja competitiva radica en conectar toda la cadena de valor del turismo —operadores, comercios, transporte, comisionistas, turistas e instituciones— generando un efecto de red donde cada nuevo participante incrementa el valor de toda la plataforma.",
-    duration: 20,
-    evaluation: "Potencial",
-    notes: {
-      message: "Definir el mercado por un patrón operativo replicable y mostrar cómo el efecto de red permite escalar regionalmente.",
-      script: "El mercado de TeCaigo no está definido por un país. Está definido por una forma de operar que se repite en múltiples destinos: organizadores que crean grupos, integran proveedores, subcontratan transporte y comercializan viajes manualmente. TeCaigo digitaliza ese patrón y conecta toda la cadena de valor. Cada nuevo participante incrementa el valor de toda la plataforma.",
     },
   },
   {

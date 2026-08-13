@@ -386,7 +386,7 @@ function HomefeedPanorama({ reduceMotion }: { reduceMotion: boolean }) {
       />
       <div className="homefeed-panorama__shade" aria-hidden="true" />
       <motion.div className="homefeed-panorama__label" initial={reduceMotion ? false : { opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .35, duration: .6 }}>
-        <span>07</span><i /> Producto en acción
+        <span>08</span><i /> Producto en acción
       </motion.div>
       <motion.div className="homefeed-panorama__title" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .55, duration: .7 }}>
         <small>Homefeed</small>
@@ -517,7 +517,7 @@ function TransportIntegration({ reduceMotion }: { reduceMotion: boolean }) {
     <div className="transport-integration" aria-label="Integración del sector transporte en TeCaiGO">
       <motion.img className="transport-integration__image" src="/assets/transport-route-assignment.png" alt="Transportista recibiendo una solicitud y ruta definida en TeCaiGO" initial={reduceMotion ? false : { scale: 1.08, filter: "brightness(.55) saturate(.8)" }} animate={{ scale: 1, filter: "brightness(.92) saturate(1.04)" }} transition={{ duration: reduceMotion ? 0 : 1.7, ease: [0.16, 1, 0.3, 1] }} />
       <div className="transport-integration__shade" aria-hidden="true" />
-      <motion.div className="transport-integration__label" initial={reduceMotion ? false : { opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .3, duration: .6 }}><span>10</span><i /> Cierre del ciclo operativo</motion.div>
+      <motion.div className="transport-integration__label" initial={reduceMotion ? false : { opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .3, duration: .6 }}><span>11</span><i /> Cierre del ciclo operativo</motion.div>
       <motion.header className="transport-integration__headline" initial={reduceMotion ? false : { opacity: 0, y: 36 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .5, duration: .75, ease: [0.16, 1, 0.3, 1] }}>
         <small>Sector transporte integrado</small>
         <strong>Los cupos se llenan.<br /><span>La ruta se pone en marcha.</span></strong>
@@ -553,7 +553,7 @@ function TouristArrival({ reduceMotion }: { reduceMotion: boolean }) {
     <div className="tourist-arrival" aria-label="Ventajas de centralizar el ecosistema para el turista">
       <motion.img className="tourist-arrival__image" src="/assets/tourist-final-destination.png" alt="Turista explorando y reservando una experiencia en TeCaiGO" initial={reduceMotion ? false : { scale: 1.08, filter: "brightness(.62) saturate(.82)" }} animate={{ scale: 1, filter: "brightness(.96) saturate(1.05)" }} transition={{ duration: reduceMotion ? 0 : 1.7, ease: [0.16, 1, 0.3, 1] }} />
       <div className="tourist-arrival__shade" aria-hidden="true" />
-      <motion.div className="tourist-arrival__label" initial={reduceMotion ? false : { opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .28, duration: .6 }}><span>11</span><i /> El destino de toda la red</motion.div>
+      <motion.div className="tourist-arrival__label" initial={reduceMotion ? false : { opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .28, duration: .6 }}><span>12</span><i /> El destino de toda la red</motion.div>
       <motion.aside className="tourist-arrival__glass" initial={reduceMotion ? false : { opacity: 0, x: -85, scale: .96 }} animate={{ opacity: 1, x: 0, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .45, duration: .85, ease: [0.16, 1, 0.3, 1] }}>
         <small>Usuario final</small>
         <h2>Todo llega al turista en <strong>una sola experiencia.</strong></h2>
@@ -604,7 +604,7 @@ function EcosystemImpact({ reduceMotion }: { reduceMotion: boolean }) {
         ))}
       </div>
       <motion.header className="ecosystem-impact__manifesto" initial={reduceMotion ? false : { opacity: 0, x: -60 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 6.3, duration: .75, ease: [0.16, 1, 0.3, 1] }}>
-        <small><span>12</span><i /> Impacto sistémico</small>
+        <small><span>13</span><i /> Impacto sistémico</small>
         <strong>El turismo se conecta.<br /><b>El desarrollo se multiplica.</b></strong>
       </motion.header>
       <motion.div className="ecosystem-impact__promise" initial={reduceMotion ? false : { opacity: 0, x: -35 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 6.75, duration: .65 }}>
@@ -633,9 +633,12 @@ function RegionalPotential({ slide, reduceMotion }: { slide: PitchSlide; reduceM
       <div className="regional-potential__veil" aria-hidden="true" />
       <div className="regional-potential__grid" aria-hidden="true" />
       <motion.section className="regional-potential__copy" initial={reduceMotion ? false : { opacity: 0, x: -70 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : .45, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
-        <small><span>13</span><i /> {slide.eyebrow}</small>
+        <small><span>06</span><i /> {slide.eyebrow}</small>
         <div className="regional-potential__text">
-          <p>Cada nueva frontera conectada convierte a TeCaigo en una <b>red más fuerte</b>, un <b>ecosistema más inteligente</b> y una <b>industria más integrada.</b></p>
+          <p><b>Primero El Salvador.</b><br />Luego el <b>Triángulo Norte.</b><br />Después <b>Centroamérica.</b></p>
+          <div className="regional-potential__stages" aria-label="Etapas de expansión">
+            <span><i>01</i> Consolidar</span><b>→</b><span><i>02</i> Ganar</span><b>→</b><span><i>03</i> Escalar</span>
+          </div>
         </div>
       </motion.section>
       <motion.div className="regional-potential__network" initial={reduceMotion ? false : { opacity: 0, scale: .88 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: reduceMotion ? 0 : .8, duration: .8, ease: [0.16, 1, 0.3, 1] }}>
@@ -856,7 +859,7 @@ export default function PitchDeck() {
   return (
     <main className={`deck-shell ${immersive ? "deck-shell--cover" : ""}`}>
       {aspectWarning && <div className="aspect-warning"><Maximize2 size={16} /> Para una mejor experiencia usa una pantalla 16:9.</div>}
-      <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{index === 0 ? "Apertura" : index === 1 ? "Necesidad del Mercado" : index === 2 ? "Innovación" : index === 3 ? "Propuesta de Valor" : index === 4 ? "Potencial de Mercado" : current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
+      <header className="deck-header"><Brand compact /><div className="deck-header__meta"><span>{index === 0 ? "Apertura" : index === 1 ? "Necesidad del Mercado" : index === 2 ? "Innovación" : index === 3 ? "Propuesta de Valor" : index === 4 ? "Potencial de Mercado" : index === 5 ? "Escalabilidad" : current.evaluation}</span><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span></div></header>
 
       <AnimatePresence mode="wait">
         <motion.section key={`${playbackKey}-${current.id}`} className={`slide slide--${current.kind}`} initial={reduceMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }} transition={{ duration: reduceMotion ? 0 : .42, ease: [0.22, 1, 0.36, 1] }}>
