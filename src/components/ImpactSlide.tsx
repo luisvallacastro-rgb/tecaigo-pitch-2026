@@ -39,43 +39,28 @@ export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: b
 
   return (
     <div className="impact-slide" aria-label="Impacto económico y turístico de TeCaiGO">
-      <div className="impact-slide__ambient" aria-hidden="true" />
-      <div
-        className="impact-slide__canvas"
-        style={{ left: "50%", top: "50%", width: "100%", height: "100%", aspectRatio: "auto", transform: "translate(-50%, -50%)", overflow: "hidden" }}
-      >
-        <img
-          className="impact-slide__desk"
-          style={{ objectFit: "cover", objectPosition: "center 43%" }}
-          src="/assets/page-8/impact-desk.jpg"
-          alt="Computadora mostrando información económica de El Salvador"
+      <AnimatePresence initial={false} mode="sync">
+        <motion.img
+          className="impact-slide__evidence"
+          style={{ position: "absolute", zIndex: 1, inset: 0, width: "100%", height: "100%", display: "block", objectFit: "cover", objectPosition: "center top" }}
+          key={scene.image}
+          src={scene.image}
+          alt="Evidencia del impacto económico y turístico en El Salvador"
+          initial={reduceMotion ? false : { opacity: 0, scale: 1.025 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={reduceMotion ? undefined : { opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 1.05, ease: "easeInOut" }}
         />
-        <div
-          className="impact-slide__screen"
-          style={{ left: "16.05%", top: "7.7%", width: "67.9%", height: "50.9%" }}
-        >
-          <AnimatePresence initial={false} mode="sync">
-            <motion.img
-              key={scene.image}
-              src={scene.image}
-              alt=""
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={reduceMotion ? undefined : { opacity: 0 }}
-              transition={{ duration: reduceMotion ? 0 : .85, ease: "easeInOut" }}
-            />
-          </AnimatePresence>
-        </div>
-      </div>
-
+      </AnimatePresence>
       <div
         className="impact-slide__chrome"
-        style={{ background: "linear-gradient(180deg, rgba(1,8,10,.28) 0%, transparent 18%, transparent 78%, rgba(1,8,10,.46) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(1,8,10,.3) 0%, transparent 18%, transparent 58%, rgba(1,8,10,.82) 100%), linear-gradient(90deg, rgba(1,8,10,.32), transparent 18%, transparent 88%, rgba(1,8,10,.24))" }}
         aria-hidden="true"
       />
       <AnimatePresence mode="wait">
         <motion.section
           className="impact-slide__copy"
+          style={{ left: "7%", bottom: "8%", width: "min(990px, 60vw)", boxShadow: "none" }}
           key={active}
           initial={reduceMotion ? false : { opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
