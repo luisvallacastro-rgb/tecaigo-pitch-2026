@@ -14,6 +14,7 @@ export type SlideKind =
   | "ecosystemImpact"
   | "regionalPotential"
   | "competitiveAdvantage"
+  | "impact"
   | "businessModel"
   | "founder"
   | "ecosystem"
@@ -197,15 +198,15 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 8,
-    kind: "homefeedPanorama",
-    eyebrow: "Producto · Homefeed",
-    title: "Descubrir oportunidades antes de que se conviertan en rutas.",
-    statement: "Es una ventana tipo red social donde los comercios turísticos publican sus instalaciones, servicios y promociones para que los tour operadores descubran oportunidades y las conviertan en nuevas rutas y eventos turísticos.",
-    duration: 20,
-    evaluation: "Producto",
+    kind: "impact",
+    eyebrow: "Impacto",
+    title: "Una industria que ya mueve al país. Una red capaz de multiplicar su impacto.",
+    statement: "TeCaiGO conecta la actividad turística existente y la convierte en oportunidades medibles.",
+    duration: 30,
+    evaluation: "Potencial",
     notes: {
-      message: "Explicar el Homefeed como el punto de encuentro entre la oferta de los comercios y la capacidad creadora de los tour operadores.",
-      script: "El Homefeed funciona como una ventana tipo red social. Los comercios turísticos publican instalaciones, servicios y promociones; los tour operadores descubren esas oportunidades y las convierten en nuevas rutas y eventos turísticos.",
+      message: "Dimensionar el impacto económico del turismo y mostrar el valor que TeCaiGO puede movilizar al conectar una pequeña parte de esa actividad.",
+      script: "El Salvador recibió 4.1 millones de visitantes y generó 3,635 millones de dólares en divisas turísticas, sosteniendo más de 300 mil empleos. TeCaiGO conecta operadores, transporte, comercios y turistas para crear nuevas rutas y aprovechar mejor la capacidad existente. Al conectar solo el uno por ciento de esta actividad, podríamos movilizar cerca de 36.4 millones de dólares e impulsar formalización e inclusión financiera.",
     },
   },
   {

@@ -1147,3 +1147,23 @@ button { font:inherit; }
 .market-potential__rail button.is-active{border-color:#67dce2;box-shadow:0 0 18px rgba(103,220,226,.42)}.market-potential__rail button.is-active i{width:10px;height:10px;background:#67dce2}
 @media(max-aspect-ratio:4/3){.market-potential__copy{left:7%;top:24%;width:49vw}.market-potential__copy h1{font-size:clamp(2.7rem,5.4vw,4.8rem)}.market-potential__thesis{left:7%;bottom:14%}}
 @media(max-width:760px){.market-potential__copy{left:7%;top:22%;width:70vw}.market-potential__copy h1{font-size:2.2rem}.market-potential__copy p{font-size:.72rem}.market-potential__thesis{left:7%;bottom:16%;gap:7px;padding:9px 11px;font-size:.46rem}.market-potential__rail{right:3%}}
+
+/* Page 8 — fixed computer, changing economic evidence */
+.slide--impact{display:block;padding:0;background:#02090b}
+.impact-slide{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
+.impact-slide__ambient{position:absolute;z-index:-5;inset:-7%;background:linear-gradient(rgba(1,10,13,.54),rgba(1,10,13,.68)),url('/assets/page-8/impact-desk.png') center/cover;filter:blur(30px) saturate(.82);transform:scale(1.1)}
+.impact-slide__canvas{position:absolute;z-index:-3;left:50%;top:50%;height:100%;aspect-ratio:1448/1086;translate:-50% -50%;overflow:hidden}
+.impact-slide__desk{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:saturate(.88) contrast(1.04) brightness(.78)}
+.impact-slide__screen{position:absolute;left:13.82%;top:8.1%;width:72.31%;height:54.6%;overflow:hidden;background:#10171b;clip-path:polygon(.35% 0,99.65% 0,99.65% 100%,.35% 100%)}
+.impact-slide__screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;will-change:transform,opacity}
+.impact-slide__screen i{position:absolute;z-index:3;top:-20%;bottom:-20%;width:24%;background:linear-gradient(90deg,transparent,rgba(167,245,247,.16),transparent);transform:skewX(-13deg);pointer-events:none}
+.impact-slide__chrome{position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(1,8,10,.9) 0%,rgba(1,8,10,.42) 12%,transparent 28%,transparent 61%,rgba(1,8,10,.56) 79%,rgba(1,8,10,.96) 100%),linear-gradient(90deg,rgba(1,8,10,.7),transparent 18%,transparent 82%,rgba(1,8,10,.7));box-shadow:inset 0 0 160px rgba(0,0,0,.4)}
+.impact-slide__copy{position:absolute;z-index:8;left:7%;bottom:10%;width:min(1040px,62vw);padding:clamp(22px,2.2vw,38px) clamp(25px,2.7vw,48px);border-left:3px solid #71e4ea;background:linear-gradient(90deg,rgba(2,15,18,.96),rgba(2,15,18,.78) 72%,rgba(2,15,18,.08));box-shadow:0 25px 80px rgba(0,0,0,.45);backdrop-filter:blur(10px);text-shadow:0 10px 30px #000}
+.impact-slide__copy small{display:block;color:#71e4ea;font-size:clamp(.56rem,.72vw,.84rem);font-weight:950;letter-spacing:.22em}
+.impact-slide__copy h1{max-width:960px;margin:12px 0 18px;color:#fff;font-size:clamp(1.45rem,2.35vw,3.05rem);font-weight:720;line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+.impact-slide__copy strong{display:inline-flex;padding:9px 15px;border:1px solid rgba(113,228,234,.42);border-radius:999px;color:#c8fbfc;background:rgba(8,39,43,.68);font-size:clamp(.58rem,.77vw,.9rem);font-weight:900;letter-spacing:.13em}
+.impact-slide__steps{position:absolute;z-index:10;right:5.5%;top:50%;display:flex;flex-direction:column;gap:10px;translate:0 -50%}
+.impact-slide__steps button{display:flex;align-items:center;gap:8px;padding:4px 0;border:0;background:transparent;color:#6b8588;cursor:pointer}.impact-slide__steps button span{font-size:.62rem;font-weight:900;opacity:0;transition:.35s}.impact-slide__steps button i{display:block;width:22px;height:3px;border-radius:9px;background:#456064;transition:.45s}
+.impact-slide__steps button.is-active{color:#aaf5f7}.impact-slide__steps button.is-active span{opacity:1}.impact-slide__steps button.is-active i{width:42px;background:#71e4ea;box-shadow:0 0 18px rgba(113,228,234,.65)}
+@media(max-aspect-ratio:4/3){.impact-slide__canvas{height:auto;width:100%;aspect-ratio:1448/1086}.impact-slide__copy{left:6%;bottom:14%;width:73vw}.impact-slide__copy h1{font-size:clamp(1.35rem,3.2vw,2.5rem)}}
+@media(max-width:760px){.impact-slide__copy{left:6%;bottom:15%;width:78vw;padding:14px 18px}.impact-slide__copy h1{font-size:1.15rem}.impact-slide__copy strong{font-size:.5rem}.impact-slide__steps{right:2.5%}}
