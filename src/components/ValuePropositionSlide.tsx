@@ -6,21 +6,21 @@ import type { PitchSlide } from "../data/slides";
 
 const scenes = [
   {
-    image: "/assets/page-4/ecosistema-colaborativo.jpg",
+    image: "/assets/page-4/comunicacion.png",
     kicker: "DE UNA OPORTUNIDAD AISLADA",
     title: "Nuevas relaciones comerciales.",
     body: "Comercios y operadores convierten una oferta existente en una experiencia lista para activarse.",
     metric: "OFERTA + OPERACIÓN",
   },
   {
-    image: "/assets/page-4/costos-compartidos.jpg",
+    image: "/assets/page-4/costos.png",
     kicker: "A UNA RED QUE COLABORA",
     title: "Costos y capacidad compartidos.",
     body: "Varios operadores integran cupos, reducen costos y aprovechan mejor los recursos disponibles.",
     metric: "44 / 50 CUPOS",
   },
   {
-    image: "/assets/page-4/cupos-compartidos.jpg",
+    image: "/assets/page-4/cupos.png",
     kicker: "Y CREA NUEVO VALOR",
     title: "Más rutas. Más ventas. Más ocupación.",
     body: "TeCaiGO conecta solicitudes, oferta y disponibilidad para abrir nuevos canales de comercialización.",
