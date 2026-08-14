@@ -776,7 +776,13 @@ export default function PitchDeck() {
   const remaining = totalPitchSeconds - elapsed;
 
   const goTo = useCallback((next: number) => {
-    setIndex(Math.max(0, Math.min(slides.length - 1, next)));
+    const boundedIndex = Math.max(0, Math.min(slides.length - 1, next));
+    const accumulatedStart = slides
+      .slice(0, boundedIndex)
+      .reduce((sum, slide) => sum + slide.duration, 0);
+
+    setIndex(boundedIndex);
+    setElapsed(accumulatedStart);
     setSlideElapsed(0);
     slideStartedAt.current = Date.now();
   }, []);
