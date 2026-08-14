@@ -17,6 +17,7 @@ export type SlideKind =
   | "impact"
   | "businessModel"
   | "founder"
+  | "teamExperience"
   | "ecosystem"
   | "flow"
   | "innovation"
@@ -59,6 +60,20 @@ export type PitchSlide = {
     networkFlow: string[];
     impact: string;
     support?: string;
+  };
+  teamExperience?: {
+    profiles: Array<{
+      initials: string;
+      name: string;
+      role: string;
+      credentials: string[];
+      quote: string;
+    }>;
+    capacities: string[];
+    impactPath: string[];
+    institutionalPath: string;
+    highlight: string;
+    footer: string;
   };
   duration: number;
   evaluation: "Personas" | "Producto" | "Potencial" | "Previsibilidad";
@@ -249,15 +264,48 @@ export const slides: PitchSlide[] = [
   },
   {
     id: 11,
-    kind: "transportIntegration",
-    eyebrow: "Sector transporte",
-    title: "Los cupos se llenan. La ruta se pone en marcha.",
-    statement: "TeCaiGO integra al sector transporte, comunica la demanda confirmada y asigna la ruta definida para ejecutar la experiencia.",
+    kind: "teamExperience",
+    eyebrow: "Personas · Experiencia",
+    title: "Experiencia para transformar el sector",
+    statement: "Turismo + Finanzas + Contabilidad + Tecnología",
+    teamExperience: {
+      profiles: [
+        {
+          initials: "LV",
+          name: "Mtro. Luis Valladares",
+          role: "Fundador de TeCaiGO",
+          credentials: [
+            "Ex tour operador turístico",
+            "Lic. en Contaduría Pública",
+            "Maestría en Banca y Finanzas",
+            "Posgrado en Riesgos Bancarios y Financieros",
+          ],
+          quote: "Experiencia de campo convertida en infraestructura tecnológica.",
+        },
+        {
+          initials: "AF",
+          name: "Lic. Alexander Franco",
+          role: "Cofundador de TeCaiGO",
+          credentials: [
+            "Lic. en Contaduría Pública",
+            "Experiencia financiera",
+            "Experiencia legal",
+            "Estructura financiera y legal del proyecto",
+          ],
+          quote: "Estructura financiera y legal para construir un modelo sostenible.",
+        },
+      ],
+      capacities: ["Turismo", "Contabilidad", "Finanzas", "Riesgos", "Tecnología"],
+      impactPath: ["Experiencia", "Datos e historial", "Formalización", "Inclusión financiera", "Oportunidades"],
+      institutionalPath: "Diálogo institucional · estudio de mecanismos de formalización tributaria",
+      highlight: "Tecnología para construir historial, trazabilidad y acceso a nuevas oportunidades.",
+      footer: "No solo conocemos el problema. Tenemos la experiencia para conectar al sector con nuevas oportunidades.",
+    },
     duration: 20,
-    evaluation: "Producto",
+    evaluation: "Personas",
     notes: {
-      message: "Cerrar el ciclo operativo mostrando cómo una demanda confirmada activa al transporte con una ruta ya definida.",
-      script: "Cuando los cupos se completan, TeCaiGO integra al sector transporte. La plataforma comunica cuántas personas viajarán, publica la solicitud, permite asignar el vehículo adecuado y entrega una ruta definida. Así, la oportunidad comercial se convierte finalmente en una operación real.",
+      message: "Demostrar que el equipo combina conocimiento turístico, financiero, contable, legal y tecnológico para transformar experiencia real en oportunidades medibles.",
+      script: "TeCaiGO está fundado por profesionales que conocen tanto la operación turística como el mundo financiero y contable. Esa experiencia nos permite ir más allá de la tecnología: queremos generar historial, impulsar la inclusión financiera y abrir espacios de diálogo para que más actores del turismo puedan avanzar hacia la formalización y nuevas oportunidades.",
     },
   },
   {
