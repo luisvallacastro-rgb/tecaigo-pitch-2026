@@ -1,40 +1,40 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import type { PitchSlide } from "../data/slides";
 
 const scenes = [
   {
     image: "/assets/page-4/comunicacion.png",
-    kicker: "DE UNA OPORTUNIDAD AISLADA",
-    title: "Nuevas relaciones comerciales.",
-    body: "Comercios y operadores convierten una oferta existente en una experiencia lista para activarse.",
-    metric: "OFERTA + OPERACIÓN",
+    kicker: "ETAPA ACTUAL",
+    title: "TeCaigo entra a su etapa comercial.",
+    body: "TeCaigo.Core, TeCaigo.App y TeCaigo.com se encuentran en la etapa final de preparación para operar en mercado.",
+    metric: "LISTOS PARA SALIR AL MERCADO",
+    thesisLabel: "SIGUIENTE PASO",
+    thesis: "El siguiente paso ya no es construir la idea, sino formalizar, lanzar, incorporar actores y validar operaciones reales.",
   },
   {
     image: "/assets/page-4/costos.png",
-    kicker: "A UNA RED QUE COLABORA",
-    title: "Costos y capacidad compartidos.",
-    body: "Varios operadores integran cupos, reducen costos y aprovechan mejor los recursos disponibles.",
-    metric: "44 / 50 CUPOS",
+    kicker: "ESTRUCTURA DE COSTOS",
+    title: "Crecemos sin sobredimensionar la operación.",
+    body: "Los principales costos de TeCaigo se concentran en tecnología, infraestructura cloud, mercadeo, soporte y operación. La estructura de personal crecerá gradualmente conforme aumenten los usuarios, las transacciones y los ingresos.",
+    metric: "TECNOLOGÍA · CLOUD Y DATOS · MERCADEO · SOPORTE · OPERACIÓN",
+    thesisLabel: "DISCIPLINA FINANCIERA",
+    thesis: "Primero validamos ingresos. Luego ampliamos estructura.",
   },
   {
     image: "/assets/page-4/cupos.png",
-    kicker: "Y CREA NUEVO VALOR",
-    title: "Más rutas. Más ventas. Más ocupación.",
-    body: "TeCaiGO conecta solicitudes, oferta y disponibilidad para abrir nuevos canales de comercialización.",
-    metric: "UN SOLO ECOSISTEMA",
+    kicker: "INCLUSIÓN FINANCIERA",
+    title: "Cada transacción construye historial.",
+    body: "TeCaigo busca convertir la actividad económica del ecosistema en trazabilidad e historial transaccional. Ese historial puede facilitar alianzas con la banca para desarrollar programas de inclusión financiera dirigidos a operadores, transporte y comercios turísticos.",
+    metric: "TRAZABILIDAD + FORMALIZACIÓN",
+    thesisLabel: "OPORTUNIDADES FUTURAS",
+    thesis: "Más trazabilidad. Más formalización. Más acceso a oportunidades.",
   },
 ];
 
-export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchSlide;reduceMotion:boolean}) {
-  const [active,setActive]=useState(0);
-  useEffect(()=>{
-    if(reduceMotion) return;
-    const timer=window.setInterval(()=>setActive(value=>(value+1)%scenes.length),10000);
-    return()=>window.clearInterval(timer);
-  },[reduceMotion]);
+export default function ValuePropositionSlide({slide,reduceMotion,sceneIndex=0}:{slide:PitchSlide;reduceMotion:boolean;sceneIndex?:0|1|2}) {
+  const active=sceneIndex;
   const scene=scenes[active];
   return <div className="value-sequence" aria-label="Secuencia de propuesta de valor de TeCaiGO">
     <AnimatePresence mode="popLayout" initial>
@@ -61,8 +61,8 @@ export default function ValuePropositionSlide({slide,reduceMotion}:{slide:PitchS
       </motion.div>
     </AnimatePresence>
     <motion.div className="value-sequence__thesis" initial={reduceMotion?false:{opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{delay:reduceMotion?0:1.1,duration:.8}}>
-      <span>PROPUESTA DE VALOR</span>
-      <p><b>No vendemos tours por internet.</b> Convertimos relaciones dispersas en un ecosistema colaborativo.</p>
+      <span>{scene.thesisLabel}</span>
+      <p>{scene.thesis}</p>
     </motion.div>
     <div className="value-sequence__steps">{scenes.map((item,index)=><span key={item.image} className={index===active?"is-active":""}><i/></span>)}</div>
   </div>;

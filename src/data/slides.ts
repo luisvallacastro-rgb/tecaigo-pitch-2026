@@ -89,6 +89,7 @@ export type PitchSlide = {
   duration: number;
   impactScene?: 0 | 1 | 2;
   marketScene?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  valueScene?: 0 | 1 | 2;
   evaluation: "Personas" | "Producto" | "Potencial" | "Previsibilidad";
   notes: {
     message: string;
@@ -278,6 +279,51 @@ export const slides: PitchSlide[] = [
     },
   },
   {
+    id: -11,
+    kind: "problemPoints",
+    sectionName: "Negocio",
+    sectionProgress: "4/7",
+    eyebrow: "Etapa actual",
+    title: "TeCaigo entra a su etapa comercial.",
+    valueScene: 0,
+    duration: 10,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Mostrar que la solución ya existe y que el siguiente reto es su entrada comercial.",
+      script: "TeCaigo.Core, TeCaigo.App y TeCaigo.com están en la etapa final de preparación para operar en mercado. El siguiente paso es formalizar, lanzar, incorporar actores y validar operaciones reales.",
+    },
+  },
+  {
+    id: -12,
+    kind: "problemPoints",
+    sectionName: "Negocio",
+    sectionProgress: "4/7",
+    eyebrow: "Estructura de costos",
+    title: "Crecemos sin sobredimensionar la operación.",
+    valueScene: 1,
+    duration: 10,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Demostrar disciplina financiera y crecimiento sostenible de la estructura operativa.",
+      script: "Nuestros principales costos se concentran en tecnología, infraestructura cloud, mercadeo, soporte y operación. Primero validamos ingresos y luego ampliamos la estructura conforme crecen los usuarios y las transacciones.",
+    },
+  },
+  {
+    id: -13,
+    kind: "problemPoints",
+    sectionName: "Negocio",
+    sectionProgress: "4/7",
+    eyebrow: "Inclusión financiera",
+    title: "Cada transacción construye historial.",
+    valueScene: 2,
+    duration: 10,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Explicar que la trazabilidad puede facilitar futuras alianzas financieras sin afirmar que TeCaigo presta o garantiza crédito.",
+      script: "La actividad económica del ecosistema genera trazabilidad e historial transaccional. Ese historial puede facilitar alianzas con la banca para desarrollar programas de inclusión financiera dirigidos a operadores, transporte y comercios turísticos.",
+    },
+  },
+  {
     id: 1,
     kind: "innovation",
     eyebrow: "Innovación · Ecosistema conectado",
@@ -350,19 +396,6 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Mostrar las cuatro interfaces especializadas de TeCaiGO con el mismo tiempo y protagonismo.",
       script: "TeCaiGO organiza la colaboración existente mediante cuatro experiencias conectadas: una para tour operadores, una para comercios turísticos, una para turistas y una para transporte. Cada actor recibe herramientas específicas, pero todos operan dentro de una sola red.",
-    },
-  },
-  {
-    id: 4,
-    kind: "problemPoints",
-    eyebrow: "Propuesta de Valor",
-    title: "Cuando la red comparte oportunidades, cada actor puede crecer más.",
-    statement: "Un ecosistema conectado multiplica beneficios para todos.",
-    duration: 30,
-    evaluation: "Producto",
-    notes: {
-      message: "Presentar la amplitud de beneficios que TeCaiGO genera cuando convierte actores dispersos en una red colaborativa.",
-      script: "La propuesta de valor de TeCaiGO se traduce en beneficios concretos: nuevas rutas, más ventas, costos compartidos, capacidad aprovechada, nuevos clientes, mayor visibilidad, acceso financiero y crecimiento compartido. Cuando la red comparte oportunidades, cada actor puede crecer más.",
     },
   },
   {
