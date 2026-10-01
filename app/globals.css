@@ -1229,6 +1229,7 @@ button { font:inherit; }
   line-height: 1;
   letter-spacing: -.025em;
   white-space: nowrap;
+  transform: translateX(-7vw);
 }
 
 .opening-carousel__viewport {
