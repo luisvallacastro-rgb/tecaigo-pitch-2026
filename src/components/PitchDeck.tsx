@@ -906,7 +906,7 @@ export default function PitchDeck() {
     <main className={`deck-shell ${immersive ? "deck-shell--cover" : ""}`}>
       {aspectWarning && <div className="aspect-warning"><Maximize2 size={16} /> Para una mejor experiencia usa una pantalla 16:9.</div>}
       <header className={`deck-header ${current.kind === "openingCarousel" ? "deck-header--ecosystem" : ""} ${current.kind === "solutionHero" || current.kind === "solutionDiagram" ? "deck-header--solution" : ""} ${current.kind === "solutionDiagram" ? "deck-header--diagram" : ""}`}>
-        {current.kind === "solutionDiagram" ? null : current.kind === "openingCarousel" ? <img className="deck-header__official-logo" src="/assets/tecaigo-logo-oficial.png" alt="TeCaigo" /> : <Brand compact />}
+        {current.kind === "solutionDiagram" ? null : <Brand compact />}
         {current.kind !== "openingCarousel" && <div className="deck-header__meta"><span>{sectionName}</span><span>{sectionProgress}</span></div>}
       </header>
 
