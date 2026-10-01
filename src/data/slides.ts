@@ -17,6 +17,7 @@ export type SlideKind =
   | "impact"
   | "businessSources"
   | "projectPlan"
+  | "formalization"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -336,6 +337,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Presentar las tres etapas concretas que llevarán a TeCaigo desde su preparación actual hasta la operación comercial.",
       script: "El proyecto se ejecutará en tres etapas. Primero, formalización empresarial y protección de marca. Segundo, fortalecimiento tecnológico con Azure y la publicación y soporte de nuestros productos. Tercero, mercadeo y lanzamiento para captar actores y penetrar el mercado.",
+    },
+  },
+  {
+    id: -15,
+    kind: "formalization",
+    sectionName: "Proyecto",
+    sectionProgress: "5/7",
+    eyebrow: "Formalización",
+    title: "Preparados para operar formalmente.",
+    duration: 20,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Explicar cómo una inversión puntual de US$400 habilita la estructura jurídica y la protección de marca necesarias para operar comercialmente.",
+      script: "La primera etapa es la formalización. Con una inversión de cuatrocientos dólares constituiremos la Sociedad por Acciones Simplificada, gestionaremos el registro de marca y cubriremos aranceles, publicaciones y costos documentales. El resultado será una empresa constituida y el proceso de protección de marca gestionado.",
     },
   },
   {

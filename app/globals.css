@@ -1194,6 +1194,21 @@ button { font:inherit; }
 .slide--impact{display:block;padding:0;background:#02090b}
 .slide--businessSources{display:block;padding:0;background:#02090b}
 .slide--projectPlan{display:block;padding:0;background:#02090b}
+.slide--formalization{display:block;padding:0;background:#02090b}
+.formalization-slide{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
+.formalization-slide__image{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.formalization-slide__veil{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(1,8,10,.95) 0%,rgba(1,8,10,.82) 36%,rgba(1,8,10,.2) 62%,rgba(1,8,10,.08)),linear-gradient(180deg,rgba(1,8,10,.28),transparent 55%,rgba(1,8,10,.45))}
+.formalization-slide__panel{position:absolute;z-index:4;left:5.2%;top:50%;width:min(850px,48vw);translate:0 -47%;padding:clamp(24px,2.5vw,42px) clamp(28px,3vw,50px);border-left:2px solid var(--cyan);background:linear-gradient(90deg,rgba(2,16,18,.97),rgba(2,15,18,.84) 82%,rgba(2,15,18,.18));box-shadow:0 30px 90px rgba(0,0,0,.48);backdrop-filter:blur(13px);text-shadow:0 3px 18px #000}
+.formalization-slide__panel>small{color:var(--cyan);font-size:clamp(.55rem,.7vw,.8rem);font-weight:950;letter-spacing:.23em}
+.formalization-slide__panel>h1{margin:10px 0 11px;color:#f8fbfb;font-size:clamp(2.1rem,3.6vw,4.4rem);font-weight:760;line-height:.91;letter-spacing:-.055em;text-wrap:balance}
+.formalization-slide__lead{max-width:760px;margin:0;color:#c8d5d6;font-size:clamp(.66rem,.82vw,.92rem);line-height:1.42}
+.formalization-slide__investment{display:flex;align-items:center;justify-content:space-between;margin:16px 0 10px;padding:9px 14px;border-top:1px solid rgba(113,228,234,.34);border-bottom:1px solid rgba(113,228,234,.18);background:rgba(4,29,32,.64)}
+.formalization-slide__investment span{color:#9db1b3;font-size:.55rem;font-weight:900;letter-spacing:.18em}.formalization-slide__investment strong{color:var(--cyan);font-size:clamp(1.7rem,2.45vw,2.9rem);letter-spacing:-.04em}
+.formalization-slide__costs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.formalization-slide__costs>div{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:8px;min-height:54px;padding:8px 11px;border:1px solid rgba(113,228,234,.14);border-radius:12px;background:rgba(5,26,29,.72)}
+.formalization-slide__costs strong{color:#fff;font-size:clamp(.72rem,.9vw,1rem)}.formalization-slide__costs span{color:#b7c6c7;font-size:clamp(.54rem,.63vw,.7rem);line-height:1.25}
+.formalization-slide__result{margin-top:10px;padding:10px 14px;border-left:2px solid var(--gold);background:rgba(30,25,10,.5)}
+.formalization-slide__result span{display:block;color:var(--gold);font-size:.5rem;font-weight:950;letter-spacing:.2em}.formalization-slide__result strong{display:block;margin-top:4px;color:#f7f8f4;font-size:clamp(.68rem,.82vw,.9rem)}
 .project-plan{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
 .project-plan__image{position:absolute;z-index:0;inset:-2%;width:104%;height:104%;object-fit:cover;object-position:center}
 .project-plan__veil{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(1,8,10,.94) 0%,rgba(1,8,10,.78) 37%,rgba(1,8,10,.22) 62%,rgba(1,8,10,.12)),linear-gradient(180deg,rgba(1,8,10,.3),transparent 50%,rgba(1,8,10,.58))}
