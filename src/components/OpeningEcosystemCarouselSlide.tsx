@@ -15,9 +15,7 @@ export default function OpeningEcosystemCarouselSlide({ slide, reduceMotion }: {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: .65, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span>{slide.eyebrow}</span>
-        <strong>{slide.title}</strong>
-        <small>{slide.statement}</small>
+        <h1>{slide.title}</h1>
       </motion.header>
 
       <div className="opening-carousel__viewport">
@@ -28,19 +26,11 @@ export default function OpeningEcosystemCarouselSlide({ slide, reduceMotion }: {
                 <i className="opening-carousel__island" aria-hidden="true" />
                 <img src={item.image} alt={`${item.title} para ${item.role} en TeCaiGO`} />
               </div>
-              <span>{item.role}</span>
-              <strong>{item.title}</strong>
             </article>
           ))}
         </div>
         <div className="opening-carousel__fade opening-carousel__fade--left" />
         <div className="opening-carousel__fade opening-carousel__fade--right" />
-      </div>
-
-      <div className="opening-carousel__roles" aria-label="Actores conectados">
-        <span>Tour operadores</span><i />
-        <span>Comercios turísticos</span><i />
-        <span>Turistas</span>
       </div>
     </div>
   );

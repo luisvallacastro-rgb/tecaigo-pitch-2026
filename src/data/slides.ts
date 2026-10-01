@@ -114,9 +114,9 @@ export const slides: PitchSlide[] = [
     kind: "openingCarousel",
     sectionName: "Apertura",
     sectionProgress: "1/7",
-    eyebrow: "El ecosistema en movimiento",
-    title: "Ecosistema TeCaigo",
-    statement: "Tour operadores · comercios turísticos · turistas",
+    eyebrow: "",
+    title: "¿Y si pudiéramos conectar todo el ecosistema turístico en un solo lugar?",
+    statement: "",
     openingCarousel: [
       { role: "Tour operadores", title: "Radar turístico", image: "/assets/founder-carousel/tecaigo-to-mobile-01.jpg" },
       { role: "Tour operadores", title: "Oferta conectada", image: "/assets/founder-carousel/tecaigo-to-mobile-02.jpg" },
