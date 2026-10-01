@@ -200,6 +200,9 @@ button { font:inherit; }
 .solution-diagram__reveal-copy p{margin:0 auto 10px;color:#f5f8f8;font-size:clamp(1.22rem,2.05vw,2.4rem);font-weight:760;line-height:1.1;letter-spacing:-.025em}
 .solution-diagram__reveal-copy strong{display:block;margin:clamp(34px,3.2vh,48px) auto 0;color:#71e4ea;font-size:clamp(1.38rem,2.38vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-.035em;text-shadow:0 0 24px rgba(113,228,234,.2),0 3px 20px #000}
 .solution-diagram__reveal-copy strong:before{content:"";display:block;width:58px;height:2px;margin:0 auto clamp(18px,2vh,26px);background:#71e4ea;box-shadow:0 0 18px rgba(113,228,234,.72)}
+.solution-diagram__reveal-copy strong span{display:block;white-space:nowrap}
+.solution-diagram__core{color:#71e4ea}
+.solution-diagram__tourist{margin-top:8px;color:var(--gold);text-shadow:0 0 24px rgba(213,167,55,.22),0 3px 20px #000}
 .deck-header--diagram .deck-header__meta{margin-left:auto}
 .solution-hero{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
 .solution-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}

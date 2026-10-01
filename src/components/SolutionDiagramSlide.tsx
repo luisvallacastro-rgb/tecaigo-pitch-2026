@@ -29,7 +29,10 @@ export default function SolutionDiagramSlide({ reduceMotion, reveal }: { reduceM
           <small>DE LA OPORTUNIDAD A LA EXPERIENCIA</small>
           <p>Un comercio publica una oportunidad; una empresa de transporte aporta capacidad;</p>
           <p>un operador integra los servicios y crea una nueva ruta;</p>
-          <strong>TeCaigo.Core administra la operación y TeCaigo.com la lleva al turista.</strong>
+          <strong>
+            <span className="solution-diagram__core">TeCaigo.Core administra la operación</span>
+            <span className="solution-diagram__tourist">y TeCaigo.com la lleva al turista.</span>
+          </strong>
         </motion.div>
       </motion.div>
     </div>
