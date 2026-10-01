@@ -21,6 +21,7 @@ export type SlideKind =
   | "marketEntry"
   | "technology"
   | "projectBudget"
+  | "resultsChecklist"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -396,6 +397,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Cerrar el bloque mostrando el presupuesto completo, su distribución y la estructura de financiamiento.",
       script: "El proyecto asciende a 5,555 dólares. El 49.2% fortalece la tecnología, el 43.6% financia mercadeo y lanzamiento, y el 7.2% formaliza la empresa y protege la marca. Solicitamos 5,000 dólares de cofinanciamiento y TeCaigo aporta 555.56 dólares de contrapartida.",
+    },
+  },
+  {
+    id: -19,
+    kind: "resultsChecklist",
+    sectionName: "Resultados",
+    sectionProgress: "6/7",
+    eyebrow: "Metas a seis meses",
+    title: "Resultados concretos y verificables.",
+    duration: 30,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Presentar las metas verificables que demuestran formalización, preparación operativa, adopción y primeras ventas.",
+      script: "Al finalizar los seis meses tendremos la empresa constituida y la marca gestionada; las tres plataformas listas, la aplicación publicada y contenido audiovisual propio. Incorporaremos 25 actores empresariales y 300 consumidores, crearemos 10 experiencias y validaremos 30 operaciones comerciales con 8 clientes generando ingresos.",
     },
   },
   {
