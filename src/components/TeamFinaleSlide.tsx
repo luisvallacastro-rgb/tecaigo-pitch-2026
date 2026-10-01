@@ -6,31 +6,31 @@ const team = [
   {
     name: "Luis Antonio Valladares",
     role: "Dirección estratégica y financiera",
-    description: "Ex tour operador con más de 15 años en finanzas, riesgos y evaluación de proyectos.",
+    description: "Lic. en Contaduría Pública, Máster en Banca y Finanzas y Posgrado en Riesgos Bancarios y Financieros. Más de 15 años en análisis, riesgos, proyectos y consultoría; experiencia como tour operador.",
     image: "/assets/team/luis-valladares.png",
   },
   {
     name: "Sigfrido Alexander Villegas",
     role: "Arquitectura y tecnología",
-    description: "Ingeniero de sistemas especializado en software, datos e integración de plataformas.",
+    description: "Ingeniero en Sistemas Informáticos y egresado de la Maestría en Arquitectura de Software. Desarrolla soluciones desde 2005 y ha liderado integración y transformación digital regional.",
     image: "/assets/team/sigfrido-villegas.png",
   },
   {
     name: "Sara Michelle Flores",
     role: "Gestión humana y comunicación",
-    description: "Experiencia regional en talento, organización, capacitación y desarrollo de procesos.",
+    description: "Egresada de Comunicaciones con énfasis en inglés. Gestiona talento humano para El Salvador y Guatemala, con experiencia en selección, capacitación y desarrollo de procesos.",
     image: "/assets/team/sara-flores.png",
   },
   {
     name: "Yobani Alexander Franco",
     role: "Contabilidad y cumplimiento",
-    description: "Más de 11 años en finanzas, tributación, control interno y facturación electrónica.",
+    description: "Lic. en Contaduría Pública con más de 11 años en estados financieros, tributación, control interno, consultoría administrativa y facturación electrónica.",
     image: "/assets/team/yobani-franco.png",
   },
   {
     name: "Alejandra Johanna Echeverría",
     role: "Mercadeo y comunicación comercial",
-    description: "Especialista en posicionamiento, eventos, atención al cliente y contenido multimedia.",
+    description: "Lic. en Mercadeo Internacional. Experiencia en organización de eventos, atención al cliente, diseño y multimedia para posicionamiento, contenido y campañas comerciales.",
     image: "/assets/team/alejandra-echeverria.png",
   },
 ] as const;
@@ -42,7 +42,6 @@ export default function TeamFinaleSlide({ reduceMotion }: { reduceMotion: boolea
       <div className="team-finale__backdrop" aria-hidden="true"><i /><i /><i /></div>
       <motion.div className="team-finale__content" initial={reduceMotion ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay, duration: reduceMotion ? 0 : .8 }}>
         <header>
-          <div className="team-finale__brand" aria-label="TeCaigo"><span>TeCai</span><b>GO</b></div>
           <small>EQUIPO FUNDADOR · CIERRE</small>
           <h1>La capacidad para convertir visión en operación.</h1>
           <p>Cinco perfiles complementarios para construir, formalizar, comercializar y hacer crecer TeCaigo.</p>

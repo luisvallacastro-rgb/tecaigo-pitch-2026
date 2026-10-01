@@ -436,7 +436,7 @@ export const slides: PitchSlide[] = [
     sectionProgress: "7/7",
     eyebrow: "Equipo fundador",
     title: "La capacidad para convertir visión en operación.",
-    duration: 40,
+    duration: 30,
     evaluation: "Personas",
     notes: {
       message: "Cerrar demostrando que el equipo reúne las capacidades necesarias para ejecutar el proyecto y sostener la operación.",
