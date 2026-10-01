@@ -1204,7 +1204,7 @@ button { font:inherit; }
   position: absolute;
   inset: 0;
   overflow: hidden;
-  padding: clamp(70px, 7vh, 94px) 0 62px;
+  padding: clamp(104px, 10.8vh, 126px) 0 62px;
   background:
     radial-gradient(ellipse at 50% 56%, rgba(12, 181, 190, .22), transparent 48%),
     linear-gradient(180deg, #020b0a 0%, #061a18 56%, #010706 100%);
