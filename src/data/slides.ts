@@ -18,6 +18,7 @@ export type SlideKind =
   | "businessSources"
   | "projectPlan"
   | "formalization"
+  | "marketEntry"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -351,6 +352,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Explicar cómo una inversión puntual de US$400 habilita la estructura jurídica y la protección de marca necesarias para operar comercialmente.",
       script: "La primera etapa es la formalización. Con una inversión de cuatrocientos dólares constituiremos la Sociedad por Acciones Simplificada, gestionaremos el registro de marca y cubriremos aranceles, publicaciones y costos documentales. El resultado será una empresa constituida y el proceso de protección de marca gestionado.",
+    },
+  },
+  {
+    id: -16,
+    kind: "marketEntry",
+    sectionName: "Proyecto",
+    sectionProgress: "5/7",
+    eyebrow: "Entrada al mercado",
+    title: "Lanzamos, medimos y convertimos.",
+    duration: 25,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Mostrar que la inversión de entrada al mercado combina un lanzamiento presencial respaldado por cotización y campañas digitales progresivas orientadas a adopción.",
+      script: "Finalmente destinamos 2,420 dólares a nuestra entrada al mercado. El tercer mes realizaremos el lanzamiento oficial para cien personas y, desde el segundo mes, ejecutaremos campañas digitales progresivas dirigidas a operadores, transporte, comercios y turistas. La inversión disminuirá conforme pasemos de reconocimiento a captación, conversión y remarketing.",
     },
   },
   {
