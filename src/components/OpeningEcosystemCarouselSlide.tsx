@@ -16,8 +16,8 @@ export default function OpeningEcosystemCarouselSlide({ slide, reduceMotion }: {
         transition={{ duration: .65, ease: [0.22, 1, 0.36, 1] }}
       >
         <span>{slide.eyebrow}</span>
-        <h1>{slide.title}</h1>
-        <p>{slide.statement}</p>
+        <strong>{slide.title}</strong>
+        <small>{slide.statement}</small>
       </motion.header>
 
       <div className="opening-carousel__viewport">
@@ -25,6 +25,7 @@ export default function OpeningEcosystemCarouselSlide({ slide, reduceMotion }: {
           {trackItems.map((item, itemIndex) => (
             <article className="opening-carousel__card" key={`${item.role}-${item.title}-${itemIndex}`}>
               <div className="opening-carousel__phone">
+                <i className="opening-carousel__island" aria-hidden="true" />
                 <img src={item.image} alt={`${item.title} para ${item.role} en TeCaiGO`} />
               </div>
               <span>{item.role}</span>

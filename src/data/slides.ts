@@ -102,7 +102,7 @@ export const slides: PitchSlide[] = [
     title: "Así opera hoy una industria completa.",
     statement: "Está fragmentada entre WhatsApp, llamadas y contactos personales.",
     bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
-    duration: 20,
+    duration: 15,
     evaluation: "Producto",
     notes: {
       message: "Abrir el pitch mostrando que la colaboración turística ya existe, pero hoy está fragmentada y sin trazabilidad.",
@@ -114,9 +114,9 @@ export const slides: PitchSlide[] = [
     kind: "openingCarousel",
     sectionName: "Apertura",
     sectionProgress: "1/7",
-    eyebrow: "Una red · múltiples oportunidades",
-    title: "La operación dispersa puede convertirse en un ecosistema conectado.",
-    statement: "Un solo flujo digital conecta a quienes crean, integran y consumen experiencias turísticas.",
+    eyebrow: "El ecosistema en movimiento",
+    title: "Ecosistema TeCaigo",
+    statement: "Tour operadores · comercios turísticos · turistas",
     openingCarousel: [
       { role: "Tour operadores", title: "Radar turístico", image: "/assets/founder-carousel/tecaigo-to-mobile-01.jpg" },
       { role: "Tour operadores", title: "Oferta conectada", image: "/assets/founder-carousel/tecaigo-to-mobile-02.jpg" },
@@ -131,11 +131,11 @@ export const slides: PitchSlide[] = [
       { role: "Turistas", title: "Detalle", image: "/assets/founder-carousel/tecaigo-tourist-mobile-03.jpg" },
       { role: "Turistas", title: "Reserva y seguimiento", image: "/assets/founder-carousel/tecaigo-tourist-mobile-04.jpg" },
     ],
-    duration: 25,
+    duration: 30,
     evaluation: "Producto",
     notes: {
       message: "Cerrar la Apertura mostrando que la misma operación hoy fragmentada ya puede conectarse en un único ecosistema digital.",
-      script: "Esta fragmentación también representa una oportunidad. TeCaiGO reúne en un solo ecosistema a tour operadores, comercios turísticos y turistas. Cada actor utiliza una experiencia especializada, pero todos comparten información, oferta y oportunidades dentro de una misma red.",
+      script: "Esta fragmentación también representa una oportunidad. Aquí vemos el ecosistema TeCaigo en movimiento: tour operadores creando y coordinando experiencias, comercios integrando su oferta y turistas descubriendo, reservando y comprando. Son experiencias especializadas, conectadas por una sola red.",
     },
   },
   {
