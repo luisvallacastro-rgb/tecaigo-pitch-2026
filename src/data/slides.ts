@@ -24,6 +24,7 @@ export type SlideKind =
   | "resultsChecklist"
   | "verification"
   | "teamFinale"
+  | "finalImpact"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -106,7 +107,7 @@ export type PitchSlide = {
 };
 
 // Los tiempos se calculan automáticamente para acompañar la reconstrucción del pitch.
-export const slides: PitchSlide[] = [
+const slideCatalog: PitchSlide[] = [
   {
     id: 0,
     kind: "problem",
@@ -444,6 +445,20 @@ export const slides: PitchSlide[] = [
     },
   },
   {
+    id: -22,
+    kind: "finalImpact",
+    sectionName: "Cierre",
+    sectionProgress: "7/7",
+    eyebrow: "Visión final",
+    title: "TeCaigo conecta al turismo para que el crecimiento sea de todos.",
+    duration: 10,
+    evaluation: "Producto",
+    notes: {
+      message: "Cerrar con una frase memorable que sintetiza la visión de crecimiento compartido de TeCaigo.",
+      script: "TeCaigo conecta al turismo para que el crecimiento sea de todos.",
+    },
+  },
+  {
     id: 1,
     kind: "innovation",
     eyebrow: "Innovación · Ecosistema conectado",
@@ -616,5 +631,10 @@ export const slides: PitchSlide[] = [
     },
   },
 ];
+
+// El pitch oficial termina con la visión final en el minuto 7:00.
+// Las láminas históricas posteriores permanecen en el catálogo como respaldo local,
+// pero se excluyen por completo del recorrido, navegación y cronometraje activos.
+export const slides = slideCatalog.filter((slide) => slide.id <= 0);
 
 export const totalPitchSeconds = slides.reduce((sum, slide) => sum + slide.duration, 0);
