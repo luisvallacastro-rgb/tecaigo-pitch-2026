@@ -23,6 +23,7 @@ export type SlideKind =
   | "projectBudget"
   | "resultsChecklist"
   | "verification"
+  | "teamFinale"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -426,6 +427,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Explicar cómo se verificará cada resultado y cómo continuará la operación después del cofinanciamiento.",
       script: "Los resultados se comprobarán con registros de las plataformas, métricas, reportes de campañas, facturas, transacciones, documentación legal y evidencia audiovisual. Después del cofinanciamiento, la operación continuará mediante suscripciones, comisiones, publicidad y servicios administrativos.",
+    },
+  },
+  {
+    id: -21,
+    kind: "teamFinale",
+    sectionName: "Cierre",
+    sectionProgress: "7/7",
+    eyebrow: "Equipo fundador",
+    title: "La capacidad para convertir visión en operación.",
+    duration: 40,
+    evaluation: "Personas",
+    notes: {
+      message: "Cerrar demostrando que el equipo reúne las capacidades necesarias para ejecutar el proyecto y sostener la operación.",
+      script: "TeCaigo cuenta con un equipo fundador multidisciplinario. Luis dirige la estrategia y las finanzas desde su experiencia en turismo; Sigfrido lidera la arquitectura tecnológica; Sara fortalece la organización y el talento; Yobani asegura contabilidad, cumplimiento y facturación; y Alejandra conduce el mercadeo y la comunicación comercial. Cinco capacidades complementarias unidas por una misma visión: conectar el turismo.",
     },
   },
   {
