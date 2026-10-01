@@ -23,6 +23,7 @@ export type SlideKind =
   | "innovation"
   | "innovationClosing"
   | "openingCarousel"
+  | "solutionHero"
   | "product"
   | "market"
   | "business"
@@ -136,6 +137,21 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Cerrar la Apertura mostrando que la misma operación hoy fragmentada ya puede conectarse en un único ecosistema digital.",
       script: "Esta fragmentación también representa una oportunidad. Aquí vemos el ecosistema TeCaigo en movimiento: tour operadores creando y coordinando experiencias, comercios integrando su oferta y turistas descubriendo, reservando y comprando. Son experiencias especializadas, conectadas por una sola red.",
+    },
+  },
+  {
+    id: -2,
+    kind: "solutionHero",
+    sectionName: "Solución",
+    sectionProgress: "2/7",
+    eyebrow: "Ecosistema conectado",
+    title: "TeCaigo hace posibles nuevas experiencias.",
+    statement: "Otras plataformas comercializan experiencias que ya existen. TeCaigo conecta los recursos para que nuevas experiencias puedan existir.",
+    duration: 20,
+    evaluation: "Producto",
+    notes: {
+      message: "Presentar la diferencia central de TeCaigo: no se limita a comercializar oferta existente, sino que conecta recursos para crear nueva oferta turística.",
+      script: "Otras plataformas comercializan experiencias que ya existen. TeCaigo conecta los recursos para que nuevas experiencias puedan existir.",
     },
   },
   {
