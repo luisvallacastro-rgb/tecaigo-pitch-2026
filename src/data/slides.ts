@@ -22,6 +22,7 @@ export type SlideKind =
   | "technology"
   | "projectBudget"
   | "resultsChecklist"
+  | "verification"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -411,6 +412,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Presentar las metas verificables que demuestran formalización, preparación operativa, adopción y primeras ventas.",
       script: "Al finalizar los seis meses tendremos la empresa constituida y la marca gestionada; las tres plataformas listas, la aplicación publicada y contenido audiovisual propio. Incorporaremos 25 actores empresariales y 300 consumidores, crearemos 10 experiencias y validaremos 30 operaciones comerciales con 8 clientes generando ingresos.",
+    },
+  },
+  {
+    id: -20,
+    kind: "verification",
+    sectionName: "Resultados",
+    sectionProgress: "6/7",
+    eyebrow: "Verificación y sostenibilidad",
+    title: "Resultados que pueden comprobarse.",
+    duration: 30,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Explicar cómo se verificará cada resultado y cómo continuará la operación después del cofinanciamiento.",
+      script: "Los resultados se comprobarán con registros de las plataformas, métricas, reportes de campañas, facturas, transacciones, documentación legal y evidencia audiovisual. Después del cofinanciamiento, la operación continuará mediante suscripciones, comisiones, publicidad y servicios administrativos.",
     },
   },
   {
