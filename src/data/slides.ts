@@ -22,6 +22,7 @@ export type SlideKind =
   | "flow"
   | "innovation"
   | "innovationClosing"
+  | "openingCarousel"
   | "product"
   | "market"
   | "business"
@@ -36,6 +37,11 @@ export type PitchSlide = {
   title: string;
   statement?: string;
   bullets?: string[];
+  openingCarousel?: Array<{
+    role: "Tour operadores" | "Comercios turísticos" | "Turistas";
+    title: string;
+    image: string;
+  }>;
   innovationIntro?: {
     actors: Array<{
       id: "operators" | "commerce" | "transport" | "tourists";
@@ -101,6 +107,35 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Abrir el pitch mostrando que la colaboración turística ya existe, pero hoy está fragmentada y sin trazabilidad.",
       script: "Hoy una industria completa se coordina mediante WhatsApp, llamadas y contactos personales. La colaboración ya existe, pero está fragmentada. TeCaiGO no crea un comportamiento nuevo: organiza digitalmente lo que ya ocurre todos los días.",
+    },
+  },
+  {
+    id: -1,
+    kind: "openingCarousel",
+    sectionName: "Apertura",
+    sectionProgress: "1/7",
+    eyebrow: "Una red · múltiples oportunidades",
+    title: "La operación dispersa puede convertirse en un ecosistema conectado.",
+    statement: "Un solo flujo digital conecta a quienes crean, integran y consumen experiencias turísticas.",
+    openingCarousel: [
+      { role: "Tour operadores", title: "Radar turístico", image: "/assets/founder-carousel/tecaigo-to-mobile-01.jpg" },
+      { role: "Tour operadores", title: "Oferta conectada", image: "/assets/founder-carousel/tecaigo-to-mobile-02.jpg" },
+      { role: "Tour operadores", title: "Clúster operativo", image: "/assets/founder-carousel/tecaigo-to-mobile-03.jpg" },
+      { role: "Tour operadores", title: "Puntos de salida", image: "/assets/founder-carousel/tecaigo-to-mobile-04.jpg" },
+      { role: "Comercios turísticos", title: "Perfil comercial", image: "/assets/founder-carousel/tecaigo-commerce-mobile-01.jpg" },
+      { role: "Comercios turísticos", title: "Catálogo", image: "/assets/founder-carousel/tecaigo-commerce-mobile-02.jpg" },
+      { role: "Comercios turísticos", title: "Promociones", image: "/assets/founder-carousel/tecaigo-commerce-mobile-03.jpg" },
+      { role: "Comercios turísticos", title: "Detalle y reservas", image: "/assets/founder-carousel/tecaigo-commerce-mobile-04.jpg" },
+      { role: "Turistas", title: "Explorar", image: "/assets/founder-carousel/tecaigo-tourist-mobile-01.jpg" },
+      { role: "Turistas", title: "Promociones", image: "/assets/founder-carousel/tecaigo-tourist-mobile-02.jpg" },
+      { role: "Turistas", title: "Detalle", image: "/assets/founder-carousel/tecaigo-tourist-mobile-03.jpg" },
+      { role: "Turistas", title: "Reserva y seguimiento", image: "/assets/founder-carousel/tecaigo-tourist-mobile-04.jpg" },
+    ],
+    duration: 25,
+    evaluation: "Producto",
+    notes: {
+      message: "Cerrar la Apertura mostrando que la misma operación hoy fragmentada ya puede conectarse en un único ecosistema digital.",
+      script: "Esta fragmentación también representa una oportunidad. TeCaiGO reúne en un solo ecosistema a tour operadores, comercios turísticos y turistas. Cada actor utiliza una experiencia especializada, pero todos comparten información, oferta y oportunidades dentro de una misma red.",
     },
   },
   {
