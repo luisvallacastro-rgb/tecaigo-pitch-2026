@@ -1194,6 +1194,19 @@ button { font:inherit; }
 
 /* Page 8 — full-screen economic evidence */
 .slide--impact{display:block;padding:0;background:#02090b}
+.slide--businessSources{display:block;padding:0;background:#02090b}
+.business-sources{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
+.business-sources__image{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.business-sources__shade{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(1,8,10,.9) 0%,rgba(1,8,10,.72) 42%,rgba(1,8,10,.14) 72%,rgba(1,8,10,.08)),linear-gradient(180deg,rgba(1,8,10,.25),transparent 52%,rgba(1,8,10,.5))}
+.business-sources__panel{position:absolute;z-index:3;left:5.5%;top:50%;width:min(700px,43vw);translate:0 -48%;padding:clamp(26px,3vw,48px) clamp(30px,3.5vw,58px);border-left:2px solid var(--cyan);background:linear-gradient(110deg,rgba(2,16,18,.95),rgba(2,13,16,.76) 78%,rgba(2,13,16,.18));box-shadow:0 28px 85px rgba(0,0,0,.42);backdrop-filter:blur(14px);text-shadow:0 3px 18px #000}
+.business-sources__panel>small{color:var(--cyan);font-size:clamp(.58rem,.72vw,.82rem);font-weight:950;letter-spacing:.22em}
+.business-sources__panel>h1{margin:13px 0 clamp(20px,2.3vh,30px);color:#f7fbfb;font-size:clamp(3rem,5vw,6rem);font-weight:760;line-height:.83;letter-spacing:-.065em}
+.business-sources__list{display:grid;gap:10px}
+.business-source{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:13px;padding:10px 14px;border:1px solid rgba(113,228,234,.16);border-radius:15px;background:rgba(5,27,30,.7)}
+.business-source>span{display:grid;place-items:center;width:42px;aspect-ratio:1;border-radius:12px;color:#041416;background:var(--cyan);box-shadow:0 0 24px rgba(113,228,234,.18)}
+.business-source svg{width:21px}
+.business-source p{margin:0;color:#d3dfdf;font-size:clamp(.72rem,.92vw,1rem);line-height:1.28}
+.business-source strong{display:block;margin-bottom:2px;color:#fff;font-size:1.08em}
 .impact-slide{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
 .impact-slide__evidence{position:absolute;z-index:1;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center top}
 .impact-slide__chrome{position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(1,8,10,.3) 0%,transparent 18%,transparent 58%,rgba(1,8,10,.82) 100%),linear-gradient(90deg,rgba(1,8,10,.32),transparent 18%,transparent 88%,rgba(1,8,10,.24))}

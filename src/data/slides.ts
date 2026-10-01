@@ -15,6 +15,7 @@ export type SlideKind =
   | "regionalPotential"
   | "competitiveAdvantage"
   | "impact"
+  | "businessSources"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -263,6 +264,20 @@ export const slides: PitchSlide[] = [
     },
   },
   {
+    id: -10,
+    kind: "businessSources",
+    sectionName: "Negocio",
+    sectionProgress: "4/7",
+    eyebrow: "Fuentes de ingreso",
+    title: "Un ecosistema. Múltiples fuentes de ingreso.",
+    duration: 20,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Presentar un modelo diversificado que combina ingresos recurrentes, transaccionales y servicios de valor agregado.",
+      script: "Nuestro modelo combina cuatro fuentes de ingreso: suscripciones por el uso de TeCaigo.Core; comisiones por reservas e intermediación; publicidad y posicionamiento; y servicios administrativos y facturación electrónica.",
+    },
+  },
+  {
     id: 1,
     kind: "innovation",
     eyebrow: "Innovación · Ecosistema conectado",
@@ -373,30 +388,6 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Explicar que la ventaja competitiva sostenible de TeCaiGO es la red activa de relaciones, información, transacciones y confianza construida alrededor del software.",
       script: "Nuestra ventaja no es únicamente el software; es el ecosistema que construimos alrededor de él. Una función puede copiarse, pero una red activa de operadores, comercios, transporte, comisionistas y turistas, con relaciones, información e historial transaccional, requiere tiempo y confianza.",
-    },
-  },
-  {
-    id: 9,
-    kind: "businessModel",
-    eyebrow: "Ingresos",
-    title: "Modelo de negocio escalable",
-    statement: "Múltiples fuentes de ingresos impulsadas por un solo ecosistema.",
-    businessModel: {
-      streams: [
-        { icon: "subscriptions", title: "Suscripciones SaaS", description: "Planes mensuales.", detail: "Operadores · Comercios · Transporte" },
-        { icon: "commissions", title: "Comisiones", description: "Por reservas e intermediación." },
-        { icon: "positioning", title: "Publicidad", description: "Mayor visibilidad comercial." },
-        { icon: "analytics", title: "Analítica", description: "Datos estratégicos." },
-        { icon: "finance", title: "Próxima evolución", description: "Servicios financieros.", status: "Próxima evolución" },
-      ],
-      networkFlow: ["Más actores", "Más transacciones", "Más ingresos"],
-      impact: "Cada nuevo participante fortalece el ecosistema y aumenta el valor de toda la plataforma.",
-    },
-    duration: 20,
-    evaluation: "Previsibilidad",
-    notes: {
-      message: "Demostrar ingresos recurrentes, diversificación y crecimiento sostenible impulsado por el efecto de red.",
-      script: "TeCaiGO no depende de una única comisión. Combina suscripciones, comisiones, posicionamiento y analítica. Los servicios financieros son una evolución futura, habilitada por el historial transaccional. A medida que llegan más actores, crecen los eventos, las transacciones, la información, el valor del ecosistema y las oportunidades de ingreso.",
     },
   },
   {
