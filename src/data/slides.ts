@@ -24,6 +24,7 @@ export type SlideKind =
   | "innovationClosing"
   | "openingCarousel"
   | "solutionHero"
+  | "solutionDiagram"
   | "product"
   | "market"
   | "business"
@@ -152,6 +153,21 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Presentar la diferencia central de TeCaigo: no se limita a comercializar oferta existente, sino que conecta recursos para crear nueva oferta turística.",
       script: "Otras plataformas comercializan experiencias que ya existen. TeCaigo conecta los recursos para que nuevas experiencias puedan existir.",
+    },
+  },
+  {
+    id: -3,
+    kind: "solutionDiagram",
+    sectionName: "Solución",
+    sectionProgress: "2/7",
+    eyebrow: "De la oportunidad a la experiencia",
+    title: "Una red que convierte recursos dispersos en nueva oferta turística.",
+    statement: "Un comercio publica una oportunidad; una empresa de transporte aporta capacidad; un operador integra los servicios y crea una nueva ruta; TeCaigo.Core administra la operación y TeCaigo.com la lleva al turista.",
+    duration: 40,
+    evaluation: "Producto",
+    notes: {
+      message: "Explicar cómo TeCaigo conecta recursos de distintos actores y los convierte en una experiencia comercializable y operable.",
+      script: "Un comercio publica una oportunidad; una empresa de transporte aporta capacidad; un operador integra los servicios y crea una nueva ruta; TeCaigo.Core administra la operación y TeCaigo.com la lleva al turista.",
     },
   },
   {
