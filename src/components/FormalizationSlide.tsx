@@ -20,12 +20,18 @@ export default function FormalizationSlide({ reduceMotion }: { reduceMotion: boo
         animate={{ scale: 1 }}
         transition={{ duration: reduceMotion ? 0 : 19.5, ease: "easeOut" }}
       />
-      <div className="formalization-slide__veil" aria-hidden="true" />
+      <motion.div
+        className="formalization-slide__veil"
+        aria-hidden="true"
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: reduceMotion ? 0 : 1, duration: reduceMotion ? 0 : .65, ease: "easeOut" }}
+      />
       <motion.section
         className="formalization-slide__panel"
         initial={reduceMotion ? false : { opacity: 0, x: -38 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: reduceMotion ? 0 : .8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: reduceMotion ? 0 : 1, duration: reduceMotion ? 0 : .8, ease: [0.22, 1, 0.36, 1] }}
       >
         <small>FORMALIZACIÓN</small>
         <h1>Preparados para operar formalmente.</h1>
@@ -36,7 +42,7 @@ export default function FormalizationSlide({ reduceMotion }: { reduceMotion: boo
         </div>
         <div className="formalization-slide__costs">
           {costs.map(([amount, label], index) => (
-            <motion.div key={label} initial={reduceMotion ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : .55 + index * .12, duration: .5 }}>
+            <motion.div key={label} initial={reduceMotion ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 1.55 + index * .12, duration: .5 }}>
               <strong>{amount}</strong><span>{label}</span>
             </motion.div>
           ))}
