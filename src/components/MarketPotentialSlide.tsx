@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const scenes = [
   { image:"/assets/page-5/tour-operador.jpg", sector:"Prioridad inicial", title:"Cubrir todo El Salvador.", detail:"Comenzamos conectando la oferta turística de los distintos destinos del país." },
@@ -13,16 +12,8 @@ const scenes = [
   { image:"/assets/page-5/universidades.jpg", sector:"Meta nacional", title:"El Salvador, conectado de punta a punta.", detail:"Primero consolidamos una red nacional sólida, activa y sostenible." },
 ] as const;
 
-const SCENE_MS = 30000 / scenes.length;
-
-export default function MarketPotentialSlide({reduceMotion,running}:{reduceMotion:boolean;running:boolean}) {
-  const [active,setActive] = useState(0);
-  useEffect(() => {
-    setActive(0);
-    if (reduceMotion || !running) return;
-    const timer = window.setInterval(() => setActive(value => (value + 1) % scenes.length), SCENE_MS);
-    return () => window.clearInterval(timer);
-  }, [reduceMotion,running]);
+export default function MarketPotentialSlide({reduceMotion,sceneIndex=0}:{reduceMotion:boolean;sceneIndex?:0|1|2|3|4|5|6}) {
+  const active = sceneIndex;
   const scene = scenes[active];
   return <div className="market-potential" aria-label="Potencial de mercado de TeCaiGO en El Salvador">
     <AnimatePresence initial={false} mode="popLayout">
@@ -38,7 +29,7 @@ export default function MarketPotentialSlide({reduceMotion,running}:{reduceMotio
     </AnimatePresence>
     <div className="market-potential__thesis"><strong>EL SALVADOR</strong><span>COBERTURA NACIONAL</span><i/><span>CONSOLIDACIÓN</span></div>
     <div className="market-potential__rail" aria-label={`Vista ${active+1} de ${scenes.length}`}>
-      {scenes.map((item,index)=><button key={item.image} className={index===active?"is-active":""} onClick={()=>setActive(index)} aria-label={`Mostrar ${item.sector}`}><i/></button>)}
+      {scenes.map((item,index)=><span key={item.image} className={`market-potential__step ${index===active?"is-active":""}`} aria-label={item.sector}><i/></span>)}
     </div>
   </div>;
 }

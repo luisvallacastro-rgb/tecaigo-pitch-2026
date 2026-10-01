@@ -1186,9 +1186,9 @@ button { font:inherit; }
 .market-potential__thesis{position:absolute;z-index:5;left:8%;bottom:10%;display:flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid rgba(103,220,226,.42);border-radius:999px;background:rgba(2,18,21,.8);box-shadow:0 0 50px rgba(0,190,204,.12);backdrop-filter:blur(14px);color:#c7d7d8;font-size:clamp(.55rem,.72vw,.82rem);font-weight:850;letter-spacing:.12em}
 .market-potential__thesis strong{color:#67dce2;font-size:1.2em}.market-potential__thesis i{width:4px;height:4px;border-radius:50%;background:#67dce2}
 .market-potential__rail{position:absolute;z-index:8;right:5.6%;top:50%;display:flex;flex-direction:column;gap:11px;translate:0 -50%}
-.market-potential__rail button{display:grid;place-items:center;width:18px;height:18px;padding:0;border:1px solid rgba(103,220,226,.28);border-radius:50%;background:rgba(1,12,14,.5);cursor:pointer;transition:.45s ease}
-.market-potential__rail button i{width:5px;height:5px;border-radius:50%;background:#557579;transition:.45s ease}
-.market-potential__rail button.is-active{border-color:#67dce2;box-shadow:0 0 18px rgba(103,220,226,.42)}.market-potential__rail button.is-active i{width:10px;height:10px;background:#67dce2}
+.market-potential__step{display:grid;place-items:center;width:18px;height:18px;border:1px solid rgba(103,220,226,.28);border-radius:50%;background:rgba(1,12,14,.5);transition:.45s ease}
+.market-potential__step i{width:5px;height:5px;border-radius:50%;background:#557579;transition:.45s ease}
+.market-potential__step.is-active{border-color:#67dce2;box-shadow:0 0 18px rgba(103,220,226,.42)}.market-potential__step.is-active i{width:10px;height:10px;background:#67dce2}
 @media(max-aspect-ratio:4/3){.market-potential__copy{left:7%;top:24%;width:49vw}.market-potential__copy h1{font-size:clamp(2.7rem,5.4vw,4.8rem)}.market-potential__thesis{left:7%;bottom:14%}}
 @media(max-width:760px){.market-potential__copy{left:7%;top:22%;width:70vw}.market-potential__copy h1{font-size:2.2rem}.market-potential__copy p{font-size:.72rem}.market-potential__thesis{left:7%;bottom:16%;gap:7px;padding:9px 11px;font-size:.46rem}.market-potential__rail{right:3%}}
 

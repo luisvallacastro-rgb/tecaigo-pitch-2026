@@ -87,6 +87,7 @@ export type PitchSlide = {
   };
   duration: number;
   impactScene?: 0 | 1 | 2;
+  marketScene?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   evaluation: "Personas" | "Producto" | "Potencial" | "Previsibilidad";
   notes: {
     message: string;
@@ -217,6 +218,51 @@ export const slides: PitchSlide[] = [
     },
   },
   {
+    id: -7,
+    kind: "marketPotential",
+    sectionName: "Mercado",
+    sectionProgress: "3/7",
+    eyebrow: "Mercado",
+    title: "Cubrir todo El Salvador.",
+    marketScene: 0,
+    duration: 10,
+    evaluation: "Potencial",
+    notes: {
+      message: "Presentar la prioridad inicial de TeCaigo: conectar la oferta turística de todo El Salvador.",
+      script: "Comenzamos conectando la oferta turística de los distintos destinos del país. Nuestra prioridad inicial es cubrir todo El Salvador.",
+    },
+  },
+  {
+    id: -8,
+    kind: "marketPotential",
+    sectionName: "Mercado",
+    sectionProgress: "3/7",
+    eyebrow: "Mercado",
+    title: "Una red que llega a cada destino.",
+    marketScene: 1,
+    duration: 10,
+    evaluation: "Potencial",
+    notes: {
+      message: "Mostrar la cobertura nacional mediante operadores y transporte articulados.",
+      script: "Articulamos operadores y transporte para ampliar la capacidad de operación nacional y construir una red que llegue a cada destino.",
+    },
+  },
+  {
+    id: -9,
+    kind: "marketPotential",
+    sectionName: "Mercado",
+    sectionProgress: "3/7",
+    eyebrow: "Mercado",
+    title: "Conectar turistas con todo el país.",
+    marketScene: 3,
+    duration: 10,
+    evaluation: "Potencial",
+    notes: {
+      message: "Cerrar Mercado mostrando la demanda nacional conectada con toda la oferta turística del país.",
+      script: "Una sola plataforma permitirá descubrir, reservar y comprar experiencias nacionales, conectando turistas con todo el país.",
+    },
+  },
+  {
     id: 1,
     kind: "innovation",
     eyebrow: "Innovación · Ecosistema conectado",
@@ -302,19 +348,6 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Presentar la amplitud de beneficios que TeCaiGO genera cuando convierte actores dispersos en una red colaborativa.",
       script: "La propuesta de valor de TeCaiGO se traduce en beneficios concretos: nuevas rutas, más ventas, costos compartidos, capacidad aprovechada, nuevos clientes, mayor visibilidad, acceso financiero y crecimiento compartido. Cuando la red comparte oportunidades, cada actor puede crecer más.",
-    },
-  },
-  {
-    id: 5,
-    kind: "marketPotential",
-    eyebrow: "Potencial de Mercado",
-    title: "El Salvador, nuestra primera meta.",
-    statement: "Cobertura nacional para consolidar el mercado turístico de El Salvador.",
-    duration: 30,
-    evaluation: "Potencial",
-    notes: {
-      message: "Demostrar que la prioridad inicial es alcanzar cobertura nacional y consolidar el mercado de El Salvador.",
-      script: "Nuestra primera meta es cubrir El Salvador. Queremos consolidar una red nacional de operadores, transporte, hoteles, restaurantes, comercios, comisionistas y turistas que conecte la oferta de los distintos destinos del país. El Salvador es el mercado donde validaremos, fortaleceremos y haremos predecible el modelo antes de llevarlo a la región.",
     },
   },
   {
