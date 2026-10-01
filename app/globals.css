@@ -1231,6 +1231,21 @@ button { font:inherit; }
 .formalization-slide__costs strong{color:#fff;font-size:clamp(.96rem,1.16vw,1.28rem);letter-spacing:-.02em}.formalization-slide__costs span{color:#d2dddd;font-size:clamp(.72rem,.82vw,.92rem);font-weight:620;line-height:1.25}
 .formalization-slide__result{margin-top:10px;padding:11px 15px;border-left:3px solid var(--gold);background:rgba(30,25,10,.58)}
 .formalization-slide__result span{display:block;color:var(--gold);font-size:clamp(.52rem,.59vw,.66rem);font-weight:950;letter-spacing:.2em}.formalization-slide__result strong{display:block;margin-top:5px;color:#f7f8f4;font-size:clamp(.8rem,.96vw,1.08rem)}
+
+/* Proyecto · Tecnología */
+.technology-slide{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
+.technology-slide__image{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.technology-slide__veil{position:absolute;z-index:1;inset:0;background:linear-gradient(270deg,rgba(1,8,10,.96) 0%,rgba(1,8,10,.84) 36%,rgba(1,8,10,.18) 64%,rgba(1,8,10,.03)),linear-gradient(180deg,rgba(1,8,10,.18),transparent 55%,rgba(1,8,10,.36))}
+.technology-slide__panel{position:absolute;z-index:4;right:4.8%;top:50%;width:min(850px,48vw);translate:0 -47%;padding:clamp(23px,2.35vw,40px) clamp(28px,3vw,50px);border-right:2px solid var(--cyan);background:linear-gradient(270deg,rgba(2,16,18,.97),rgba(2,15,18,.84) 82%,rgba(2,15,18,.18));box-shadow:0 30px 90px rgba(0,0,0,.48);backdrop-filter:blur(13px);text-shadow:0 3px 18px #000}
+.technology-slide__panel>small{color:var(--cyan);font-size:clamp(.55rem,.7vw,.8rem);font-weight:950;letter-spacing:.23em}
+.technology-slide__panel>h1{margin:10px 0 9px;color:#f8fbfb;font-size:clamp(2rem,3.35vw,4.1rem);font-weight:760;line-height:.92;letter-spacing:-.055em;text-wrap:balance}
+.technology-slide__panel>p{margin:0;color:#c8d5d6;font-size:clamp(.68rem,.82vw,.92rem);line-height:1.4}
+.technology-slide__investment{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:15px 0 10px;padding:9px 14px;border-top:1px solid rgba(113,228,234,.34);border-bottom:1px solid rgba(113,228,234,.18);background:rgba(4,29,32,.7)}
+.technology-slide__investment span{color:#9db1b3;font-size:.53rem;font-weight:900;letter-spacing:.16em}.technology-slide__investment strong{color:var(--cyan);font-size:clamp(1.5rem,2.15vw,2.55rem);letter-spacing:-.04em;white-space:nowrap}
+.technology-slide__costs{display:grid;gap:7px}.technology-slide__costs>div{display:grid;grid-template-columns:clamp(100px,7vw,132px) 1fr;align-items:center;gap:12px;min-height:46px;padding:8px 14px;border:1px solid rgba(113,228,234,.18);border-radius:11px;background:linear-gradient(270deg,rgba(5,34,37,.88),rgba(5,26,29,.66))}
+.technology-slide__costs strong{color:#fff;font-size:clamp(.92rem,1.08vw,1.2rem)}.technology-slide__costs span{color:#d2dddd;font-size:clamp(.68rem,.78vw,.88rem);font-weight:620}
+.technology-slide__architecture{display:grid;grid-template-columns:auto 20px auto 20px auto;align-items:center;justify-content:center;gap:6px;margin-top:10px;padding:10px 12px;border:1px solid rgba(113,228,234,.2);background:rgba(2,22,25,.7);color:#e9ffff;font-size:clamp(.64rem,.75vw,.84rem);font-weight:780}.technology-slide__architecture i{color:var(--cyan);font-style:normal;text-align:center}.technology-slide__architecture b{grid-column:1/-1;color:var(--cyan);font-size:clamp(.58rem,.67vw,.76rem);letter-spacing:.04em;text-align:center}
+.technology-slide__panel>blockquote{margin:10px 0 0;color:var(--cyan);font-size:clamp(.8rem,.94vw,1.06rem);font-weight:820;text-align:center}
 .project-plan{position:absolute;inset:0;overflow:hidden;background:#02090b;isolation:isolate}
 .project-plan__image{position:absolute;z-index:0;inset:-2%;width:104%;height:104%;object-fit:cover;object-position:center}
 .project-plan__veil{position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(1,8,10,.94) 0%,rgba(1,8,10,.78) 37%,rgba(1,8,10,.22) 62%,rgba(1,8,10,.12)),linear-gradient(180deg,rgba(1,8,10,.3),transparent 50%,rgba(1,8,10,.58))}

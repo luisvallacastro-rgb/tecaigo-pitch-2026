@@ -19,6 +19,7 @@ export type SlideKind =
   | "projectPlan"
   | "formalization"
   | "marketEntry"
+  | "technology"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -366,6 +367,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Mostrar que la inversión de entrada al mercado combina un lanzamiento presencial respaldado por cotización y campañas digitales progresivas orientadas a adopción.",
       script: "Finalmente destinamos 2,420 dólares a nuestra entrada al mercado. El tercer mes realizaremos el lanzamiento oficial para cien personas y, desde el segundo mes, ejecutaremos campañas digitales progresivas dirigidas a operadores, transporte, comercios y turistas. La inversión disminuirá conforme pasemos de reconocimiento a captación, conversión y remarketing.",
+    },
+  },
+  {
+    id: -17,
+    kind: "technology",
+    sectionName: "Proyecto",
+    sectionProgress: "5/7",
+    eyebrow: "Tecnología",
+    title: "Infraestructura para operar y crecer.",
+    duration: 25,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Mostrar que la mayor inversión integra infraestructura, publicación, producción audiovisual y capacidad de escalamiento.",
+      script: "La mayor inversión está en tecnología. Destinamos 2,735 dólares para infraestructura Azure, publicación de la aplicación en iOS y Android, producción audiovisual propia y capacidad de escalamiento. TeCaigo.Core será el centro de la operación, mientras TeCaigo.App y TeCaigo.com consumirán la misma información.",
     },
   },
   {
