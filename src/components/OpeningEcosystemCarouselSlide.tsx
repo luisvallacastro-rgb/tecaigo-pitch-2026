@@ -15,7 +15,7 @@ export default function OpeningEcosystemCarouselSlide({ slide, reduceMotion }: {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: .65, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h1>{slide.title}</h1>
+        <h1>¿Y si pudiéramos conectar todo el ecosistema turístico en un solo lugar?</h1>
       </motion.header>
 
       <div className="opening-carousel__viewport">
@@ -23,7 +23,6 @@ export default function OpeningEcosystemCarouselSlide({ slide, reduceMotion }: {
           {trackItems.map((item, itemIndex) => (
             <article className="opening-carousel__card" key={`${item.role}-${item.title}-${itemIndex}`}>
               <div className="opening-carousel__phone">
-                <i className="opening-carousel__island" aria-hidden="true" />
                 <img src={item.image} alt={`${item.title} para ${item.role} en TeCaiGO`} />
               </div>
             </article>
