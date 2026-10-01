@@ -20,6 +20,7 @@ export type SlideKind =
   | "formalization"
   | "marketEntry"
   | "technology"
+  | "projectBudget"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -381,6 +382,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Mostrar que la mayor inversión integra infraestructura, publicación, producción audiovisual y capacidad de escalamiento.",
       script: "La mayor inversión está en tecnología. Destinamos 2,735 dólares para infraestructura Azure, publicación de la aplicación en iOS y Android, producción audiovisual propia y capacidad de escalamiento. TeCaigo.Core será el centro de la operación, mientras TeCaigo.App y TeCaigo.com consumirán la misma información.",
+    },
+  },
+  {
+    id: -18,
+    kind: "projectBudget",
+    sectionName: "Proyecto",
+    sectionProgress: "5/7",
+    eyebrow: "Presupuesto general",
+    title: "Una inversión enfocada en operar y crecer.",
+    duration: 15,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Cerrar el bloque mostrando el presupuesto completo, su distribución y la estructura de financiamiento.",
+      script: "El proyecto asciende a 5,555 dólares. El 49.2% fortalece la tecnología, el 43.6% financia mercadeo y lanzamiento, y el 7.2% formaliza la empresa y protege la marca. Solicitamos 5,000 dólares de cofinanciamiento y TeCaigo aporta 555.56 dólares de contrapartida.",
     },
   },
   {
