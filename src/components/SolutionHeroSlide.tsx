@@ -17,8 +17,10 @@ export default function SolutionHeroSlide({ reduceMotion }: { reduceMotion: bool
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: reduceMotion ? 0 : .45, duration: .8, ease: [0.22, 1, 0.36, 1] }}
       >
+        <small>LA DIFERENCIA TECAIGO</small>
         <span>Otras plataformas comercializan experiencias que ya existen.</span>
         <strong>TeCaigo conecta los recursos para que nuevas experiencias puedan existir.</strong>
+        <i aria-hidden="true" />
       </motion.blockquote>
     </div>
   );
