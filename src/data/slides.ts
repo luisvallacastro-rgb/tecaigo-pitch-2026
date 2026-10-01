@@ -270,7 +270,7 @@ export const slides: PitchSlide[] = [
     sectionProgress: "4/7",
     eyebrow: "Fuentes de ingreso",
     title: "Un ecosistema. Múltiples fuentes de ingreso.",
-    duration: 20,
+    duration: 30,
     evaluation: "Previsibilidad",
     notes: {
       message: "Presentar un modelo diversificado que combina ingresos recurrentes, transaccionales y servicios de valor agregado.",

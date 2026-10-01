@@ -24,7 +24,7 @@ export default function BusinessSourcesSlide({ reduceMotion }: { reduceMotion: b
       <div className="business-sources__shade" aria-hidden="true" />
       <motion.section
         className="business-sources__panel"
-        initial={reduceMotion ? false : { opacity: 0, x: -42 }}
+        initial={reduceMotion ? false : { opacity: 0, x: 42 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: reduceMotion ? 0 : .25, duration: .8, ease: [0.22, 1, 0.36, 1] }}
       >
