@@ -133,7 +133,7 @@ export const slides: PitchSlide[] = [
       { role: "Turistas", title: "Detalle", image: "/assets/founder-carousel/tecaigo-tourist-mobile-03.jpg" },
       { role: "Turistas", title: "Reserva y seguimiento", image: "/assets/founder-carousel/tecaigo-tourist-mobile-04.jpg" },
     ],
-    duration: 30,
+    duration: 35,
     evaluation: "Producto",
     notes: {
       message: "Cerrar la Apertura mostrando que la misma operación hoy fragmentada ya puede conectarse en un único ecosistema digital.",
@@ -148,7 +148,7 @@ export const slides: PitchSlide[] = [
     eyebrow: "Ecosistema conectado",
     title: "TeCaigo hace posibles nuevas experiencias.",
     statement: "Otras plataformas comercializan experiencias que ya existen. TeCaigo conecta los recursos para que nuevas experiencias puedan existir.",
-    duration: 20,
+    duration: 15,
     evaluation: "Producto",
     notes: {
       message: "Presentar la diferencia central de TeCaigo: no se limita a comercializar oferta existente, sino que conecta recursos para crear nueva oferta turística.",
