@@ -30,6 +30,8 @@ export type SlideKind =
 export type PitchSlide = {
   id: number;
   kind: SlideKind;
+  sectionName?: string;
+  sectionProgress?: string;
   eyebrow: string;
   title: string;
   statement?: string;
@@ -85,6 +87,22 @@ export type PitchSlide = {
 
 // Los tiempos se calculan automáticamente para acompañar la reconstrucción del pitch.
 export const slides: PitchSlide[] = [
+  {
+    id: 0,
+    kind: "problem",
+    sectionName: "Apertura",
+    sectionProgress: "1/7",
+    eyebrow: "La colaboración ya existe",
+    title: "Así opera hoy una industria completa.",
+    statement: "Está fragmentada entre WhatsApp, llamadas y contactos personales.",
+    bullets: ["Cupos dispersos", "Información duplicada", "Capacidad sin visibilidad", "Reservas sin trazabilidad", "Decisiones sin datos"],
+    duration: 20,
+    evaluation: "Producto",
+    notes: {
+      message: "Abrir el pitch mostrando que la colaboración turística ya existe, pero hoy está fragmentada y sin trazabilidad.",
+      script: "Hoy una industria completa se coordina mediante WhatsApp, llamadas y contactos personales. La colaboración ya existe, pero está fragmentada. TeCaiGO no crea un comportamiento nuevo: organiza digitalmente lo que ya ocurre todos los días.",
+    },
+  },
   {
     id: 1,
     kind: "innovation",
