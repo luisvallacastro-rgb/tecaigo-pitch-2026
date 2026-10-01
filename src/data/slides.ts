@@ -16,6 +16,7 @@ export type SlideKind =
   | "competitiveAdvantage"
   | "impact"
   | "businessSources"
+  | "projectPlan"
   | "businessModel"
   | "founder"
   | "teamExperience"
@@ -321,6 +322,20 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Explicar que la trazabilidad puede facilitar futuras alianzas financieras sin afirmar que TeCaigo presta o garantiza crédito.",
       script: "La actividad económica del ecosistema genera trazabilidad e historial transaccional. Ese historial puede facilitar alianzas con la banca para desarrollar programas de inclusión financiera dirigidos a operadores, transporte y comercios turísticos.",
+    },
+  },
+  {
+    id: -14,
+    kind: "projectPlan",
+    sectionName: "Proyecto",
+    sectionProgress: "5/7",
+    eyebrow: "Plan de implementación",
+    title: "Implementación comercial y fortalecimiento de TeCaigo",
+    duration: 15,
+    evaluation: "Previsibilidad",
+    notes: {
+      message: "Presentar las tres etapas concretas que llevarán a TeCaigo desde su preparación actual hasta la operación comercial.",
+      script: "El proyecto se ejecutará en tres etapas. Primero, formalización empresarial y protección de marca. Segundo, fortalecimiento tecnológico con Azure y la publicación y soporte de nuestros productos. Tercero, mercadeo y lanzamiento para captar actores y penetrar el mercado.",
     },
   },
   {
