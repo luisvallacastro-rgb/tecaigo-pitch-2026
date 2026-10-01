@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const scenes = [
   {
@@ -24,17 +23,8 @@ const scenes = [
   },
 ] as const;
 
-const SCENE_MS = 10000;
-
-export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: boolean; running: boolean }) {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    if (reduceMotion || !running) return;
-    const timer = window.setInterval(() => setActive(value => (value + 1) % scenes.length), SCENE_MS);
-    return () => window.clearInterval(timer);
-  }, [reduceMotion, running]);
-
+export default function ImpactSlide({ reduceMotion, sceneIndex = 0 }: { reduceMotion: boolean; sceneIndex?: 0 | 1 | 2 }) {
+  const active = sceneIndex;
   const scene = scenes[active];
 
   return (
@@ -75,9 +65,9 @@ export default function ImpactSlide({ reduceMotion, running }: { reduceMotion: b
 
       <nav className="impact-slide__steps" aria-label={`Vista ${active + 1} de ${scenes.length}`}>
         {scenes.map((item, index) => (
-          <button key={item.image} className={index === active ? "is-active" : ""} onClick={() => setActive(index)} aria-label={`Mostrar impacto ${index + 1}`}>
+          <span key={item.image} className={`impact-slide__step ${index === active ? "is-active" : ""}`} aria-label={`Impacto ${index + 1}`}>
             <span>{String(index + 1).padStart(2, "0")}</span><i />
-          </button>
+          </span>
         ))}
       </nav>
     </div>

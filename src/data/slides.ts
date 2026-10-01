@@ -86,6 +86,7 @@ export type PitchSlide = {
     footer: string;
   };
   duration: number;
+  impactScene?: 0 | 1 | 2;
   evaluation: "Personas" | "Producto" | "Potencial" | "Previsibilidad";
   notes: {
     message: string;
@@ -168,6 +169,51 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Explicar cómo TeCaigo conecta recursos de distintos actores y los convierte en una experiencia comercializable y operable.",
       script: "Un comercio publica una oportunidad; una empresa de transporte aporta capacidad; un operador integra los servicios y crea una nueva ruta; TeCaigo.Core administra la operación y TeCaigo.com la lleva al turista.",
+    },
+  },
+  {
+    id: -4,
+    kind: "impact",
+    sectionName: "Mercado",
+    sectionProgress: "3/7",
+    eyebrow: "Mercado",
+    title: "Una industria que ya mueve al país.",
+    impactScene: 0,
+    duration: 10,
+    evaluation: "Potencial",
+    notes: {
+      message: "Dimensionar la actividad turística y su impacto económico actual en El Salvador.",
+      script: "El Salvador recibió 4.1 millones de visitantes y generó 3,635 millones de dólares en divisas turísticas, sosteniendo más de 300 mil empleos.",
+    },
+  },
+  {
+    id: -5,
+    kind: "impact",
+    sectionName: "Mercado",
+    sectionProgress: "3/7",
+    eyebrow: "Mercado",
+    title: "Una red que hace más eficiente lo existente.",
+    impactScene: 1,
+    duration: 10,
+    evaluation: "Potencial",
+    notes: {
+      message: "Mostrar cómo TeCaigo conecta la oferta, la capacidad y la demanda de un mercado que ya existe.",
+      script: "TeCaigo conecta operadores, transporte, comercios y turistas, creando nuevas rutas y haciendo más eficiente la capacidad turística existente.",
+    },
+  },
+  {
+    id: -6,
+    kind: "impact",
+    sectionName: "Mercado",
+    sectionProgress: "3/7",
+    eyebrow: "Mercado",
+    title: "Un impacto alcanzable.",
+    impactScene: 2,
+    duration: 10,
+    evaluation: "Potencial",
+    notes: {
+      message: "Traducir una participación inicial del mercado en una oportunidad económica concreta y verificable.",
+      script: "Al conectar solo el uno por ciento de esta actividad, TeCaigo podría movilizar cerca de 36.4 millones de dólares, impulsando además formalización e inclusión financiera.",
     },
   },
   {
@@ -294,19 +340,6 @@ export const slides: PitchSlide[] = [
     notes: {
       message: "Explicar que la ventaja competitiva sostenible de TeCaiGO es la red activa de relaciones, información, transacciones y confianza construida alrededor del software.",
       script: "Nuestra ventaja no es únicamente el software; es el ecosistema que construimos alrededor de él. Una función puede copiarse, pero una red activa de operadores, comercios, transporte, comisionistas y turistas, con relaciones, información e historial transaccional, requiere tiempo y confianza.",
-    },
-  },
-  {
-    id: 8,
-    kind: "impact",
-    eyebrow: "Impacto",
-    title: "Una industria que ya mueve al país. Una red capaz de multiplicar su impacto.",
-    statement: "TeCaiGO conecta la actividad turística existente y la convierte en oportunidades medibles.",
-    duration: 30,
-    evaluation: "Potencial",
-    notes: {
-      message: "Dimensionar el impacto económico del turismo y mostrar el valor que TeCaiGO puede movilizar al conectar una pequeña parte de esa actividad.",
-      script: "El Salvador recibió 4.1 millones de visitantes y generó 3,635 millones de dólares en divisas turísticas, sosteniendo más de 300 mil empleos. TeCaiGO conecta operadores, transporte, comercios y turistas para crear nuevas rutas y aprovechar mejor la capacidad existente. Al conectar solo el uno por ciento de esta actividad, podríamos movilizar cerca de 36.4 millones de dólares e impulsar formalización e inclusión financiera.",
     },
   },
   {

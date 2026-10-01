@@ -1202,8 +1202,8 @@ button { font:inherit; }
 .impact-slide__copy h1{max-width:960px;margin:12px 0 18px;color:#fff;font-size:clamp(1.45rem,2.35vw,3.05rem);font-weight:720;line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
 .impact-slide__copy strong{display:inline-flex;padding:9px 15px;border:1px solid rgba(113,228,234,.42);border-radius:999px;color:#c8fbfc;background:rgba(8,39,43,.68);font-size:clamp(.58rem,.77vw,.9rem);font-weight:900;letter-spacing:.13em}
 .impact-slide__steps{position:absolute;z-index:10;right:5.5%;top:50%;display:flex;flex-direction:column;gap:10px;translate:0 -50%}
-.impact-slide__steps button{display:flex;align-items:center;gap:8px;padding:4px 0;border:0;background:transparent;color:#6b8588;cursor:pointer}.impact-slide__steps button span{font-size:.62rem;font-weight:900;opacity:0;transition:.35s}.impact-slide__steps button i{display:block;width:22px;height:3px;border-radius:9px;background:#456064;transition:.45s}
-.impact-slide__steps button.is-active{color:#aaf5f7}.impact-slide__steps button.is-active span{opacity:1}.impact-slide__steps button.is-active i{width:42px;background:#71e4ea;box-shadow:0 0 18px rgba(113,228,234,.65)}
+.impact-slide__step{display:flex;align-items:center;gap:8px;padding:4px 0;color:#6b8588}.impact-slide__step>span{font-size:.62rem;font-weight:900;opacity:0;transition:.35s}.impact-slide__step>i{display:block;width:22px;height:3px;border-radius:9px;background:#456064;transition:.45s}
+.impact-slide__step.is-active{color:#aaf5f7}.impact-slide__step.is-active>span{opacity:1}.impact-slide__step.is-active>i{width:42px;background:#71e4ea;box-shadow:0 0 18px rgba(113,228,234,.65)}
 @media(max-aspect-ratio:4/3){.impact-slide__evidence{object-position:center top}.impact-slide__copy{left:6%;bottom:14%;width:73vw}.impact-slide__copy h1{font-size:clamp(1.35rem,3.2vw,2.5rem)}}
 @media(max-width:760px){.impact-slide__copy{left:6%;bottom:15%;width:78vw;padding:14px 18px}.impact-slide__copy h1{font-size:1.15rem}.impact-slide__copy strong{font-size:.5rem}.impact-slide__steps{right:2.5%}}
 
