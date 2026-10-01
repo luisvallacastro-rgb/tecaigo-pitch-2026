@@ -347,7 +347,7 @@ export const slides: PitchSlide[] = [
     sectionProgress: "5/7",
     eyebrow: "Formalización",
     title: "Preparados para operar formalmente.",
-    duration: 25,
+    duration: 15,
     evaluation: "Previsibilidad",
     notes: {
       message: "Explicar cómo una inversión puntual de US$400 habilita la estructura jurídica y la protección de marca necesarias para operar comercialmente.",
