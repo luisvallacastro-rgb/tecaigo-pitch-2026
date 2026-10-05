@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleAnalytics from "../src/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tecaigo-pitch-2026.onrender.com"),
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
+        <GoogleAnalytics />
         {children}
       </body>
     </html>

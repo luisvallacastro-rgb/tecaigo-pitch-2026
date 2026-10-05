@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { slides, totalPitchSeconds, type PitchSlide } from "../data/slides";
+import { trackEvent } from "../lib/analytics";
 import FounderFinaleSlide from "./FounderFinaleSlide";
 import Slide10BusinessModel from "./Slide10BusinessModel";
 import SlideProductInnovationIntro from "./SlideProductInnovationIntro";
@@ -834,12 +835,16 @@ export default function PitchDeck() {
 
   const togglePlayback = useCallback(() => {
     if (!started) {
+      trackEvent("pitch_started", {
+        slide_number: index + 1,
+        total_slides: slides.length,
+      });
       setStarted(true);
       setRunning(true);
       return;
     }
     setRunning(value => !value);
-  }, [started]);
+  }, [index, started]);
 
   const syncPageAnimations = useCallback((shouldPlay: boolean) => {
     window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
@@ -889,6 +894,23 @@ export default function PitchDeck() {
   }, []);
 
   useEffect(() => {
+    trackEvent("slide_view", {
+      slide_number: index + 1,
+      slide_title: current.title,
+      section_name: current.sectionName ?? current.evaluation,
+      elapsed_seconds: slides.slice(0, index).reduce((sum, slide) => sum + slide.duration, 0),
+    });
+  }, [current.evaluation, current.sectionName, current.title, index]);
+
+  useEffect(() => {
+    if (elapsed < totalPitchSeconds || index !== slides.length - 1) return;
+    trackEvent("pitch_completed", {
+      total_seconds: totalPitchSeconds,
+      total_slides: slides.length,
+    });
+  }, [elapsed, index]);
+
+  useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (["ArrowRight", "PageDown", " "].includes(event.key)) { event.preventDefault(); next(); }
       if (["ArrowLeft", "PageUp"].includes(event.key)) { event.preventDefault(); previous(); }
@@ -923,11 +945,15 @@ export default function PitchDeck() {
   const sectionProgress = current.sectionProgress ?? `${String(index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
 
   const toggleFullscreen = useCallback(() => {
+    trackEvent("fullscreen_toggled", {
+      enabled: !document.fullscreenElement,
+      slide_number: index + 1,
+    });
     const action = document.fullscreenElement
       ? document.exitFullscreen()
       : document.documentElement.requestFullscreen({ navigationUI: "hide" });
     void action.catch(() => setFullscreenActive(Boolean(document.fullscreenElement)));
-  }, []);
+  }, [index]);
 
   return (
     <main className={`deck-shell ${immersive ? "deck-shell--cover" : ""}`}>
